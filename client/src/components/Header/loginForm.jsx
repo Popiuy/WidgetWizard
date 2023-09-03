@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { LOGIN_USER } from '../../utils/mutations'
+import { LOGIN_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
 const Login = (props) => {
 
@@ -18,11 +19,24 @@ const Login = (props) => {
     }
 
     const formSubmit = (e) => {
-        //define mutations first
+        try {
+            const { data } = login({
+                variables: {...formState}
+            })
+            Auth.login(data.login.token);
+        } catch (err) {
+
+        }
     }
 
     return (
-        <form>
+        <>
+        {data ? (
+            <div>
+                <div>You have been logged in!</div>
+            </div>
+        ): (
+            <form>
             <input className='username-field'
                 placeholder ='JiminiCricket'
                 name = 'username'
@@ -37,8 +51,14 @@ const Login = (props) => {
                 value = {formState.password}
                 onChange = {formResponse}
                 ></input>
-            <button></button>
+            <button className = 'submit-button' type='submit'>
+                Submit
+            </button>
         </form>
-        )
+        )}
+        </>
+    )
 
 }
+
+module.exports = Login;

@@ -20,3 +20,5 @@ class Authenticator {
         return this.getToken()
     }
 }
+
+module.exports = new Authenticator;

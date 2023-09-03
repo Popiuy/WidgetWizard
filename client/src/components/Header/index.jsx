@@ -6,15 +6,12 @@ export default Header = () => {
             <div className="date-feature"></div>
             <div className="time-feature"></div>
             <div className='login-feature'>
-                { loggedIn ? (
-                        <button className="logout-button">Logout</button>
-                    ) : (
-                        <>
-                        <button className="login-button">Login</button>
-                        <button className="signup-button">Sign Up</button>
-                        </>
-                    )}
-                    
+                 {/* Can we set it up so that upon click, 
+                    our login form appears as a pop-up? */}
+                {/* Button will disappear upon login */}
+            </div>
+            <div className='logout-feature'>
+                {/* Display upon login */}
             </div>
         </header>
     )
