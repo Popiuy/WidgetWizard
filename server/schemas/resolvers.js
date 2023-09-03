@@ -1,4 +1,5 @@
 const { User, Widget } = require('../models');
+const {signToken, AuthenticationError} = require('../../utils/auth')
 
 const resolvers = {
     Query: {
@@ -16,13 +17,40 @@ const resolvers = {
         }
     },
     Mutations: {
-        createUser: {
-            
+        createUser: async ( parent, { username, email, password }) => {
+            const user = await User.create({username, email, password});
+            const token = signToken(user);
         },
-        addWidget: {
 
+        login: async ( parent, { username, password }) => {
+            const user = await User.findOne({username});
+            
+            if (!user) {
+                throw AuthenticationError;
+            }
+
+            const correctPw = await user.isCorrectPassword(password);
+
+            if (!correctPw){
+                throw AuthenticationError;
+            }
+
+            const token = signToken(user);
+
+            return { token, user };
         },
-        deleteWidget: {
+
+        addWidget: async (parent, {userId, title}) => {
+            const widget = await Widget.findOne({title});
+            const user = await User.findOneAndUpdate(
+                { _id: userId },
+                { $addToSet : { widgets: widget._id} },
+                { new: true }
+                );
+
+            return { widget };
+        },
+        deleteWidget: async () => {
 
         },
         banUser: {
