@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
-const Login = (props) => {
+const LoginForm = (props) => {
 
     const [formState, setFormState] = useState({ username: '', password: ''});
     const [login, {error, data}] = useMutation(LOGIN_USER);
@@ -61,4 +61,4 @@ const Login = (props) => {
 
 }
 
-module.exports = Login;
+module.exports = LoginForm;

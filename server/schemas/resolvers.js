@@ -20,6 +20,8 @@ const resolvers = {
         createUser: async ( parent, { username, email, password }) => {
             const user = await User.create({username, email, password});
             const token = signToken(user);
+
+            return { token, user};
         },
 
         login: async ( parent, { username, password }) => {
@@ -50,11 +52,24 @@ const resolvers = {
 
             return { widget };
         },
+
         deleteWidget: async () => {
 
         },
-        banUser: {
-            
+
+        banUser: async (parent, {userId, password}) => {
+            const user = await User.findOne({userId});
+            if (!user) {
+                throw AuthenticationError;
+            }
+
+            const correctPw = await user.isCorrectPassword(password);
+            if (!correctPw) {
+                throw AuthenticationError;
+            }
+
+            const deletedUser = await User.deleteOne({userId})
+            alert(`${user.username}'s account has been deleted.`)
         },
 
     }

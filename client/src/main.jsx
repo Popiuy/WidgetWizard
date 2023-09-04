@@ -15,7 +15,13 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        root: 'dashboard/:userId',
+        element: <Dashboard />
         // edit this line
+      },
+      {
+        root: 'landingpage',
+        element: <LoginForm />
       },
     ],
   },
