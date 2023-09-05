@@ -21,4 +21,4 @@ class Authenticator {
     }
 }
 
-module.exports = new Authenticator;
+export default new Authenticator;

@@ -61,4 +61,4 @@ const LoginForm = (props) => {
 
 }
 
-module.exports = LoginForm;
+export default LoginForm;

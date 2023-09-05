@@ -1,7 +1,7 @@
 import { Link } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default Header = () => {
+const Header = () => {
 
 const displayLoginForm = () => {
 
@@ -31,3 +31,5 @@ const displayLoginForm = () => {
         </header>
     )
 }
+
+export default Header;
