@@ -17,5 +17,8 @@
       "graphql": "^16.6.0",
       "jsonwebtoken": "^8.5.1",
       "mongoose": "^7.0.2"
+    },
+    "devDependencies": {
+      "nodemon": "^2.0.22"
     }
   }
