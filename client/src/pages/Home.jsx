@@ -1,9 +1,12 @@
 const Home = () => {
-    <body>
-        <img src="../images/wizard.jpg"></img>
-        <h1>HOME</h1>
+    return (
+        <body>
+            <img src="../images/wizard.jpg"></img>
+            <h1>HOME</h1>
 
-    </body>
+        </body>
+
+    )
 };
 
 export default Home;
