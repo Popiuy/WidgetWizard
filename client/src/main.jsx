@@ -5,25 +5,25 @@ import App from './App.jsx';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import LoginForm from './components/Header/loginForm';
-// import pages
+import ErrorPage from './pages/ErrorPage';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
-    errorElement: <Error />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
         element: <Home />,
       },
       {
-        root: 'dashboard/:userId',
+        path: 'dashboard/:userId',
         element: <Dashboard />
         // edit this line
       },
       {
-        root: 'landingpage',
+        path: 'landingpage',
         element: <LoginForm />
       },
     ],

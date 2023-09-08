@@ -3,7 +3,6 @@ const Home = () => {
     return (
         <APODWidget />      
     )
-    
 };
 
 export default Home;
