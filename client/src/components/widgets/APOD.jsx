@@ -2,13 +2,13 @@
 //src APOD
 
 
-const APOD = {
-    title: '',
-    src: '',
-    caption: '',
-    photographer: '',
-    description: '',
-};
+// const APOD = {
+//     title: '',
+//     src: '',
+//     caption: '',
+//     photographer: '',
+//     description: '',
+// };
 
 
 export default APOD = () => {
