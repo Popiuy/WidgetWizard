@@ -1,11 +1,7 @@
+import APODWidget from '../components/widgets/APOD'
 const Home = () => {
     return (
-        <body>
-            <img src="../images/wizard.jpg"></img>
-            <h1>HOME</h1>
-
-        </body>
-
+        <APODWidget />      
     )
 };
 

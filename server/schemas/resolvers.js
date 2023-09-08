@@ -1,5 +1,5 @@
 const { User, Widget } = require('../models');
-const {signToken, AuthenticationError} = require('../../utils/auth')
+const {signToken, AuthenticationError} = require('../utils/auth')
 
 const resolvers = {
     Query: {
