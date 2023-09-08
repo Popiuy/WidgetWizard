@@ -1,11 +1,8 @@
 const Home = () => {
     return (
-        <body>
-            <img src="../images/wizard.jpg"></img>
-            <h1>HOME</h1>
-
-        </body>
-
+        <div>
+            <h1>Insert APOD widget here</h1>
+        </div>
     )
 };
 
