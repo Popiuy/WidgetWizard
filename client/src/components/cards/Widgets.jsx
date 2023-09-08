@@ -1,6 +1,6 @@
 
 
-export default Widgets = (user_id) => {
+const Widgets = (user_id) => {
     //reference users widgets
     
     const widgetsArray = [];
@@ -13,3 +13,5 @@ export default Widgets = (user_id) => {
         //display appropraite widget here
     )
 };
+
+export default Widgets
