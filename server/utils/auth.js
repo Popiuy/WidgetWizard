@@ -10,6 +10,7 @@ module.exports = {
             code: 'UNAUTHENTICATED',
         }
     }),
+    
     authMiddleware: function (req, res, next) {
         let token = req.query.token || req.headers.authorization;
     

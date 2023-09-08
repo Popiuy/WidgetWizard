@@ -1,8 +1,12 @@
 const Home = () => {
-    <body>
-        <button className="add-widget-btn" onClick={()=>{alert('You must first log in!')}}>+</button> 
-        <>Default Widget</>
-    </body>
+    return (
+        <body>
+            <img src="../images/wizard.jpg"></img>
+            <h1>HOME</h1>
+
+        </body>
+
+    )
 };
 
 export default Home;

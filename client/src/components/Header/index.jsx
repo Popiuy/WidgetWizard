@@ -1,6 +1,8 @@
 import { Link } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Auth from '../../utils/auth';
 
+const loggedIn = Auth.loggedIn();
 const Header = () => {
 
 const displayLoginForm = () => {
