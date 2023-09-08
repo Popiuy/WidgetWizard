@@ -1,8 +1,7 @@
+import APODWidget from '../components/widgets/APOD'
 const Home = () => {
     return (
-        <div>
-            <h1>Insert APOD widget here</h1>
-        </div>
+        <APODWidget />      
     )
 };
 
