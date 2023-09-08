@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App.jsx';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
-import LoginForm from './components/Header/loginForm';
+import About from './pages/About';
 import ErrorPage from './pages/ErrorPage';
 
 const router = createBrowserRouter([
@@ -18,14 +18,18 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: 'dashboard/:userId',
+        path: '/dashboard',
+        // change back to /dashboard/:id
         element: <Dashboard />
-        // edit this line
       },
       {
-        path: 'landingpage',
-        element: <LoginForm />
+        path: '/error',
+        element: <ErrorPage />
       },
+      {
+        path: '/about',
+        element: <About />
+      }
     ],
   },
 ]);
