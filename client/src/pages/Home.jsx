@@ -1,8 +1,11 @@
+import APODWidget from '../components/widgets/APOD'
 const Home = () => {
-    <body>
-        <button className="add-widget-btn" onClick={()=>{alert('You must first log in!')}}>+</button> 
-        <>Default Widget</>
-    </body>
+    return (
+        <body>
+        <APODWidget />      
+        </body>
+    )
+    
 };
 
 export default Home;
