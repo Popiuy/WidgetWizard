@@ -58,12 +58,6 @@ export default function APODWidget() {
 
   return (
     <div>
-      {/* <header className="title">{photo.title}</header>
-      <img className="photos" src={photo.src} alt={photo.title} />
-      <div className="caption">{photo.caption}</div>
-      <div className="photo-credit">{photo.photographer}</div>
-      <div className="description">{photo.description}</div>
-      <div className="date">{photo.date}</div> */}
       <div className="card" style={{width:"50rem"}}>
           <div className="card-body">
             <h5 className="card-title">Astronomy Picture of the Day</h5>
