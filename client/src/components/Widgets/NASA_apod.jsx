@@ -45,8 +45,17 @@ export default function APODWidget() {
   });
 
   const addToFavorites = async (photoData) => {
-    //mutation
-    //push photoData to user's field
+    // define mutation
+    // define user field
+    // push photoData to user's field
+  }
+
+  const viewFavorites = async () => {
+    //  define query
+    //  fetch photos from graphQL
+    //  display photos in grid
+        //upon click, expand photo to be full size
+    //
   }
 
   return (
