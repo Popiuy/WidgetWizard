@@ -73,6 +73,7 @@ const resolvers = {
             const deletedUser = await User.deleteOne({userId})
             alert(`${user.username}'s account has been deleted.`)
         },
+        
         NASAaddToFavorites: async (parent, {photoData}, context) => {
             const user = await User.findByIdAndUpdate(
                 {_id: context.user._id},

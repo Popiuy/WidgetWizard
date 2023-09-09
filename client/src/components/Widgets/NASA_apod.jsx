@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
-// import { useQuery, useMutation } from '@apollo/client';
-// import { NASA_ADD_TO_FAVORITES } from '../../utils/mutations';
+import { useQuery, useMutation } from '@apollo/client';
+import { NASA_ADD_TO_FAVORITES } from '../../utils/mutations';
 
 export default function APODWidget() {
-  // const {loading, favoritesData } = useQuery()
-  // const [NASAaddToFavorites, {error, data} ] = useMutation(NASA_ADD_TO_FAVORITES, {
-  //   variables: {...photoData}
-  // })
+  const {loading, favoritesData } = useQuery()
+  const [NASAaddToFavorites, {error, data} ] = useMutation(NASA_ADD_TO_FAVORITES, {
+    variables: {...photoData}
+  })
+
   const [photoData, setPhotoData] = useState({
     date: '',
     title: '',
@@ -50,10 +51,9 @@ export default function APODWidget() {
     wrapper();
   });
 
-  const addToFavorites = async (photoData) => {
-    // define mutation
-    // define user field
-    // push photoData to user's field
+  const addToFavorites = () => {
+    NASAaddToFavorites();
+    //display
   }
 
   const viewFavorites = async () => {
@@ -64,6 +64,7 @@ export default function APODWidget() {
     //
   }
 
+  
   return (
     <div>
       <div className="card" style={{width:"50rem"}}>
@@ -76,7 +77,7 @@ export default function APODWidget() {
               <div className="photo-description">{photoData.description}</div>
               <div className="photo-date">{photoData.date}</div>
             <a href="/APOD" className="btn btn-primary">Go to Widget</a>
-            <button className="favorite-btn" onClick={addToFavorites}>ADD TO FAVORITES!</button>
+            <button className="favorite-btn" onClick={NASAaddToFavorites}>ADD TO FAVORITES!</button>
           </div>
       </div>
     </div>
