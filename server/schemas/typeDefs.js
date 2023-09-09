@@ -19,9 +19,9 @@ const typeDefs = `
     }
     
     type Query {
-        widget(id: ID!): Widget
+        widget(widgetId: String): Widget
         widgets: [Widget]
-        user(id: ID!): User
+        user(userId: String): User
         users: [User]
     }
     type Mutations {

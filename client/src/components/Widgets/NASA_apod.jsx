@@ -1,35 +1,7 @@
 import { useState, useEffect } from 'react';
 
-const searchAPOD = async () => {
-  try {
-    const response = await fetch(
-      'https://api.nasa.gov/planetary/apod?api_key=ldu00DPMmJO4nb9rTFgemhoA8TEwoKso0Adud0pe'
-    );
-    if (!response.ok) {
-      throw new Error('Failed to fetch data');
-    }
-    return response.json();
-  } catch (error) {
-    console.error('Error fetching APOD data:', error);
-    return null;
-  }
-};
-
-const retrieveData = async() => {
-  try {
-    const response = await fetch(
-      'https://api.nasa.gov/planetary/apod?api_key=ldu00DPMmJO4nb9rTFgemhoA8TEwoKso0Adud0pe'
-    );
-  
-    return response.json();
-  } catch (error) {
-    console.error('Could not retreive photo.', error)
-    return null;
-  }
-}
-
 export default function APODWidget() {
-  const [photo, setPhoto] = useState({
+  const [photoData, setPhotoData] = useState({
     date: '',
     title: '',
     src: '',
@@ -38,35 +10,39 @@ export default function APODWidget() {
     description: '',
   });
 
+  //As of now, useEffect will be run everytime the widget is rendered. 
+  //And we get 1,000 requests per hour, so why not??
+    
   useEffect(() => {
     const fetchAPODData = async () => {
-      const apodData = await searchAPOD();
-      if (apodData) {
-        setPhoto({
-          date: apodData.date,
-          title: apodData.title,
-          src: apodData.url,
-          caption: apodData.explanation,
-          photographer: apodData.hdurl,
-          description: apodData.description,
+      
+      const response = await fetch(
+        'https://api.nasa.gov/planetary/apod?api_key=ldu00DPMmJO4nb9rTFgemhoA8TEwoKso0Adud0pe'
+      );
+
+      const APOD = response.json();
+
+      
+      if (APOD) {         
+        setPhotoData({        
+          date: APOD.date,    
+          title: APOD.title,
+          src: APOD.url,
+          caption: APOD.explanation,
+          photographer: APOD.hdurl,
+          description: APOD.description,
         });
       }
     };
 
     fetchAPODData();
-  }, []);
+  });
 
   return (
     <div>
-      {/* <header className="title">{photo.title}</header>
-      <img className="photos" src={photo.src} alt={photo.title} />
-      <div className="caption">{photo.caption}</div>
-      <div className="photo-credit">{photo.photographer}</div>
-      <div className="description">{photo.description}</div>
-      <div className="date">{photo.date}</div> */}
       <div className="card" style={{width:"18rem"}}>
-        <img src={photo.src} className="card-img-top" alt={photo.title}></img>
           <div className="card-body">
+            <div className="photo-title">{photo.title}</div>
             <h5 className="card-title">Astronomy Picture of the Day</h5>
               <img src={photo.src} className="card-img-top" alt={photo.title}></img>
               <div className="caption">{photo.caption}</div>
