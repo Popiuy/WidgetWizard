@@ -1,7 +1,7 @@
 {
   "name": "widgetwizard",
   "version": "1.0.0",
-  "description": "",
+  "description": "## To-do",
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",

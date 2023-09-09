@@ -1,7 +1,12 @@
-import APODWidget from '../components/widgets/NASA_apod'
+import APODWidget from '../components/widgets/NASA_apod';
+import jokeWidget from '../components/widgets/JokeAPI';
+
 const Home = () => {
     return (
-        <APODWidget />      
+        <div>
+            <APODWidget />;      
+            <jokeWidget />
+        </div>
     )
 };
 
