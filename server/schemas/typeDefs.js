@@ -19,16 +19,16 @@ const typeDefs = `
     }
     
     type Query {
-        widget(id: ID!): Widget
+        widget(widgetId: ID!): Widget
         widgets: [Widget]
-        user(id: ID!): User
+        user(userId: ID!): User
         users: [User]
     }
-    type Mutations {
+
+    type Mutation {
         createUser(username: String!, email: String!, password: String! ): Auth
         login(username: String!, password: String!): Auth
-        addWidget(userId: ID!, title: String!): Widget
-        deleteWidget(userId: ID!, WidgetId: ID!): Widget
+        addWidget(widgetId: ID!): Widget
         banUser(userId: ID!, password: String!): Auth
     }
 `;

@@ -5,19 +5,19 @@ const {signToken, AuthenticationError} = require('../utils/auth');
 const resolvers = {
     Query: {
         users: async () => {
-            return await User.find({});
+            return await User.find();
         },
-        user: async (parent, arg) => {
-            return await User.findById(arg.id);
+        user: async (parent, {userId}) => {
+            return await User.findById(userId);
         },
         widgets: async () => {
-            return await Widget.find({});
+            return await Widget.find();
         },
-        widget: async (parent, arg) => {
-            return await Widget.findById(arg.id)
+        widget: async (parent, {widgetId}) => {
+            return await Widget.findById(widgetId);
         }
     },
-    Mutations: {
+    Mutation: {
         createUser: async ( parent, { username, email, password }) => {
             const user = await User.create({username, email, password});
             const token = signToken(user);
@@ -43,19 +43,15 @@ const resolvers = {
             return { token, user };
         },
 
-        addWidget: async (parent, {userId, title}) => {
-            const widget = await Widget.findOne({title});
-            const user = await User.findOneAndUpdate(
-                { _id: userId },
-                { $addToSet : { widgets: widget._id} },
+        addWidget: async (parent, {widgetId}, context) => {
+            
+            const user = await User.findByIdAndUpdate(
+                { _id: context.user._id },
+                { $addToSet : { widgets: widgetId} },
                 { new: true }
-                );
+            );
 
-            return { widget };
-        },
-
-        deleteWidget: async () => {
-
+            return user;
         },
 
         banUser: async (parent, {userId, password}) => {
