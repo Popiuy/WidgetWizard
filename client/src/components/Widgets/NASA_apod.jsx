@@ -15,6 +15,19 @@ const searchAPOD = async () => {
   }
 };
 
+const retrieveData = async() => {
+  try {
+    const response = await fetch(
+      'https://api.nasa.gov/planetary/apod?api_key=ldu00DPMmJO4nb9rTFgemhoA8TEwoKso0Adud0pe'
+    );
+  
+    return response.json();
+  } catch (error) {
+    console.error('Could not retreive photo.', error)
+    return null;
+  }
+}
+
 export default function APODWidget() {
   const [photo, setPhoto] = useState({
     date: '',
@@ -52,9 +65,14 @@ export default function APODWidget() {
       <div className="description">{photo.description}</div>
       <div className="date">{photo.date}</div> */}
       <div className="card" style={{width:"18rem"}}>
-        <img src={photo.src} className="card-img-top" alt="..."></img>
+        <img src={photo.src} className="card-img-top" alt={photo.title}></img>
           <div className="card-body">
             <h5 className="card-title">Astronomy Picture of the Day</h5>
+              <img src={photo.src} className="card-img-top" alt={photo.title}></img>
+              <div className="caption">{photo.caption}</div>
+              <div className="photo-credit">{photo.photographer}</div>
+              <div className="description">{photo.description}</div>
+              <div className="date">{photo.date}</div>
             <a href="/APOD" className="btn btn-primary">Go to Widget</a>
           </div>
       </div>
