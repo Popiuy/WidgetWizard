@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
-
-
+// import { useQuery, useMutation } from '@apollo/client';
+// import { NASA_ADD_TO_FAVORITES } from '../../utils/mutations';
 
 export default function APODWidget() {
-  
+  // const {loading, favoritesData } = useQuery()
+  // const [NASAaddToFavorites, {error, data} ] = useMutation(NASA_ADD_TO_FAVORITES, {
+  //   variables: {...photoData}
+  // })
   const [photoData, setPhotoData] = useState({
     date: '',
     title: '',
@@ -13,12 +16,15 @@ export default function APODWidget() {
     description: '',
   });
 
+ //
+  
+
   const getData = async() => {
     try {
       const response = await fetch(
         'https://api.nasa.gov/planetary/apod?api_key=ldu00DPMmJO4nb9rTFgemhoA8TEwoKso0Adud0pe'
       );
-    
+      
       return response.json();
     } catch (error) {
       console.error('Could not retreive photo.', error)
@@ -76,3 +82,10 @@ export default function APODWidget() {
     </div>
   );
 }
+
+
+//TODOs
+// - save last photo
+// - display favorites
+// - make each favorites clickable
+//  - expand photo upon click to fill viewport

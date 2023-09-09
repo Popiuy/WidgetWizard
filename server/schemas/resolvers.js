@@ -16,13 +16,11 @@ const resolvers = {
         widget: async (parent, {widgetId}) => {
             return await Widget.findById(widgetId);
         },
-        NASAaddToFavorites: async (parent, {photoData}) => {
-            return await User.findByIdAndUpdate(
-                {_id: context.user._id},
-                {$push: {nasa_favorites: photoData}},
-                {new: true} 
-            )
+        NASAgetFavorites: async (parent, args, context) => {
+            const favoritePhotos = await User.find({_id: context.user._id}, nasa_favorites);
+            return favoritePhotos
         }
+        
     },
     Mutation: {
         createUser: async ( parent, { username, email, password }) => {
@@ -74,6 +72,15 @@ const resolvers = {
 
             const deletedUser = await User.deleteOne({userId})
             alert(`${user.username}'s account has been deleted.`)
+        },
+        NASAaddToFavorites: async (parent, {photoData}, context) => {
+            const user = await User.findByIdAndUpdate(
+                {_id: context.user._id},
+                {$push: {nasa_favorites: photoData}},
+                {new: true} 
+            )
+            console.log(`${photoData.title} has been added to ${user.username}'s favorite photos list`)
+            return `${photoData.title} has been added to ${user.username}'s favorite photos list`;
         },
 
     }

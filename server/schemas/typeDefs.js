@@ -5,7 +5,7 @@ const typeDefs = `
         email: String!
         password: String!
         widgets: [Widget]
-        nasa_favorites: [PhotoData]
+        nasa_favorites: [NASAphoto]
     }
     
     type Widget {
@@ -19,15 +19,17 @@ const typeDefs = `
         user: User
     }
     
-    type Query {
-        widget(widgetId: ID!): Widget
-        widgets: [Widget]
-        user(userId: ID!): User
-        users: [User]
+    type NASAphoto {
+        _id: ID
+        date: String
+        title: String
+        src: String
+        caption: String
+        photographer: String
+        description: String
     }
-
-    input PhotoData {
-        _id: ID!
+    
+    input NASAphotoInput {
         date: String
         title: String
         src: String
@@ -36,12 +38,21 @@ const typeDefs = `
         description: String
     }
 
+    type Query {
+        widget(widgetId: ID!): Widget
+        widgets: [Widget]
+        user(userId: ID!): User
+        users: [User]
+        NASAgetFavorites: [NASAphoto] 
+    }
+
+
     type Mutation {
         createUser(username: String!, email: String!, password: String! ): Auth
         login(username: String!, password: String!): Auth
         addWidget(widgetId: ID!): Widget
         banUser(userId: ID!, password: String!): Auth
-        NASAaddToFavorites(photoData: PhotoData): User
+        NASAaddToFavorites(photoData: NASAphotoInput): User
     }
 `;
 

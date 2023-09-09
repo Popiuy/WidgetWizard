@@ -10,3 +10,6 @@ export const LOGIN_USER = gql`
         }
     }
 `;
+
+// export const NASA_ADD_TO_FAVORITES = gql`
+// `;
