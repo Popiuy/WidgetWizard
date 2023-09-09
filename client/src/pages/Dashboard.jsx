@@ -41,11 +41,9 @@ const Dashboard = () => {
             </div>
             <div className="dashboard">
                 <div>
-                    {
-                        selectedWidgets.map((Widget) => {
-                            return <Widget />
-                        })
-                    }
+                {selectedWidgets.map((Widget, index) => (
+            <Widget key={index} /> 
+          ))}
                 </div>
             </div>
         </div>
