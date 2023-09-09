@@ -13,19 +13,22 @@ export default function APODWidget() {
     description: '',
   });
 
-  const getData = async() => {
+  const getData = async () => {
     try {
+      // Implement rate limiting by adding a delay between requests
+      await new Promise((resolve) => setTimeout(resolve, 100000)); // Wait for 1 second before making the request
+  
       const response = await fetch(
         'https://api.nasa.gov/planetary/apod?api_key=ldu00DPMmJO4nb9rTFgemhoA8TEwoKso0Adud0pe'
       );
-    
+  
       return response.json();
     } catch (error) {
-      console.error('Could not retreive photo.', error)
+      console.error('Could not retrieve photo.', error);
       return null;
     }
-  }
-
+  };
+  
   useEffect(() => {
     const wrapper = async () => {
       const data = await getData();
@@ -47,6 +50,7 @@ export default function APODWidget() {
   const addToFavorites = async (photoData) => {
     //mutation
     //push photoData to user's field
+    console.log(photoData);
   }
 
   return (
