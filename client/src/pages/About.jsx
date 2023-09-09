@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import minhee from '../images/minhee.jpeg'
 import justin from '../images/justin.jpg'
 import ryan from '../images/ryan.png'
@@ -11,8 +11,8 @@ const About = () => {
 
     return (
         <div>
-            <div class="row row-cols-1 row-cols-md-2 g-4">
-                <div class="col d-flex justify-content-center">
+            <div className="row row-cols-1 row-cols-md-2 g-4">
+                <div className="col d-flex justify-content-center">
                     <div className="card" style={cardStyle}>
                         <img src={minhee} className="card-img-top" alt="Minhee's pfp"></img>
                         <div className="card-body">
@@ -22,7 +22,7 @@ const About = () => {
                         </div>
                     </div>
                 </div>
-                <div class="col d-flex justify-content-center">
+                <div className="col d-flex justify-content-center">
                     <div className="card" style={cardStyle}>
                         <img src={ryan} className="card-img-top" alt="Ryan's pfp"></img>
                         <div className="card-body">
@@ -32,7 +32,7 @@ const About = () => {
                         </div>
                     </div>
                 </div>
-                <div class="col d-flex justify-content-center">
+                <div className="col d-flex justify-content-center">
                     <div className="card" style={cardStyle}>
                         <img src={justin} className="card-img-top" alt="Justin's pfp"></img>
                         <div className="card-body">
@@ -42,7 +42,7 @@ const About = () => {
                         </div>
                     </div>
                 </div>
-                <div class="col d-flex justify-content-center">
+                <div className="col d-flex justify-content-center">
                     <div className="card" style={cardStyle}>
                         <img src={virginia} className="card-img-top" alt="Minhee's pfp"></img>
                         <div className="card-body">
