@@ -1,8 +1,9 @@
 //import widgets from widget library
 //reference User.widgets
 //display appropriate widgets
-import bored from '../components/widgets/Bored'
-import APOD from '../components/widgets/NASA_apod'
+import bored from '../components/Widgets/Bored'
+import APOD from '../components/Widgets/NASA_apod'
+import NBAWidget from '../components/Widgets/NBA'
 import { useState } from 'react';
 
 const Dashboard = () => {
@@ -31,6 +32,11 @@ const Dashboard = () => {
                             addWidget(bored)
                         }}
                     ><a className="dropdown-item" href="#">BoredAPI</a></li>
+                    <li
+                        onClick={() => {
+                            addWidget(NBAWidget)
+                        }}
+                    ><a className="dropdown-item" href="#">NBAWidget</a></li>
                 </ul>
             </div>
             <div className="dashboard">
