@@ -1,5 +1,5 @@
-import APODWidget from '../components/widgets/NASA_apod'
-import Bored from '../components/widgets/Bored'
+import APODWidget from '../components/Widgets/NASA_apod'
+import Bored from '../components/Widgets/Bored'
 const Home = () => {
     return (
         <div>
