@@ -11,8 +11,8 @@ const Dashboard = () => {
                     Add Widget
                 </button>
                 <ul className="dropdown-menu">
-                    <li><a className="dropdown-item" href="#">Widget 1</a></li>
-                    <li><a className="dropdown-item" href="#">Widget 2</a></li>
+                    <li><a className="dropdown-item" href="#">Astronomy Picture of the Day</a></li>
+                    <li><a className="dropdown-item" href="#">BoredAPI</a></li>
                     <li><a className="dropdown-item" href="#">Widget 3</a></li>
                 </ul>
             </div>
