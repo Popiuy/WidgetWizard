@@ -41,10 +41,10 @@ useEffect(() => {
       <div className="card" style={{width:"18rem"}}>
         {/* <img src={photo.src} className="card-img-top" alt={photo.title}></img> */}
           <div className="card-body">
-            <h5 className="card-title">Joke</h5>
-            <div className="category">{joke.category}</div>
-            <div className="joke">{joke.joke}</div>
-            <a href="/Joke" className="btn btn-primary">Go to Widget</a>
+            <h5 className="card-title">Joke: </h5>
+            <div className="card-category">{joke.category}</div>
+            <div className="card-joke">{joke.joke}</div>
+            <button className="btn btn-primary" type="button" onClick={fetchJoke}>New Joke</button>
           </div>
       </div>
     </>
