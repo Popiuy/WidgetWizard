@@ -1,6 +1,8 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
+import NASAfavoritesSchema from './NASAfavorites';
+
 const userSchema = new Schema(
     {
 
@@ -25,7 +27,8 @@ const userSchema = new Schema(
         widgets: {
             type: Schema.Types.ObjectId,
             ref: 'Widget'
-        }
+        },
+        nasa_favorites: [NASAfavoritesSchema],
 
     }
 );

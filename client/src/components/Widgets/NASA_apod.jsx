@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
 
 export default function APODWidget() {
   const [photoData, setPhotoData] = useState({
@@ -32,18 +33,18 @@ export default function APODWidget() {
           date: data.date,
           title: data.title,
           src: data.url,
+          hd_src: data.hdurl,
           caption: data.explanation,
-          photographer: data.hdurl,
+          photographer: data.copyright,
           description: data.description,
         });
       }
     };
 
     wrapper();
-  }, []); // Provide an empty dependency array to run the effect once on mount
-
+  }, []); 
   const addToFavorites = async () => {
-    // Implement your logic to add photoData to favorites here
+    //
     console.log(photoData);
   };
 
