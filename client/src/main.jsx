@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import About from './pages/About';
 import ErrorPage from './pages/ErrorPage';
+import NYTimesWidget from './components/Widgets/NYTimes.jsx';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: '/about',
         element: <About />
+      },
+      {
+        path: '/testing',
+        element: <NYTimesWidget/>
       }
     ],
   },
