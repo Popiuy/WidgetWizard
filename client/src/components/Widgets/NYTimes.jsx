@@ -20,7 +20,7 @@ export default function NYTimesWidget () {
         <div className="nytimes-widget">
             <div className="nytimes-navbar">
                 <ul className="nytimes-navbar-tabs">
-                    <li className="nytimes-navbar-tab" id="realtimefeed" onClick={()=>setSelectedTab(this.id)}>Real Time Feed</li>
+                    <li className="nytimes-navbar-tab" id="realtimefeed" >Real Time Feed</li>
                     <li className="nytimes-navbar-tab" id="topstories">Top Stories</li>
                     <li className="nytimes-navbar-tab" id="mostpopular">Most Popular</li>
                     <li className="nytimes-navbar-tab" id="articlesearch">Article Search</li>
@@ -31,3 +31,4 @@ export default function NYTimesWidget () {
         </div>
     )
 }
+//onClick={()=>setSelectedTab(this.id)}
