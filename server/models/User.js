@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const NYTbookmarkSchema = require('./NYTbookmark');
 
 const userSchema = new Schema(
     {
@@ -25,7 +26,8 @@ const userSchema = new Schema(
         widgets: {
             type: Schema.Types.ObjectId,
             ref: 'Widget'
-        }
+        },
+        NYTbookmarks: [NYTbookmarkSchema]
 
     }
 );
