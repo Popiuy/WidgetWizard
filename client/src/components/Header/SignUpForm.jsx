@@ -19,12 +19,13 @@ export default function SignUpForm () {
     })
 
     const handleFormData = (e) => {
-        const {name, value } = e.target;
-
+        const { name, value } = e.target;
+        console.log(name)
         setFormData({
             ...formData,
             [name]: value
         })
+        console.log(formData)
     }
 
     const handleFormSubmit = async (e) => {
@@ -44,11 +45,11 @@ export default function SignUpForm () {
     return (
         <form className="signup-form" >
             <label>Username: </label>
-            <input className="signup-username" type='text' onChange={handleFormData} value={formData.username} placeholder='MikeWazowski'></input>
+            <input className="signup-username" type='text' name="username" onChange={handleFormData} value={formData.username} placeholder='MikeWazowski'></input>
             <label>Email: </label>
-            <input className="signup-email" type="email" onChange={handleFormData} value={formData.email} placeholder="greenmamba@monster.inc"></input>
+            <input className="signup-email" type="email" name="email" onChange={handleFormData} value={formData.email} placeholder="greenmamba@monster.inc"></input>
             <label>Password: </label>
-            <input className="signup-password" type="password" onChange={handleFormData} value={formData.password} placeholder="password"></input>
+            <input className="signup-password" type="password" name="password" onChange={handleFormData} value={formData.password} placeholder="password"></input>
             <button type="submit">Sign Up</button>
         </form>
     )
