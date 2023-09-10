@@ -41,7 +41,6 @@ export default function NBAWidget() {
     allStar: teamInfo.allStar,
     nbaFranchise: teamInfo.nbaFranchise,
   });
-  console.log(teamData);
 } catch (error) {
   console.error(error);
 }
@@ -52,6 +51,9 @@ export default function NBAWidget() {
     console.log(searchInput);
     getData();
   };
+
+  
+
 
   const addToFavorites = () => {
     // Implement your logic to add teamData to favorites here
