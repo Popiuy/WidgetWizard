@@ -4,7 +4,8 @@
 import bored from '../components/Widgets/Bored'
 import APOD from '../components/Widgets/NASA_apod'
 import NBAWidget from '../components/Widgets/NBA'
-import jokeWidget from '../components/widgets/JokeAPI'
+import jokeWidget from '../components/Widgets/JokeAPI'
+import NYTimesWidget from '../components/Widgets/NYTimes';
 import { useState } from 'react';
 
 const Dashboard = () => {
@@ -66,6 +67,15 @@ const Dashboard = () => {
           >
             <a className="dropdown-item" href="#">
             jokeWidget
+            </a>
+          </li>
+          <li
+            onClick={() => {
+              addWidget(NYTimesWidget);
+            }}
+          >
+            <a className="dropdown-item" href="#">
+            New York Times Widget
             </a>
           </li>
         </ul>
