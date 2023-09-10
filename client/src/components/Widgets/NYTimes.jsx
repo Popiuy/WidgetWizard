@@ -9,40 +9,40 @@ export default function NYTimesWidget () {
     const [section, setSection] = useState('home');
     const [days, setDays] = useState(7);
     const [most, setMost] = useState(`viewed/${days}`)
-    const [searchString, setSearchString] = useState('Berkeley');
-    
+    const [articleSearch, setArticleSearch] = useState('Berkeley');
+    const [url, setUrl] = useState('');
+    const [articles, setArticles] = useState([]);
     const sections = ['all','arts', 'automobiles', 'books/review', 'business', 'fashion', 'food', 'health', 'home', 'insider', 'magazine', 'movies', 'nyregion', 'obituaries', 'opinion', 'politics', 'realestate', 'science', 'sports', 'sundayreview', 'technology', 'theater', 't-magazine', 'travel', 'upshot', 'us', 'world']
 
     useEffect(()=>{
-        const wrapper = async () => {
-            const getData = async () => {
-                let response; 
-
-                switch(tab){
-                    case "real-time-feed": 
-                        response = await fetch(`https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
-                        return response.json();
-                    case "top-stories": 
-                        response = await fetch(`https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
-                        return response.json();
-                    case "most-popular": 
-                        response = await fetch(`https://api.nytimes.com/svc/mostpopular/v2/${most}.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
-                        return response.json();
-                    case "article-search": 
-                        response = await fetch(`/articlesearch.json?q=${searchString}&fq=source:("The New York Times")&api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
-                        return response.json();
-                    case "bookmarks": 
-                        response = await fetch(`https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
-                        return response.json();
-                }
-            }
-            const nytData = await getData();
-            const { results } = nytData
-            console.log(results);
+        switch(tab){
+            case "real-time-feed": 
+                setUrl(`https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
+            case "top-stories": 
+                setUrl(`https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
+            case "most-popular": 
+                setUrl(`https://api.nytimes.com/svc/mostpopular/v2/${most}.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
+            case "article-search": 
+                setUrl(`/articlesearch.json?q=${articleSearch}&fq=source:("The New York Times")&api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
+            case "bookmarks": 
+                setUrl(`https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
         }
+    }, [tab, section, days, most, articleSearch] )
 
-        wrapper();
-    }, [tab, section, days, most, searchString] )
+    const getArticles = async () => {
+        const response = await fetch(url);
+        return response.json()
+    }
+
+    const displayArticles = async () => {
+        const articles = getArticles();
+    }
+
+    const RTSclick = async (e) => {
+        setTab(e.target.id);
+        const {data} = getArticles();
+        const articles = data.results
+    }
 
     return (
         
@@ -53,7 +53,7 @@ export default function NYTimesWidget () {
                 </div>
                 <div className="nytimes-header">The New York Times</div>
                 <ul className="nytimes-navbar-tabs">
-                    <li className="nytimes-navbar-tab" id="real-time-feed" onClick={(e)=>setTab(e.target.id)}>Real Time Feed</li>
+                    <li className="nytimes-navbar-tab" id="real-time-feed" onClick={RTSclick}>Real Time Feed</li>
                     <li className="nytimes-navbar-tab" id="top-stories" onClick={(e)=>setTab(e.target.id)}>Top Stories</li>
                     <li className="nytimes-navbar-tab" id="most-popular" onClick={(e)=>setTab(e.target.id)}>Most Popular</li>
                     <li className="nytimes-navbar-tab" id="article-search" onClick={(e)=>setTab(e.target.id)}>Article Search</li>
@@ -62,7 +62,10 @@ export default function NYTimesWidget () {
                 <button className="favorite-btn">Bookmark</button>
             </div>
             <div className="nytimes-content">
-                <div hidden={ tab !== "real-time-feed" }>THE REAL TIME FEED!</div>
+                <div hidden={ tab !== "real-time-feed" }>
+                    THE REAL TIME FEED!
+                    { articles.map((article) => <div>{article.title}</div>)}
+                </div>
                 <div hidden={ tab !== "top-stories" }>
                     <select className="dropdown-menu">
                         { sections.forEach((section, i) => { 
@@ -87,7 +90,8 @@ export default function NYTimesWidget () {
                 </div>
                 <div hidden={ tab !== "article-search" }>
                     ARTICLE SEARCH
-                    {/* search bar */}
+                    <input value={articleSearch} onChange={(e)=>{setArticleSearch(e.target.value)}}></input>
+                    <button onClick={()=>{}}></button>
                     {/* display articles */}
                 </div>
                 <div hidden={ tab !== "bookmarks" }>
