@@ -1,7 +1,7 @@
 import { Link } from 'react';
 import Auth from '../../utils/auth';
 import wizard from '../../images/wizard.jpg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
 import SignUpForm from './SignUpForm';
 import LoginForm from './LoginForm';
@@ -10,6 +10,8 @@ export default function NavBarComponent () {
 
   const [showModal, setShowModal] = useState(false);
 
+  console.log(Auth.getToken())
+  
   return (
       <header>
       <nav className="navbar navbar-color navbar-expand-lg bg-body-tertiary">
@@ -27,12 +29,12 @@ export default function NavBarComponent () {
           </ul>
         </div>
       </nav>
+      {/* Modal starts here */}
       <Modal
         size='lg'
         show={showModal}
         onHide={() => setShowModal(false)}
         aria-labelledby='signup-modal'>
-        {/* Modal starts here */}
         <Tab.Container defaultActiveKey='login'>
           <Modal.Header closeButton>
             <Modal.Title id='login-signup-modal'>

@@ -29,6 +29,8 @@ export default function SignUpForm () {
     }
 
     const handleFormSubmit = async (e) => {
+        e.preventDefault();
+        
         const response = await createUser(formData);
 
         const { token, user } = response.data.createUser

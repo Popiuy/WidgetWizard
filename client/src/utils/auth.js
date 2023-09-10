@@ -1,10 +1,10 @@
-// import decode from 'jwt-decode';
+import decode from 'jwt-decode';
 
 class Authenticator {
     
-    login(token){
+    login(user, token){
         localStorage.setItem('token', token);
-        //redirect user to appropriate dashboard
+        window.location.assign(`/dashboard/:${user._id}`)
     }
 
     getToken(){
@@ -13,12 +13,22 @@ class Authenticator {
 
     logout(){
         localStorage.removeItem('token');
-        //redirect user to homepage
+        window.location.assign('/');
     }
 
     loggedIn(){
-        return this.getToken()
+        const token = this.getToken();
+        return token && !this.isTokenExpired(token) 
+    }
+
+    isTokenExpired(){
+        if (decode(token).exp < Date.now()/1000 ){
+            localStorage.removeItem('token');
+            return true;
+        } else {
+            return false
+        }
     }
 }
 
-export default new Authenticator;
+export default new Authenticator();
