@@ -6,7 +6,8 @@ import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import About from './pages/About';
 import ErrorPage from './pages/ErrorPage';
-import JokeAPIWidget from './components/widgets/JokeAPI.jsx';
+// import JokeAPIWidget from './components/widgets/JokeAPI.jsx';
+import SoundCloudWidget from './components/Widgets/Soundcloud.jsx';
 
 const router = createBrowserRouter([
   {
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/testing',
-        element: <JokeAPIWidget/>
+        element: <SoundCloudWidget/>
       }
     ],
   },
