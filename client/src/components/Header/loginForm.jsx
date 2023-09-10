@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
+import { useMutation, useQuery } from '@apollo/client';
 
 const LoginForm = (props) => {
 
@@ -25,7 +26,7 @@ const LoginForm = (props) => {
             })
             Auth.login(data.login.token);
         } catch (err) {
-
+            console.log(err);
         }
     }
 
@@ -36,7 +37,8 @@ const LoginForm = (props) => {
                 <div>You have been logged in!</div>
             </div>
         ): (
-            <form>
+        <form onSubmit={formSubmit}>
+            <label>Username: </label>
             <input className='username-field'
                 placeholder ='JiminiCricket'
                 name = 'username'
@@ -44,6 +46,7 @@ const LoginForm = (props) => {
                 value = {formState.username}
                 onChange = {formResponse}
             ></input>
+            <label>Password: </label>
             <input className='password-field'
                 placeholder='******'
                 name = 'password'
