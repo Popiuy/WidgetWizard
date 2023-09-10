@@ -10,29 +10,22 @@ export default function APODWidget() {
     description: '',
   });
 
-  const [error, setError] = useState(null);
-
   const getData = async() => {
     try {
       const response = await fetch(
         'https://api.nasa.gov/planetary/apod?api_key=ldu00DPMmJO4nb9rTFgemhoA8TEwoKso0Adud0pe'
       );
 
-      if (!response.ok) {
-        throw new Error('Failed to fetch data');
-      }
-
       const data = await response.json();
       return data;
     } catch (error) {
       console.error('Could not retrieve photo.', error)
-      setError('Failed to retrieve photo. Please try again later.');
       return null;
     }
   };
 
   useEffect(() => {
-    const fetchData = async () => {
+    const wrapper = async () => {
       const data = await getData();
       if (data) {
         setPhotoData({
@@ -46,7 +39,7 @@ export default function APODWidget() {
       }
     };
 
-    fetchData();
+    wrapper();
   }, []); // Provide an empty dependency array to run the effect once on mount
 
   const addToFavorites = async () => {
@@ -73,9 +66,6 @@ export default function APODWidget() {
               <div className="photo-credit">{photoData.photographer}</div>
               <div className="photo-description">{photoData.description}</div>
               <div className="photo-date">{photoData.date}</div>
-              <a href="/APOD" className="btn btn-primary">
-                Go to Widget
-              </a>
               <button className="favorite-btn" onClick={addToFavorites}>
                 ADD TO FAVORITES!
               </button>
