@@ -11,7 +11,7 @@ export default function NavBarComponent () {
   const [showModal, setShowModal] = useState(false);
 
   return (
-      <header>
+    <header>
       <nav className="navbar navbar-color navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
           <img className="wizard-img" src={wizard} alt="Wizard"></img>
