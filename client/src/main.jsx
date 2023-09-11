@@ -7,7 +7,8 @@ import Dashboard from './pages/Dashboard';
 import About from './pages/About';
 import ErrorPage from './pages/ErrorPage';
 // import JokeAPIWidget from './components/widgets/JokeAPI.jsx';
-import SoundCloudWidget from './components/Widgets/Soundcloud.jsx';
+// import SoundCloudWidget from './components/Widgets/Soundcloud.jsx';
+import CurrencyConverter from './components/Widgets/Currency-Converter.jsx';
 
 const router = createBrowserRouter([
   {
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/testing',
-        element: <SoundCloudWidget/>
+        element: <CurrencyConverter/>
       }
     ],
   },

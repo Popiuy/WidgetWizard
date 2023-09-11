@@ -22,26 +22,30 @@ export default function CurrencyConverter () {
             const response = await fetch(
                 'https://api.getgeoapi.com/v2/currency/list?api_key=308a45b3f970b6b7823c3265a349923c71265379&format=HTML/list'
             );
+
             if (!response.ok) {
                 throw new Error('Failed to fetch data');
             }
+
             const data = await response.json();
-            const currencyList = Object.keys(data);
+            const currencyList = Object.keys(data.currencies);
             setCurrencies(currencyList);
+
         } catch (error) {
-            console.error('Error fetching joke data:', error);
+            console.error('Error fetching data:', error);
             return null;
         }
     };
 
     useEffect(() => {
-        fetchCurrencies ();
-      }, []);
+        fetchCurrencies();
+      },[]);
     
 
     const fetchExchangeRate = async () => {
     // Fetch the exchange rate from the API
         try {
+            
             const response = await fetch(
                 `https://api.getgeoapi.com/v2/currency/convert?api_key=308a45b3f970b6b7823c3265a349923c71265379&from=${currencyInput}&to=${currencyOutput}&amount=1&format=json`
             );
@@ -49,10 +53,12 @@ export default function CurrencyConverter () {
                 throw new Error ('Failed to fetch data');
             }
             const data = await response.json();
+            console.log(data)
+
             const rate = data.rates[currencyOutput].rate;
             setExchangeRate(rate);
         } catch (error) {
-            console.error('Error fetching joke data', error);
+            console.error('Error fetching data', error);
         }
     };
 
@@ -62,13 +68,13 @@ useEffect(() => {
 
 return (
     <div>
-        <Card style={{ width: '18rem' }}>
-            <Card.Body>
-                <Card.Title>Currency Converter</Card.Title>
-                <Form>
-                    <Form.Group controlId="currencyInput">
-                        <Form.Label>From Currency</Form.Label>
-                        <Form.Control
+        <div style={{ width: '18rem' }}>
+            <div>
+                <title>Currency Converter</title>
+                <form>
+                    <div controlId="currencyInput">
+                        <label>From Currency</label>
+                        <select
                             as="select"
                             value={currencyInput}
                             onChange={(e) => setCurrencyInput(e.target.value)}
@@ -79,12 +85,12 @@ return (
                                     {currency}
                                 </option>
                             ))}
-                        </Form.Control>
-                    </Form.Group>
+                        </select>
+                    </div>
 
-                    <Form.Group controlId="currencyOutput">
-                        <Form.Label>To Currency</Form.Label>
-                        <Form.Control
+                    <div controlId="currencyOutput">
+                        <label>To Currency</label>
+                        <select
                             as="select"
                             value={currencyOutput}
                             onChange={(e) => setCurrencyOutput(e.target.value)}
@@ -95,9 +101,9 @@ return (
                                     {currency}
                                 </option>
                             ))}
-                        </Form.Control>
-                    </Form.Group>
-                </Form>
+                        </select>
+                    </div>
+                </form>
 
                 <button className="btn btn-primary" type="button" onClick={fetchExchangeRate}>
                     Convert
@@ -108,8 +114,8 @@ return (
                         Exchange Rate: 1 {currencyInput} = {exchangeRate} {currencyOutput}
                     </p>
                 )}
-            </Card.Body>
-        </Card>
+            </div>
+        </div>
     </div>
 );
 }
