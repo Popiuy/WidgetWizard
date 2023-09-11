@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import NYTapiLogo from '../../images/nytimes_api_logo.png';
+import BookmarkTag from '../../images/bookmark.png'
 // useMutation to ADD_BOOKMARK
 // useQuery to GET_BOOKMARKS
 import { useQuery, useMutation } from '@apollo/client';
@@ -150,8 +151,17 @@ export default function NYTimesWidget () {
                     {console.log(articles)}
                     { articles.map((article) => (
                         <div className="article-row">
-                            <div>{article.title}</div>
-                            <img className="bookmark-btn" onClick={(article)=>{bookmarkArticle({NYTarticleData: {article}})}}/>
+                            <div>{article.headline}</div>
+                            <div>{article.byline}</div>
+                            <div>{article.date_published}</div>
+                            {/* Display content below on hover */}
+                            {/* <div>{article.blurb}</div>
+                            <div>{article.abstract}</div>
+                            <div>{article.source}</div>
+                            <div>{article.nyt_url}</div> */}
+                            <img className="bookmark-btn" 
+                                src={BookmarkTag}
+                                onClick={(article)=>{bookmarkArticle({NYTarticleData: {article}})}}/>
                         </div>
                     ))}
                 </div>
