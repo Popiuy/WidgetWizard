@@ -6,6 +6,7 @@ import APOD from '../components/Widgets/NASA_apod'
 import NBAWidget from '../components/Widgets/NBA'
 import jokeWidget from '../components/widgets/JokeAPI'
 import BreweryWidget from '../components/Widgets/OpenBrewery'
+import currencyWidget from '../components/Widgets/Currency-Converter'
 import { useState } from 'react';
 
 const Dashboard = () => {
@@ -77,7 +78,7 @@ const Dashboard = () => {
             }}
           >
             <a className="dropdown-item" href="#">
-            jokeWidget
+            Joke Widget
             </a>
           </li>
           <li
@@ -87,6 +88,15 @@ const Dashboard = () => {
           >
             <a className="dropdown-item" href="#">
             OpenBreweryWidget
+            </a>
+          </li>
+          <li
+            onClick={() => {
+              addWidget(currencyWidget);
+            }}
+          >
+            <a className="dropdown-item" href="#">
+              Currency Widget
             </a>
           </li>
         </ul>
