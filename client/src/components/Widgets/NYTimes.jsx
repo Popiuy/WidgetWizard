@@ -33,7 +33,6 @@ export default function NYTimesWidget () {
         switch (tab) {
             case "real-time-feed": //done
                 setUrl(`https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
-                console.log(url);
                 break;
             case "top-stories": //
                 setUrl(`https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
@@ -123,7 +122,18 @@ export default function NYTimesWidget () {
         getElementById(frameId).style.display = "block";
     };
 
+    // const pageLoad = async () => {
+    //     const iResponse = await fetch(url);
+    //     const iData = await iResponse.json();
+    //     const iArticles = NYTtoolbox.RTS(iData.results);
+    //     console.log(iArticles)
+    //     setArticles(iArticles)
+
+    // }
+
+    // pageLoad();
 //sets url in response to user input
+    // requestData();
 
     return (
         
@@ -171,7 +181,8 @@ export default function NYTimesWidget () {
                 </div>
             </div>
             <div className = "nytimes-main-frame">
-                    <div className="nytimes-display-frame" id="display-real-time-stories">
+                { tab === "real-time-feed" ? 
+                    <div className="nytimes-display-frame" id="display-real-time-feed">
                         <div>{tab}</div>
                             { RTSarticles.map((article) => (
                                 <div className="article-row">
@@ -189,10 +200,11 @@ export default function NYTimesWidget () {
                                 </div>
                             ))}
                     </div>
+                : tab === "top-stories" ?
                     <div className="nytimes-display-frame" id="display-top-stories">
                         <div>{tab}</div>
-                            { TSarticles.map((article) => (
-                                <div className="article-row">
+                            { TSarticles.map((article, i) => (
+                                <div className="article-row" key={i}>
                                     <div>{article.headline}</div>
                                     <div>{article.byline}</div>
                                     <div>{article.date_published}</div>
@@ -200,13 +212,14 @@ export default function NYTimesWidget () {
                                     {/* <div>{article.blurb}</div>
                                     <div>{article.abstract}</div>
                                     <div>{article.source}</div>
-                                    <div>{article.nyt_url}</div> */}
+                                <div>{article.nyt_url}</div> */}
                                     <img className="bookmark-btn" 
                                         src={BookmarkTag}
                                         onClick={saveBM}/>
                                 </div>
                             ))}
                     </div>
+                : tab === "most-popular" ?
                     <div className="nytimes-display-frame" id="display-most-popular">
                         <div>{tab}</div>
                             { MParticles.map((article) => (
@@ -218,13 +231,14 @@ export default function NYTimesWidget () {
                                     {/* <div>{article.blurb}</div>
                                     <div>{article.abstract}</div>
                                     <div>{article.source}</div>
-                                    <div>{article.nyt_url}</div> */}
+                                <div>{article.nyt_url}</div> */}
                                     <img className="bookmark-btn" 
                                         src={BookmarkTag}
                                         onClick={saveBM}/>
                                 </div>
                             ))}
                     </div>
+                : tab === "article-search" ?
                     <div className="nytimes-display-frame" id="display-article-search">
                         <div>{tab}</div>
                             { ASarticles.map((article) => (
@@ -236,13 +250,14 @@ export default function NYTimesWidget () {
                                     {/* <div>{article.blurb}</div>
                                     <div>{article.abstract}</div>
                                     <div>{article.source}</div>
-                                    <div>{article.nyt_url}</div> */}
+                                <div>{article.nyt_url}</div> */}
                                     <img className="bookmark-btn" 
                                         src={BookmarkTag}
                                         onClick={saveBM}/>
                                 </div>
                             ))}
                     </div>
+                : tab === "bookmarks" ?
                     <div className="nytimes-display-frame" id="display-bookmarks">
                         <div>{tab}</div>
                             { BMarticles.map((article) => (
@@ -254,13 +269,15 @@ export default function NYTimesWidget () {
                                     {/* <div>{article.blurb}</div>
                                     <div>{article.abstract}</div>
                                     <div>{article.source}</div>
-                                    <div>{article.nyt_url}</div> */}
+                                <div>{article.nyt_url}</div> */}
                                     <img className="bookmark-btn" 
                                         src={BookmarkTag}
                                         onClick={saveBM}/>
                                 </div>
                             ))}
                     </div>
+                : <div>This won't happen.</div>
+                }    
             </div>
         </div>
         
