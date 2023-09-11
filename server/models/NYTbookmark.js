@@ -21,9 +21,6 @@ const NYTbookmarkSchema = new Schema (
         blurb:{
             type: String,
         },
-        snippet: {
-            type: String
-        },
         source: {
             type: String,
             required: true

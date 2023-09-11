@@ -5,6 +5,7 @@ import BookmarkTag from '../../images/bookmark.png'
 // useQuery to GET_BOOKMARKS
 import { useQuery, useMutation } from '@apollo/client';
 import { BOOKMARK_ARTICLE } from '../../utils/mutations';
+import { GET_NYT_BOOKMARKS } from '../../utils/queries';
 
 export default function NYTimesWidget () {
 
@@ -16,9 +17,9 @@ export default function NYTimesWidget () {
     const [url, setUrl] = useState('');
     const [articles, setArticles] = useState([]);
     const sections = ['all','arts', 'automobiles', 'books/review', 'business', 'fashion', 'food', 'health', 'home', 'insider', 'magazine', 'movies', 'nyregion', 'obituaries', 'opinion', 'politics', 'realestate', 'science', 'sports', 'sundayreview', 'technology', 'theater', 't-magazine', 'travel', 'upshot', 'us', 'world']
-    const [bookmarkArticle, {error}] = useMutation(BOOKMARK_ARTICLE, {
-        variables: {...article}
-    })
+    const {loading, bmdata } = useQuery(GET_NYT_BOOKMARKS);
+    const [bookmarkArticle, {error}] = useMutation(BOOKMARK_ARTICLE)
+
 
 
     const updateMost = (e, most) => {
@@ -44,22 +45,51 @@ export default function NYTimesWidget () {
         return response.json()
     };
 
-    const searchClick = async() => {
+    const searchClick = async () => {
         const ASdata = await fetchData(url);
         console.log(ASdata.response.docs);
-        // const { ASdata } = ASresponse.json();
-        const articlesArray = ASdata.response.docs.map((article) => ({
+        const ASarticles = v2converter(ASdata.response.docs)
+        setArticles(ASarticles);
+    };
+
+    const v2converter = (NYTdata) => {
+        console.log('NYT data:  ', NYTdata)
+        const articles = NYTdata.map((article) => ({
             headline: article.headline.main,
             byline: article.byline.original,
             date_published: article.pub_date,
             abstract: article.abstract,
-            snippet: article.snippet,
             source: article.source,
             blurb: article.lead_paragraph,
             nyt_url: article.web_url
-        }))
-        setArticles(articlesArray);
-    };
+        }));
+        console.log('Converted: ', articles)
+        return articles;
+    } 
+    
+    const v3converter = (NYTdata) => {
+        console.log('NYT data:  ', NYTdata)
+        const articles = NYTdata.map((article) => ({
+            headline: article.title,
+            byline: article.byline,
+            date_published: article.published_date,
+            abstract: article.abstract,
+            source: article.source,
+            blurb: article.lead_paragraph,
+            nyt_url: article.web_url
+        }));
+        console.log('Converted: ', articles)
+        return articles;
+    } 
+    const saveBM = async (article)=>{
+        //bookmarkArticle will return nyt_bookmarks array, and also refetch bmdata
+        const bms = await bookmarkArticle({
+            variables: {
+                NYTarticleData: {...article}
+            },
+            refetchQueries: [GET_NYT_BOOKMARKS]
+        });
+    }
 
     useEffect(()=>{
         console.log('before: ', url)
@@ -68,29 +98,27 @@ export default function NYTimesWidget () {
                 case "real-time-feed": 
                     setUrl(`https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
                     const RTSdata = await fetchData(url)
-                    setArticles(RTSdata.results);
+                    const RTSarticles = objConverter(RTSdata.responses);
+                    setArticles(RTSarticles);
                     break;
                 case "top-stories": 
                     setUrl(`https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
                     const TSdata = await fetchData(url);
-                    setArticles(TSdata.results)
+                    const TSarticles = await v2converter(TSdata.results);
+                    setArticles(TSarticles)
                     break;
                 case "most-popular": 
                     setUrl(`https://api.nytimes.com/svc/mostpopular/v2/${most}.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
                     const MPdata = await fetchData(url);
-                    setArticles(MPdata.results);
+                    const MParticles = v2converter(MPdata);
+                    setArticles(MParticles);
                     break;
                 case "article-search": 
                     setUrl(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchBarInfo}&fq=source:("The New York Times")&api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
                     //this one will be fetched on click of submit button
-                    console.log("in development...")
                     break;
-                    case "bookmarks": 
-                    setUrl(`https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
-                    //query
-                    //setArticles(query response)
-                    // const BMarticles = query
-                    console.log("in development...")
+                case "bookmarks": 
+                    setArticles(bmdata); 
                     break;
             }
         }
@@ -116,7 +144,6 @@ export default function NYTimesWidget () {
                     <li className="nytimes-navbar-tab" id="article-search" onClick={(e)=>setTab(e.target.id)}>Article Search</li>
                     <li className="nytimes-navbar-tab" id="bookmarks" onClick={(e)=>setTab(e.target.id)}>Bookmarks</li>
                 </ul>
-                <button className="favorite-btn">Bookmark</button>
             </div>
             <div className="nytimes-content">
                 <div className="additional-queries">
@@ -161,7 +188,7 @@ export default function NYTimesWidget () {
                             <div>{article.nyt_url}</div> */}
                             <img className="bookmark-btn" 
                                 src={BookmarkTag}
-                                onClick={(article)=>{bookmarkArticle({NYTarticleData: {article}})}}/>
+                                onClick={saveBM}/>
                         </div>
                     ))}
                 </div>
