@@ -25,33 +25,48 @@ export default function NYTimesWidget () {
     const [ASarticles, setASarticles] = useState([])
     const [BMarticles, setBMarticles] = useState([])
     const [most, setMost] = useState(`viewed/${days}`);
-    
+
+//Sets URL in response to user input
+/////////
+    useEffect(()=>{
+        
+        switch (tab) {
+            case "real-time-feed": //done
+                setUrl(`https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
+                console.log(url);
+                break;
+            case "top-stories": //
+                setUrl(`https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
+                break;
+            case "most-popular": //done
+                setUrl(`https://api.nytimes.com/svc/mostpopular/v2/${most}.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
+                break;
+            case "article-search": 
+                setUrl(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchBarInfo}&fq=source:("The New York Times")&api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
+                break;
+        }
+        
+    }, [tab, section, days, most, searchBarInfo] );
+
+//Makes request (async)
+////////
     const requestData = async () => {
-        console.log(url)
         const NYTresponse = await fetch(url)
-        console.log(NYTresponse);
         const NYTdata = await NYTresponse.json();
-        console.log(NYTdata);
+
+        //We want the switch case to run AFTER NYTdata is ready...
+
         switch (tab) {
             case "real-time-feed": 
                 const rtsarticles = await NYTtoolbox.RTS(NYTdata.results);
-                // console.log('RTSdata.results: ', tab, RTSdata.results);
-                    // console.log(url)
-                    // console.log('RTSarticles: ', tab, RTSarticles);
                 setRTSarticles(rtsarticles);
                 break;
             case "top-stories":
                 const tsarticles = await NYTtoolbox.TS(NYTdata.results);
-                // console.log('TSdata.results: ',section, TSdata.results)
-                // console.log(url)
-                // console.log('TSarticles: ',section, TSarticles)
                 setTSarticles(tsarticles);
                 break;
             case "most-popular":
                 const mparticles = await NYTtoolbox.MP(NYTdata.results);
-                // console.log('MPdata.results: ', MPdata.results);
-                // console.log(url)
-                // console.log('MParticles: ',most, days, MParticles);
                 setMParticles(mparticles);
                 break;
             case "article-search":
@@ -108,26 +123,7 @@ export default function NYTimesWidget () {
         getElementById(frameId).style.display = "block";
     };
 
-    useEffect(()=>{
-        const makeRequest = async () => {
-            switch (tab) {
-                case "real-time-feed": //done
-                    setUrl(`https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
-                    break;
-                case "top-stories": //
-                    setUrl(`https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
-                    break;
-                case "most-popular": //done
-                    setUrl(`https://api.nytimes.com/svc/mostpopular/v2/${most}.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
-                    break;
-                case "article-search": 
-                    setUrl(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchBarInfo}&fq=source:("The New York Times")&api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
-                    break;
-            }
-        }
-        
-        makeRequest();
-    }, [tab, section, days, most, searchBarInfo] );
+//sets url in response to user input
 
     return (
         
@@ -170,7 +166,7 @@ export default function NYTimesWidget () {
                 </div>
                 <div hidden={ tab !== "article-search" }>
                     {/* article search bar & submit button */}
-                    <input value={searchBarInfo} placeholder="Type keywords here"onChange={(e)=>{setSearchBarInfo(e.target.value)}}></input>
+                    <input value={searchBarInfo} placeholder="Type keywords here" onChange={(e)=>{setSearchBarInfo(e.target.value)}}></input>
                     <button className="request-button" onClick={requestData}></button>
                 </div>
             </div>
