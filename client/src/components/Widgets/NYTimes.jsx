@@ -13,6 +13,31 @@ export default function NYTimesWidget () {
     const [url, setUrl] = useState('');
     const [articles, setArticles] = useState([]);
     const sections = ['all','arts', 'automobiles', 'books/review', 'business', 'fashion', 'food', 'health', 'home', 'insider', 'magazine', 'movies', 'nyregion', 'obituaries', 'opinion', 'politics', 'realestate', 'science', 'sports', 'sundayreview', 'technology', 'theater', 't-magazine', 'travel', 'upshot', 'us', 'world']
+    
+    //when date changes, first setDate, then setMost
+    const updateMost = (e, most) => {
+        // if (most.split('/').shift() === 'viewed') {
+        //     setMost(`viewed/${e.target.value}`);
+        // } else if (most.split('/').shift() ==='shared'){
+        //     setMost(`shared/${e.target.value}/facebook`);
+        // } else {
+        //     setMost(`emailed/${e.target.value}`);
+        // }
+        const x = most.split('/').shift()
+
+        switch(x) {
+            case 'viewed': setMost(`viewed/${e.target.value}`);
+                setDays(e.target.value);
+                break;
+            case 'shared': setMost(`shared/${e.target.value}/facebook`);
+                setDays(e.target.value);
+                break;
+            case 'emailed': setMost(`emailed/${e.target.value}`);
+                setDays(e.target.value);
+                break;
+        }
+
+    }
 
     const fetchData = async (url) => {
         const response = await fetch(url);
@@ -33,22 +58,29 @@ export default function NYTimesWidget () {
                     setUrl(`https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
                     const RTSdata = await fetchData(url)
                     setArticles(RTSdata.results);
+                    break;
                 case "top-stories": 
                     setUrl(`https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
                     const TSdata = await fetchData(url);
                     setArticles(TSdata.results)
+                    break;
                 case "most-popular": 
                     setUrl(`https://api.nytimes.com/svc/mostpopular/v2/${most}.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
                     const MPdata = await fetchData(url);
                     setArticles(MPdata.results);
+                    break;
                 case "article-search": 
                     setUrl(`/articlesearch.json?q=${searchBarInfo}&fq=source:("The New York Times")&api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
                     //this one will be fetched on click of submit button
-                case "bookmarks": 
+                    console.log("in development...")
+                    break;
+                    case "bookmarks": 
                     setUrl(`https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
                     //query
                     //setArticles(query response)
                     // const BMarticles = query
+                    console.log("in development...")
+                    break;
             }
         }
         wrapper();
@@ -87,7 +119,7 @@ export default function NYTimesWidget () {
                             <option value={`emailed/${days}`}>Most emailed</option>
                             <option value={`shared/${days}/facebook`}>Most shared on facebook</option>
                         </select>
-                        <select onChange={(e)=>setDays(e.target.value)}> 
+                        <select onChange={(e)=>updateMost(e, most)}> 
 {/*  */}
                             <option value="1">Day</option>
                             <option value="7">Week</option>
