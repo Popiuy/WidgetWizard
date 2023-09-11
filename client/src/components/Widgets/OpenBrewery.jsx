@@ -83,11 +83,15 @@ export default function BreweryWidget() {
           <h5 className="card-brewery">Your Favorite Brewery Search Engine</h5>
           <div className="brewery-name">{brewData.name}</div>
           <div className="brewery-brewery_type">Type: {brewData.brewery_type}</div>
-          <div className="brewery-address_1">Address: {brewData.street}</div>
+          <div className="brewery-address_1">
+            Address: <a href={`https://www.google.com/maps?q=${brewData.street},${brewData.city},${brewData.state}`} target="_blank" rel="noopener noreferrer">{brewData.street}</a>
+          </div>
           <div className="brewery-city">City: {brewData.city}</div>
           <div className="brewery-state">State: {brewData.state}</div>
           <div className="brewery-phone">Phone: {brewData.phone}</div>
-          <div className="brewery-website_url">Website: {brewData.website_url}</div>
+          <div className="brewery-website_url">
+            Website: <a href={brewData.website_url} target="_blank" rel="noopener noreferrer">{brewData.website_url}</a>
+          </div>
           <a href="/OpenBrewery" className="btn btn-primary">
             Go to Widget
           </a>
