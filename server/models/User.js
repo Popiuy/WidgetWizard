@@ -27,7 +27,7 @@ const userSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'Widget'
         },
-        NYTbookmarks: [NYTbookmarkSchema]
+        nyt_bookmarks: [NYTbookmarkSchema]
 
     }
 );

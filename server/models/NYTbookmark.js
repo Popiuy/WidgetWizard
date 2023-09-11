@@ -17,7 +17,12 @@ const NYTbookmarkSchema = new Schema (
         },
         abstract: {
             type: String,
-            required: false,
+        },
+        blurb:{
+            type: String,
+        },
+        snippet: {
+            type: String
         },
         source: {
             type: String,
@@ -33,3 +38,4 @@ const NYTbookmarkSchema = new Schema (
 
 module.exports = NYTbookmarkSchema;
 
+//abstract, byline, created_date, source, url, title

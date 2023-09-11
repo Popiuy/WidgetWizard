@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import NYTapiLogo from '../../images/nytimes_api_logo.png';
 // useMutation to ADD_BOOKMARK
 // useQuery to GET_BOOKMARKS
+import { useQuery, useMutation } from '@apollo/client';
+import { BOOKMARK_ARTICLE } from '../../utils/mutations';
 
 export default function NYTimesWidget () {
 
@@ -13,16 +15,13 @@ export default function NYTimesWidget () {
     const [url, setUrl] = useState('');
     const [articles, setArticles] = useState([]);
     const sections = ['all','arts', 'automobiles', 'books/review', 'business', 'fashion', 'food', 'health', 'home', 'insider', 'magazine', 'movies', 'nyregion', 'obituaries', 'opinion', 'politics', 'realestate', 'science', 'sports', 'sundayreview', 'technology', 'theater', 't-magazine', 'travel', 'upshot', 'us', 'world']
-    
-    //when date changes, first setDate, then setMost
+    const [bookmarkArticle, {error}] = useMutation(BOOKMARK_ARTICLE, {
+        variables: {}
+    })
+
+
     const updateMost = (e, most) => {
-        // if (most.split('/').shift() === 'viewed') {
-        //     setMost(`viewed/${e.target.value}`);
-        // } else if (most.split('/').shift() ==='shared'){
-        //     setMost(`shared/${e.target.value}/facebook`);
-        // } else {
-        //     setMost(`emailed/${e.target.value}`);
-        // }
+       
         const x = most.split('/').shift()
 
         switch(x) {
@@ -37,23 +36,34 @@ export default function NYTimesWidget () {
                 break;
         }
 
-    }
+    };
 
     const fetchData = async (url) => {
         const response = await fetch(url);
         return response.json()
-    }
+    };
 
     const searchClick = async() => {
-        const ASresponse = await fetchData(url);
-        const { ASdata } = ASresponse.json();
-        setArticles(ASdata.results);
-    }
+        const ASdata = await fetchData(url);
+        console.log(ASdata.response.docs);
+        // const { ASdata } = ASresponse.json();
+        const articlesArray = ASdata.response.docs.map((article) => ({
+            headline: article.headline.main,
+            byline: article.byline.original,
+            date_published: article.pub_date,
+            abstract: article.abstract,
+            snippet: article.snippet,
+            source: article.source,
+            blurb: article.lead_paragraph,
+            nyt_url: article.web_url
+        }))
+        setArticles(articlesArray);
+    };
 
     useEffect(()=>{
-
-        const wrapper = async () => {
-            switch(tab){
+        console.log('before: ', url)
+        const makeRequest = async () => {
+            switch (tab) {
                 case "real-time-feed": 
                     setUrl(`https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
                     const RTSdata = await fetchData(url)
@@ -70,7 +80,7 @@ export default function NYTimesWidget () {
                     setArticles(MPdata.results);
                     break;
                 case "article-search": 
-                    setUrl(`/articlesearch.json?q=${searchBarInfo}&fq=source:("The New York Times")&api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
+                    setUrl(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchBarInfo}&fq=source:("The New York Times")&api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
                     //this one will be fetched on click of submit button
                     console.log("in development...")
                     break;
@@ -83,8 +93,12 @@ export default function NYTimesWidget () {
                     break;
             }
         }
-        wrapper();
-    }, [tab, section, days, most, searchBarInfo] )
+        makeRequest();
+        console.log('after: ', url);
+    }, [tab, section, days, most, searchBarInfo] );
+    
+    // makeInitialRequest();
+    // console.log(makeInitialRequest());
 
     return (
         
@@ -134,7 +148,12 @@ export default function NYTimesWidget () {
                 </div>
                 <div className="article-display">
                     {console.log(articles)}
-                    { articles.map((article) => (<div>{article.title}</div>))}
+                    { articles.map((article) => (
+                        <div className="article-row">
+                            <div>{article.title}</div>
+                            <img className="bookmark-btn" onClick={(article)=>{bookmarkArticle({NYTarticleData: {article}})}}/>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
@@ -142,5 +161,5 @@ export default function NYTimesWidget () {
 }
 //
 
-<img className="bookmark-btn" onClick={(article)=>{addBookmark}}/>
-//define addBookmark as query
+
+//define bookmarkArticle as query
