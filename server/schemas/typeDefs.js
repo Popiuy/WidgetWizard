@@ -29,6 +29,8 @@ const typeDefs = `
         byline: String
         date_published: String
         abstract: String
+        blurb: String
+        snippet: String
         source: String
         nyt_url: String
     }
