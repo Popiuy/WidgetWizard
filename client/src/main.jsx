@@ -30,10 +30,6 @@ const router = createBrowserRouter([
       {
         path: '/about',
         element: <About />
-      },
-      {
-        path: '/testing',
-        element: <NYTimesWidget/>
       }
     ],
   },

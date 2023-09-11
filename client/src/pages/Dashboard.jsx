@@ -4,21 +4,31 @@
 import bored from '../components/Widgets/Bored'
 import APOD from '../components/Widgets/NASA_apod'
 import NBAWidget from '../components/Widgets/NBA'
-import jokeWidget from '../components/Widgets/JokeAPI'
-import NYTimesWidget from '../components/Widgets/NYTimes';
+import jokeWidget from '../components/widgets/JokeAPI'
 import { useState } from 'react';
 
 const Dashboard = () => {
   const [selectedWidgets, setSelectedWidgets] = useState([]);
 
   const addWidget = (widget) => {
-    setSelectedWidgets([...selectedWidgets, widget]);
+    // setSelectedWidgets([...selectedWidgets, widget]);
+    setSelectedWidgets((currentWidgets) => ({
+      ...currentWidgets,
+      [widget.name]: widget,
+    }));
+    // ends here added code
   };
 
   const deleteWidget = (widget) => {
     setSelectedWidgets((currentWidgets) =>
-    currentWidgets.filter((item) => item !== widget)
-    );
+    // currentWidgets.filter((item) => item !== widget)
+    // );
+    {
+    const updatedWidgets = { ...currentWidgets };
+    delete updatedWidgets[widget];
+    return updatedWidgets;
+  });
+  // ends here added code
   };
 
   return (
@@ -69,23 +79,22 @@ const Dashboard = () => {
             jokeWidget
             </a>
           </li>
-          <li
-            onClick={() => {
-              addWidget(NYTimesWidget);
-            }}
-          >
-            <a className="dropdown-item" href="#">
-            New York Times Widget
-            </a>
-          </li>
         </ul>
       </div>
       <div className="dashboard">
         <div>
-          {selectedWidgets.map((Widget, index) => (
+
+          {/* {selectedWidgets.map((Widget, index) => (
             <div key={index}>
               <Widget />
-              <button onClick={() => deleteWidget(Widget)}>Delete</button>
+              <button onClick={() => deleteWidget(Widget)}>Delete</button> */}
+
+              {Object.values(selectedWidgets).map((Widget) => (
+                <div key={Widget.name}>
+                    <Widget />
+                    <button onClick={() => deleteWidget(Widget.name)}>Delete</button>
+                    {/* ends here new code */}
+                    
             </div>
           ))}
         </div>

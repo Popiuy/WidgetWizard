@@ -17,6 +17,7 @@
     "concurrently": "^8.2.0"
   },
   "dependencies": {
-    "@apollo/server": "^4.9.3"
+    "@apollo/server": "^4.9.3",
+    "react-bootstrap": "^2.8.0"
   }
 }
