@@ -15,6 +15,12 @@ const resolvers = {
         },
         widget: async (parent, {widgetId}) => {
             return await Widget.findById(widgetId);
+        },
+        nyt_bookmarks: async (parent, args, context) => {
+            return await User.find(
+                {_id: context.user._id},
+                {nyt_bookmarks}
+            )
         }
     },
     Mutation: {

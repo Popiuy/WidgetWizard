@@ -17,7 +17,7 @@ export default function NYTimesWidget () {
     const [articles, setArticles] = useState([]);
     const sections = ['all','arts', 'automobiles', 'books/review', 'business', 'fashion', 'food', 'health', 'home', 'insider', 'magazine', 'movies', 'nyregion', 'obituaries', 'opinion', 'politics', 'realestate', 'science', 'sports', 'sundayreview', 'technology', 'theater', 't-magazine', 'travel', 'upshot', 'us', 'world']
     const [bookmarkArticle, {error}] = useMutation(BOOKMARK_ARTICLE, {
-        variables: {}
+        variables: {...article}
     })
 
 
@@ -172,4 +172,3 @@ export default function NYTimesWidget () {
 //
 
 
-//define bookmarkArticle as query

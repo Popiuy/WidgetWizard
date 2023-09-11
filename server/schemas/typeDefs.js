@@ -47,6 +47,7 @@ const typeDefs = `
         widgets: [Widget]
         user(userId: ID!): User
         users: [User]
+        nyt_bookmarks: [NYTbookmark]
     }
 
     
