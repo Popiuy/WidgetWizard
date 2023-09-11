@@ -48,37 +48,60 @@ export default function NYTimesWidget () {
     const searchClick = async () => {
         const ASdata = await fetchData(url);
         console.log(ASdata.response.docs);
-        const ASarticles = v2converter(ASdata.response.docs)
+        const ASarticles = ASconverter(ASdata.response.docs)
         setArticles(ASarticles);
     };
 
-    const v2converter = (NYTdata) => {
-        console.log('NYT data:  ', NYTdata)
+    const ASconverter = (NYTdata) => {
         const articles = NYTdata.map((article) => ({
             headline: article.headline.main,
             byline: article.byline.original,
             date_published: article.pub_date,
             abstract: article.abstract,
-            source: article.source,
-            blurb: article.lead_paragraph,
+            blurb: article.kicker,
             nyt_url: article.web_url
         }));
-        console.log('Converted: ', articles)
         return articles;
     } 
-    
-    const v3converter = (NYTdata) => {
-        console.log('NYT data:  ', NYTdata)
+    //headline, byline, date published, abstract, blurb, url
+    const TSconverter = (NYTdata) => {
+        const articles = NYTdata.map((article) => ({
+            headline: article.title,
+            byline: article.byline,
+            date_published: article.published_date,
+            kicker: article.kicker,
+            abstract: article.abstract,
+            section: article.section,
+            subsection: article.subsection,
+            nyt_url: article.url
+        }));
+        return articles;
+    } 
+
+    const RTSconverter = (NYTdata) => {
         const articles = NYTdata.map((article) => ({
             headline: article.title,
             byline: article.byline,
             date_published: article.published_date,
             abstract: article.abstract,
-            source: article.source,
-            blurb: article.lead_paragraph,
-            nyt_url: article.web_url
+            section: article.section,
+            nyt_url: article.url
         }));
-        console.log('Converted: ', articles)
+
+        return articles;
+    } 
+    const MPconverter = (NYTdata) => {
+        const articles = NYTdata.map((article) => ({
+            headline: article.title,
+            byline: article.byline,
+            date_published: article.published_date,
+            abstract: article.abstract,
+            section: article.section,
+            source: article.source,
+            subsection: article.subsection,
+            nyt_url: article.url
+        }));
+
         return articles;
     } 
     const saveBM = async (article)=>{
@@ -92,38 +115,48 @@ export default function NYTimesWidget () {
     }
 
     useEffect(()=>{
-        console.log('before: ', url)
         const makeRequest = async () => {
             switch (tab) {
-                case "real-time-feed": 
+                case "real-time-feed": //done
                     setUrl(`https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
                     const RTSdata = await fetchData(url)
-                    const RTSarticles = objConverter(RTSdata.responses);
+                    const RTSarticles = await RTSconverter(RTSdata.results);
+                    console.log('RTSdata.results: ', tab, RTSdata.results);
+                    console.log(url)
+                    console.log('RTSarticles: ', tab, RTSarticles);
                     setArticles(RTSarticles);
                     break;
-                case "top-stories": 
+                case "top-stories": //
                     setUrl(`https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
                     const TSdata = await fetchData(url);
-                    const TSarticles = await v2converter(TSdata.results);
+                    const TSarticles = await TSconverter(TSdata.results);
+                    console.log('TSdata.results: ',section, TSdata.results)
+                    console.log(url)
+                    console.log('TSarticles: ',section, TSarticles)
                     setArticles(TSarticles)
                     break;
-                case "most-popular": 
+                case "most-popular": //done
                     setUrl(`https://api.nytimes.com/svc/mostpopular/v2/${most}.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
                     const MPdata = await fetchData(url);
-                    const MParticles = v2converter(MPdata);
+                    const MParticles = await MPconverter(MPdata.results);
+                    console.log('MPdata.results: ', MPdata.results);
+                    console.log(url)
+                    console.log('MParticles: ',most, days, MParticles);
                     setArticles(MParticles);
                     break;
                 case "article-search": 
                     setUrl(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchBarInfo}&fq=source:("The New York Times")&api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`);
+                    console.log('after: ', url);
+
                     //this one will be fetched on click of submit button
                     break;
                 case "bookmarks": 
+                    console.log(bmdata)
                     setArticles(bmdata); 
                     break;
             }
         }
         makeRequest();
-        console.log('after: ', url);
     }, [tab, section, days, most, searchBarInfo] );
     
     // makeInitialRequest();
@@ -149,8 +182,8 @@ export default function NYTimesWidget () {
                 <div className="additional-queries">
                     <div hidden={ tab !== "top-stories" }>
                         {/* dropdown menu of sections */}
-                        <select>
-                            { sections.map((section, i) => <option onClick={()=>setSection(e.target.value)} value={section} key={i}>{section}</option>)}
+                        <select onChange={(e)=>setSection(e.target.value)}>
+                            { sections.map((section, i) => <option value={section} key={i}>{section}</option>)}
                         </select>
                     </div>
                     <div hidden={ tab !== "most-popular" }>
@@ -175,7 +208,7 @@ export default function NYTimesWidget () {
                     </div>
                 </div>
                 <div className="article-display">
-                    {console.log(articles)}
+             <div>{tab}</div>
                     { articles.map((article) => (
                         <div className="article-row">
                             <div>{article.headline}</div>
@@ -199,3 +232,11 @@ export default function NYTimesWidget () {
 //
 
 
+//TODOS
+// - fetch and render timing
+// - typeDefs
+// - resolvers
+// - gql strings
+// - 
+// 
+// 
