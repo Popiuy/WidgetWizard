@@ -8,6 +8,10 @@ import About from './pages/About';
 import ErrorPage from './pages/ErrorPage';
 // import JokeAPIWidget from './components/widgets/JokeAPI.jsx';
 import SoundCloudWidget from './components/Widgets/Soundcloud.jsx';
+import NBAWidget from './components/Widgets/NBA.jsx';
+import BreweryWidget from './components/Widgets/OpenBrewery.jsx';
+import BoredAPIWidget from './components/Widgets/Bored.jsx';
+import JokeAPIWidget from './components/widgets/JokeAPI.jsx';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +39,22 @@ const router = createBrowserRouter([
       {
         path: '/testing',
         element: <SoundCloudWidget/>
+      },
+      {
+        path: '/OpenBrewery',
+        element: <BreweryWidget/>
+      },
+      {
+        path: '/NBA',
+        element: <NBAWidget/>
+      },
+      {
+        path: '/Bored',
+        element: <BoredAPIWidget/>
+      },
+      {
+        path: '/Joke',
+        element: <JokeAPIWidget/>
       }
     ],
   },
