@@ -43,7 +43,7 @@ const addToFavorites = async () => {
 
   return (
     <>
-      <div className="card" style={{width:"18rem"}}>
+      <div style={{width:"18rem"}}>
         {/* <img src={photo.src} className="card-img-top" alt={photo.title}></img> */}
           <div className="card-body">
             <h5 className="card-title">Joke</h5>
