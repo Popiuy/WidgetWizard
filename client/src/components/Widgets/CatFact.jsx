@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import storeCat  from '../../images/store-cat-img.png'
 
 export default function CatFactWidget() {
     const searchFact = async () => {
@@ -39,6 +40,7 @@ export default function CatFactWidget() {
             <div className="card" style={{ width: "18rem" }}>
                 <div className="card-body">
                     <h5 className="card-title">Random Cat Fact</h5>
+                    <img className="storeCat" src={storeCat} alt="Store Cat" />
                     <p className="card-text">{fact.fact}</p>
                     <button className="btn btn-primary" type="button" onClick={fetchCatFact}>Generate New</button>
                 </div>
