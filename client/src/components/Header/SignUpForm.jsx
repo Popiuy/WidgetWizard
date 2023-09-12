@@ -14,9 +14,7 @@ export default function SignUpForm () {
         password: '',
     })
 
-    const [createUser, {error, data}] = useMutation(CREATE_USER, {
-        variables: {...formData}
-    })
+    const [createUser, {error, data}] = useMutation(CREATE_USER)
 
     const handleFormData = (e) => {
         const { name, value } = e.target;
@@ -25,15 +23,21 @@ export default function SignUpForm () {
             ...formData,
             [name]: value
         })
-        console.log(formData)
     }
 
     const handleFormSubmit = async (e) => {
-        const response = await createUser(formData);
+        e.preventDefault();
 
-        const { token, user } = response.data.createUser
+        const { data } = await createUser({
+            variables: {...formData}
+        });
 
-        Auth.login(token);
+        Auth.login(
+            {
+                token: data.createUser.token, 
+                user: data.createUser.user
+            }
+        );
 
         setFormData({
             username: '',
@@ -43,7 +47,7 @@ export default function SignUpForm () {
     }
 
     return (
-        <form className="signup-form" >
+        <form className="signup-form" onSubmit={handleFormSubmit}>
             <label>Username: </label>
             <input className="signup-username" type='text' name="username" onChange={handleFormData} value={formData.username} placeholder='MikeWazowski'></input>
             <label>Email: </label>
