@@ -65,15 +65,15 @@ export default function NYTimesWidget () {
         switch (tab) {
             
             case "real-time-feed":
-                const rtfarticles = await NYTtoolbox.RTF(NYTdata.results);
+                const rtfarticles = NYTtoolbox.RTF(NYTdata.results);
                 setRTFarticles(rtfarticles);
                 break;
             case "top-stories":
-                const tsarticles = await NYTtoolbox.TS(NYTdata.results);
+                const tsarticles = NYTtoolbox.TS(NYTdata.results);
                 setTSarticles(tsarticles);
                 break;
             case "most-popular":
-                const mparticles = await NYTtoolbox.MP(NYTdata.results);
+                const mparticles = NYTtoolbox.MP(NYTdata.results);
                 setMParticles(mparticles);
                 break;
             case "article-search":
@@ -83,14 +83,8 @@ export default function NYTimesWidget () {
             case "bookmarks": 
                 setBMarticles(bmdata)
                 break;
-        }
-
-        console.log('RTF: ', RTFarticles);
-        console.log('TSL ', TSarticles);
-        console.log('MP: ', MParticles);
-        console.log('AS: ', ASarticles);
-        console.log('BM: ', BMarticles);
-    }
+        };
+    };
 
     const saveBM = async (article)=>{
         //bookmarkArticle will return nyt_bookmarks array, and also refetch bmdata
@@ -119,21 +113,6 @@ export default function NYTimesWidget () {
         }
     
     };
-
-    
-
-    // const pageLoad = async () => {
-    //     const iResponse = await fetch(url);
-    //     const iData = await iResponse.json();
-    //     const iArticles = NYTtoolbox.RTS(iData.results);
-    //     console.log(iArticles)
-    //     setArticles(iArticles)
-
-    // }
-
-    // pageLoad();
-//sets url in response to user input
-    // requestData();
 
     return (
         
@@ -277,7 +256,7 @@ export default function NYTimesWidget () {
         
     )
 }
-//
+
 
 
 //TODOS
