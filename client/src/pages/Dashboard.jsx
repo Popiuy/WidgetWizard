@@ -7,30 +7,31 @@ import NBAWidget from '../components/Widgets/NBA'
 import jokeWidget from '../components/widgets/JokeAPI'
 import BreweryWidget from '../components/Widgets/OpenBrewery'
 import currencyWidget from '../components/Widgets/Currency-Converter'
+
 import { useState } from 'react';
+import Draggable from 'react-draggable';
+import bored from '../components/Widgets/Bored';
+import APOD from '../components/Widgets/NASA_apod';
+import NBAWidget from '../components/Widgets/NBA';
+import jokeWidget from '../components/widgets/JokeAPI';
+import BreweryWidget from '../components/Widgets/OpenBrewery';
 
 const Dashboard = () => {
   const [selectedWidgets, setSelectedWidgets] = useState([]);
 
   const addWidget = (widget) => {
-    // setSelectedWidgets([...selectedWidgets, widget]);
-    setSelectedWidgets((currentWidgets) => ({
-      ...currentWidgets,
-      [widget.name]: widget,
-    }));
-    // ends here added code
+    setSelectedWidgets((currentWidgets) => [...currentWidgets, widget]);
   };
 
-  const deleteWidget = (widget) => {
+  const deleteWidget = (widgetName) => {
     setSelectedWidgets((currentWidgets) =>
-    // currentWidgets.filter((item) => item !== widget)
-    // );
-    {
-    const updatedWidgets = { ...currentWidgets };
-    delete updatedWidgets[widget];
-    return updatedWidgets;
-  });
-  // ends here added code
+      currentWidgets.filter((widget) => widget.name !== widgetName)
+    );
+  };
+
+  const eventLogger = (e, data) => {
+    console.log('Event: ', e);
+    console.log('Data: ', data);
   };
 
   return (
@@ -87,7 +88,7 @@ const Dashboard = () => {
             }}
           >
             <a className="dropdown-item" href="#">
-            OpenBreweryWidget
+              OpenBreweryWidget
             </a>
           </li>
           <li
@@ -102,22 +103,29 @@ const Dashboard = () => {
         </ul>
       </div>
       <div className="dashboard">
-        <div>
-
-          {/* {selectedWidgets.map((Widget, index) => (
-            <div key={index}>
-              <Widget />
-              <button onClick={() => deleteWidget(Widget)}>Delete</button> */}
-
-              {Object.values(selectedWidgets).map((Widget) => (
-                <div key={Widget.name}>
-                    <Widget />
-                    <button onClick={() => deleteWidget(Widget.name)}>Delete</button>
-                    {/* ends here new code */}
-                    
-            </div>
-          ))}
-        </div>
+        {selectedWidgets.map((Widget) => (
+          <Draggable
+          key={Widget.name}
+          axis="both" // Allow both horizontal and vertical dragging
+          handle=".handle"
+          defaultPosition={{ x: 0, y: 0 }}
+          position={null}
+          grid={[25, 25]}
+          scale={1}
+          onStart={eventLogger}
+          onDrag={eventLogger}
+          onStop={eventLogger}
+          // bounds=".dashboard" // restrict every draggable div to the dashboard div
+        >
+          <div className="widget">
+      <div className="handle">Drag from here</div>
+      <div className="widget-content"> 
+        <Widget />
+      </div>
+      <button onClick={() => deleteWidget(Widget.name)}>Delete</button>
+    </div>
+  </Draggable>
+))}
       </div>
     </div>
   );

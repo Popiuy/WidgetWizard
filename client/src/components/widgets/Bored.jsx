@@ -33,6 +33,11 @@ export default function BoredAPIWidget() {
         fetchNewActivity();
     }, []);
 
+    const addToFavorites = async () => {
+        // Implement your logic to add photoData to favorites here
+        console.log(activity);
+      };
+
     return (
         <div>
             <div className="card" style={{ width: "18rem" }}>
@@ -40,6 +45,12 @@ export default function BoredAPIWidget() {
                     <h5 className="card-title">Random Activity</h5>
                     <p className="card-text">{activity.activity}</p>
                     <button className="btn btn-primary" type="button" onClick={fetchNewActivity}>Generate New</button>
+                    <a href="/Bored" className="btn btn-primary">
+                Go to Widget
+              </a>
+              <button className="favorite-btn" onClick={addToFavorites}>
+                ADD TO FAVORITES!
+              </button>
                 </div>
             </div>
         </div>
