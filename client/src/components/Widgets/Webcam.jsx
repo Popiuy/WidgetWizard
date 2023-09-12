@@ -17,66 +17,62 @@ export default function webcamWidget() {
     const searchWebcam = async () => {
         try {
             const response = await fetch(
-                'https://api.windy.com/webcams/v3/webcams/list'
+                'https://api.windy.com/webcams/v3/list/nearby=40.7128,-74.0060,10?key=gFFaX8hEsYH01S9RYHYwq712ZZs7FOzB'
             );
             if (!response.ok) {
                 throw new Error('Failed to fetch data');
             }
-            return response.json();
+            const data = await response.json();
+            return data.result.webcams;
         } catch (error) {
-            console.error('Error fetching Webcams API data:', error);
-            setError('Failed to retrieve photo. Please try again later.');
-            return null;
+          console.error('Error fetching Webcams API data:', error);
+          setError('Failed to retrieve webcam data. Please try again later.');
+          return [];
         }
-    };
+      };
 
 
     useEffect(() => {
-        const fetchWebcam = async () => {
-          const data = await searchWebcam();
-          if (data) {
-            setWebcamData({
-              date: data.date,
-              title: data.title,
-              src: data.url,
-              caption: data.explanation,
-              photographer: data.hdurl,
-              description: data.description,
-            });
-          }
-        };
-        fetchWebcam();
+      const fetchWebcams = async () => {
+        const data = await searchWebcams();
+        if (data.length > 0) {
+          setWebcamData(data);
+        }
+      };
+  
+      fetchWebcams();
     }, []);
 
 
 
 
     return (
-        <div>
-          <div class="card mb-3" style={{width: '700px'}}>
-            <div class="row g-0">
-              <div class="col-md-4">
-                {/* replace references */}
-                <img src={photoData.src} class="img-fluid rounded-start" alt={photoData.title}></img>
+      <div>
+        {webcamData.map((webcam, index) => (
+          <div key={index} className="card mb-3" style={{ width: '700px' }}>
+            <div className="row g-0">
+              <div className="col-md-4">
+                <img
+                  src={webcam.image.current.preview}
+                  className="img-fluid rounded-start"
+                  alt={webcam.title}
+                />
               </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Webcams Around The World</h5>
-                  {/* replace references */}
-                  <p class="card-text">{photoData.title}</p>
-                  <p class="card-text"><small class="text-body-secondary">{photoData.date}</small></p>
-                  <a href="/" className="btn btn-primary">
-                    Go to Widget
-                  </a>
-                  <button className="favorite-btn" onClick={addToFavorites}>
-                    ADD TO FAVORITES!
-                  </button>
+              <div className="col-md-8">
+                <div className="card-body">
+                  <h5 className="card-title">Webcam {index + 1}</h5>
+                  <p className="card-text">{webcam.title}</p>
+                  <p className="card-text">
+                    <small className="text-muted">Location: {webcam.location.city}</small>
+                  </p>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      );
+        ))}
+        {error && <p>{error}</p>}
+      </div>
+    );
 
 }
 
