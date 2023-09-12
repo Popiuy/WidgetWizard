@@ -46,6 +46,7 @@ const typeDefs = `
         user(userId: ID!): User
         users: [User]
         nyt_bookmarks: [NYTbookmark]
+        getTeamData: [getTeamData]
     }
 
     
