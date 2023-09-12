@@ -13,10 +13,11 @@ export default function NavBarComponent () {
   return (
     <header>
       <nav className="navbar navbar-color navbar-expand-lg bg-body-tertiary">
-        <div className="container-fluid">
-          <img className="wizard-img" src={wizard} alt="Wizard"></img>
-          <a className="navbar-brand d-flex justify-content-center" href="/">WidgetWizard</a>
-          <ul className="nav justify-content-end">
+          <div className="nav">
+            <a className="navbar-brand website-title" href="/">WidgetWizard</a>
+            <img className="wizard-img" src={wizard} alt="Wizard"></img>
+          </div>
+          <ul className="nav">
             <li className="nav-item">
               {Auth.loggedIn() ? (
                 <Nav.Link to='/' onClick={Auth.logout}>Logout</Nav.Link>
@@ -25,7 +26,6 @@ export default function NavBarComponent () {
                   )}
             </li>
           </ul>
-        </div>
       </nav>
       <Modal
         size='lg'
