@@ -57,8 +57,8 @@ export default function CurrencyConverter () {
 
             const rate = data.rates[currencyOutput].rate;
             setExchangeRate(rate);
-        } catch (error) {
-            console.error('Error fetching data', error);
+        } catch (rate) {
+            console.log('Please choose two different currencies', rate);
         }
     };
 

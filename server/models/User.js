@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 const NYTbookmarkSchema = require('./NYTbookmark');
+const NBATeamDataSchema = require('./NBATeamData');
 
 const userSchema = new Schema(
     {
@@ -27,7 +28,8 @@ const userSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'Widget'
         },
-        nyt_bookmarks: [NYTbookmarkSchema]
+        nyt_bookmarks: [NYTbookmarkSchema],
+        nba_teamdata: [NBATeamDataSchema]
 
     }
 );
