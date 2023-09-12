@@ -51,7 +51,7 @@ export default function APODWidget() {
   }, []); // Provide an empty dependency array to run the effect once on mount
 
   const addToFavorites = async () => {
-    // Implement your logic to add photoData to favorites here
+    //replace with mutation method.
     console.log(photoData);
   };
 
@@ -77,7 +77,12 @@ export default function APODWidget() {
               <a href="/APOD" className="btn btn-primary">
                 Go to Widget
               </a>
-              <button className="favorite-btn" onClick={addToFavorites}>
+              <button className="favorite-btn" 
+                onClick={()=>addToFavorites({
+                  variables: {
+                    photoData: {...photoData}
+                  }
+                })}>
                 ADD TO FAVORITES!
               </button>
             </>
