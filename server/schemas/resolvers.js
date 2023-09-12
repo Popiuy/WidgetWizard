@@ -1,5 +1,4 @@
 const { User, Widget } = require('../models');
-
 const {signToken, AuthenticationError} = require('../utils/auth');
 
 const resolvers = {
@@ -34,7 +33,7 @@ const resolvers = {
 
         login: async ( parent, { username, password }) => {
             const user = await User.findOne({username});
-            
+            console.log(user)
             if (!user) {
                 throw AuthenticationError;
             }
@@ -81,10 +80,8 @@ const resolvers = {
                 {$addToSet: { NASA_favorites: photoData}},
                 { new: true }
             )
-
             return user.NASA_favorites;
         }
-
     }
 };
 

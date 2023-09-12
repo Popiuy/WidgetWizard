@@ -12,10 +12,12 @@ export default function APODWidget() {
     photographer: '',
     description: '',
   });
+
   const [addToFavorites, {error}] = useMutation(NASA_ADD_FAVORITE);
   const {loading, data} = useQuery(GET_NASA_FAVORITES);
   const [viewFavorites, setViewFavorites] = useState(false) 
   const getData = async() => {
+
     try {
       const response = await fetch(
         'https://api.nasa.gov/planetary/apod?api_key=ldu00DPMmJO4nb9rTFgemhoA8TEwoKso0Adud0pe'

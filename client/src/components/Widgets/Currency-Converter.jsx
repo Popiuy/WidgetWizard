@@ -6,7 +6,7 @@
 // drop down to select output currency {rates.currency_output}
 // result display rate {rates.currency_output.rate}
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function CurrencyConverter () {
     const [currencies, setCurrencies] = useState([]);
@@ -20,7 +20,7 @@ export default function CurrencyConverter () {
     const fetchCurrencies = async () => {
         try {
             const response = await fetch(
-                'https://api.getgeoapi.com/v2/currency/list?api_key=308a45b3f970b6b7823c3265a349923c71265379&format=HTML/list'
+                `https://api.getgeoapi.com/v2/currency/list?api_key=${API_KEY}&format=HTML/list`
             );
 
             if (!response.ok) {
@@ -57,25 +57,24 @@ export default function CurrencyConverter () {
 
             const rate = data.rates[currencyOutput].rate;
             setExchangeRate(rate);
-        } catch (error) {
-            console.error('Error fetching data', error);
+        } catch (rate) {
+            console.log('Please choose two different currencies', rate);
         }
     };
 
-useEffect(() => {
-    fetchExchangeRate ();
-      }, [currencyInput, currencyOutput]);
+// useEffect(() => {
+//     fetchExchangeRate ();
+//       }, [currencyInput, currencyOutput]);
 
 return (
     <div>
         <div style={{ width: '18rem' }}>
             <div>
-                <title>Currency Converter</title>
+                <h5 className="card-title">Joke</h5>
                 <form>
-                    <div controlId="currencyInput">
+                    <div>
                         <label>From Currency</label>
                         <select
-                            as="select"
                             value={currencyInput}
                             onChange={(e) => setCurrencyInput(e.target.value)}
                         >
@@ -88,10 +87,9 @@ return (
                         </select>
                     </div>
 
-                    <div controlId="currencyOutput">
+                    <div>
                         <label>To Currency</label>
                         <select
-                            as="select"
                             value={currencyOutput}
                             onChange={(e) => setCurrencyOutput(e.target.value)}
                         >
