@@ -32,3 +32,16 @@ export const NASA_ADD_FAVORITE = gql`
         }
     }
 `;
+
+export const BOOKMARK_ARTICLE = gql`
+    mutation CreateUser($nyTarticleData: NYTbookmarkINPUT) {
+        bookmarkArticle(NYTarticleData: $nyTarticleData) {
+        abstract
+        byline
+        date_published
+        headline
+        nyt_url
+        source
+        }
+    }
+`;
