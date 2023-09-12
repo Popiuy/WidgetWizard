@@ -74,7 +74,7 @@ const Dashboard = () => {
             }}
           >
             <a className="dropdown-item" href="#">
-            Joke Widget
+              Joke Widget
             </a>
           </li>
           <li
@@ -109,27 +109,27 @@ const Dashboard = () => {
       <div className="dashboard">
         {selectedWidgets.map((Widget) => (
           <Draggable
-          key={Widget.name}
-          axis="both" // Allow both horizontal and vertical dragging
-          handle=".handle"
-          defaultPosition={{ x: 0, y: 0 }}
-          position={null}
-          grid={[25, 25]}
-          scale={1}
-          onStart={eventLogger}
-          onDrag={eventLogger}
-          onStop={eventLogger}
+            key={Widget.name}
+            axis="both" // Allow both horizontal and vertical dragging
+            handle=".handle"
+            defaultPosition={{ x: 0, y: 0 }}
+            position={null}
+            grid={[25, 25]}
+            scale={1}
+            onStart={eventLogger}
+            onDrag={eventLogger}
+            onStop={eventLogger}
           // bounds=".dashboard" // restrict every draggable div to the dashboard div
-        >
-          <div className="widget">
-      <div className="handle">Drag from here</div>
-      <div className="widget-content"> 
-        <Widget />
-      </div>
-      <button onClick={() => deleteWidget(Widget.name)}>Delete</button>
-    </div>
-  </Draggable>
-))}
+          >
+            <div className="widget">
+              <div className="handle">Drag from here</div>
+              <div className="widget-content">
+                <Widget />
+              </div>
+              <button onClick={() => deleteWidget(Widget.name)}>Delete</button>
+            </div>
+          </Draggable>
+        ))}
       </div>
     </div>
   );

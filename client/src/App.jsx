@@ -32,7 +32,7 @@ function App() {
     <ApolloProvider client={client}>
         <div className="flex-column justify-flex-start min-100-vh">
           <NavBarComponent />
-          <div className="container">
+          <div>
             <Outlet />
           </div>
           <Footer />
