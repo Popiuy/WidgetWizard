@@ -73,7 +73,7 @@ export default function APODWidget() {
               <div className="photo-credit">{photoData.photographer}</div>
               <div className="photo-description">{photoData.description}</div>
               <div className="photo-date">{photoData.date}</div>
-              <a href="/APOD" className="btn btn-primary">
+              <a href="/" className="btn btn-primary">
                 Go to Widget
               </a>
               <button className="favorite-btn" onClick={addToFavorites}>

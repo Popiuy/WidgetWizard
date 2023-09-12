@@ -36,6 +36,11 @@ useEffect(() => {
   fetchJoke();
 }, []);
 
+const addToFavorites = async () => {
+  // Implement your logic to add photoData to favorites here
+  console.log(joke);
+};
+
   return (
     <>
       <div className="card" style={{width:"18rem"}}>
@@ -45,6 +50,12 @@ useEffect(() => {
             <div className="category">{joke.category}</div>
             <div className="joke">{joke.joke}</div>
             <button className="btn btn-primary" type="button" onClick={fetchJoke}>New Joke</button>
+            <a href="/Joke" className="btn btn-primary">
+                Go to Widget
+              </a>
+              <button className="favorite-btn" onClick={addToFavorites}>
+                ADD TO FAVORITES!
+              </button>
           </div>
       </div>
     </>
