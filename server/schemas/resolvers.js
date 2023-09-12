@@ -1,9 +1,5 @@
 const { User, Widget } = require('../models');
-<<<<<<< HEAD
 const {signToken, AuthenticationError} = require('../utils/auth');
-=======
-const {signToken, AuthenticationError} = require('../utils/auth')
->>>>>>> d1e7731150d3ed12261c4087f430abcc453888ca
 
 const resolvers = {
     Query: {
