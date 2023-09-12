@@ -1,4 +1,4 @@
-// import decode from 'jwt-decode';
+import decode from 'jwt-decode';
 
 class Authenticator {
     

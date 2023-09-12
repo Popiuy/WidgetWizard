@@ -19,7 +19,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard',
-        // change back to /dashboard/:id
+        // change back to /dashboard/username
         element: <Dashboard />
       },
       {
@@ -29,11 +29,15 @@ const router = createBrowserRouter([
       {
         path: '/about',
         element: <About />
-      }
+      },
+      // {
+      //   path: '/testing',
+      //   element: </>
+      // }
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
+    <RouterProvider router={router} />
 )
