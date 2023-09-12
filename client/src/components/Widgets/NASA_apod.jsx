@@ -32,7 +32,7 @@ export default function APODWidget() {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
+    const wrapper = async () => {
       const data = await getData();
       if (data) {
         setPhotoData({
@@ -46,7 +46,7 @@ export default function APODWidget() {
       }
     };
 
-    fetchData();
+    wrapper();
   }, []); // Provide an empty dependency array to run the effect once on mount
 
   const addToFavorites = async () => {

@@ -2,7 +2,6 @@
 //reference User.widgets
 //display appropriate widgets
 import currencyWidget from '../components/Widgets/Currency-Converter'
-
 import { useState } from 'react';
 import Draggable from 'react-draggable';
 import BoredAPIWidget from '../components/Widgets/Bored';
