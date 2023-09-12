@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
+import {NASA_ADD_FAVORITE} from '../../utils/mutations';
+import { GET_NASA_FAVORITES } from '../../utils/queries';
 
 export default function APODWidget() {
   const [photoData, setPhotoData] = useState({
@@ -10,9 +12,9 @@ export default function APODWidget() {
     photographer: '',
     description: '',
   });
-
-  const [error, setError] = useState(null);
-
+  const [addToFavorites, {error}] = useMutation(NASA_ADD_FAVORITE);
+  const {loading, data} = useQuery(GET_NASA_FAVORITES);
+  const [viewFavorites, setViewFavorites] = useState(false) 
   const getData = async() => {
     try {
       const response = await fetch(
@@ -25,24 +27,24 @@ export default function APODWidget() {
 
       const data = await response.json();
       return data;
+      
     } catch (error) {
       console.error('Could not retrieve photo.', error)
-      setError('Failed to retrieve photo. Please try again later.');
       return null;
     }
   };
 
   useEffect(() => {
     const wrapper = async () => {
-      const data = await getData();
-      if (data) {
+      const NASAdata = await getData();
+      if (NASAdata) {
         setPhotoData({
-          date: data.date,
-          title: data.title,
-          src: data.url,
-          caption: data.explanation,
-          photographer: data.hdurl,
-          description: data.description,
+          date: NASAdata.date,
+          title: NASAdata.title,
+          src: NASAdata.url,
+          caption: NASAdata.explanation,
+          photographer: NASAdata.hdurl,
+          description: NASAdata.description,
         });
       }
     };
@@ -50,20 +52,25 @@ export default function APODWidget() {
     wrapper();
   }, []); // Provide an empty dependency array to run the effect once on mount
 
-  const addToFavorites = async () => {
-    //replace with mutation method.
-    console.log(photoData);
-  };
-
   return (
     <div>
       <div className="card" style={{ width: '50rem' }}>
         <div className="card-body">
           <h5 className="card-title">Astronomy Picture of the Day</h5>
-          {error ? (
-            <div className="error-message">{error}</div>
+          {viewFavorites ? (
+            <div className="favorites-display">
+              {data.map((fav)=>{
+                <div className="favorite-photo">
+                  <div>{fav.title}</div>
+                  <img src={fav.src} id={fav.title}/>
+                  <div>{fav.caption}</div>
+                </div>
+              })}
+              <button onClick={()=>setViewFavorites(false)}>⭐⭐⭐Photo of the Day⭐⭐⭐</button>
+            </div>
+            
           ) : (
-            <>
+            <div className="astronomy-photo-of-the-day-display">
               <div className="photo-title">{photoData.title}</div>
               <img
                 src={photoData.src}
@@ -74,18 +81,16 @@ export default function APODWidget() {
               <div className="photo-credit">{photoData.photographer}</div>
               <div className="photo-description">{photoData.description}</div>
               <div className="photo-date">{photoData.date}</div>
-              <a href="/APOD" className="btn btn-primary">
-                Go to Widget
-              </a>
               <button className="favorite-btn" 
                 onClick={()=>addToFavorites({
                   variables: {
                     photoData: {...photoData}
                   }
                 })}>
-                ADD TO FAVORITES!
+                ⭐Add to Favorites⭐
               </button>
-            </>
+              <button onClick={()=>setViewFavorites(true)}>⭐View Favorites⭐</button>
+            </div>
           )}
         </div>
       </div>

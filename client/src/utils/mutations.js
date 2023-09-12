@@ -21,3 +21,17 @@ export const CREATE_USER = gql`
         }
     }
 `;
+
+export const NASA_ADD_FAVORITE = gql`
+    mutation NASAaddFavorite($photoData: nasa_favorites_schema_input) {
+        NASAaddFavorite(photoData: $photoData) {
+        _id
+        date
+        title
+        src
+        caption
+        photographer
+        description
+        }
+    }
+`;
