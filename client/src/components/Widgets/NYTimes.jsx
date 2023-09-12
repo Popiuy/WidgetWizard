@@ -118,7 +118,7 @@ export default function NYTimesWidget () {
 
     return (
         
-        <div className="nytimes-widget">
+        <div className="widget nytimes-widget">
             <div className="nytimes-navbar">
                 <div className="nytimes-logo">
                     <img src={NYTapiLogo}/>
