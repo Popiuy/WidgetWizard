@@ -13,7 +13,7 @@ export default function NYTimesWidget () {
     const [days, setDays] = useState(7);
     const [tab, setTab] = useState('real-time-feed');
     const [section, setSection] = useState('home');
-    const [articles, setArticles] = useState([]);
+    // const [articles, setArticles] = useState([]);
     const [searchBarInfo, setSearchBarInfo] = useState('');
     const [url, setUrl] = useState('https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7');
     const sections = ['all','arts', 'automobiles', 'books/review', 'business', 'fashion', 'food', 'health', 'home', 'insider', 'magazine', 'movies', 'nyregion', 'obituaries', 'opinion', 'politics', 'realestate', 'science', 'sports', 'sundayreview', 'technology', 'theater', 't-magazine', 'travel', 'upshot', 'us', 'world']
@@ -85,7 +85,7 @@ export default function NYTimesWidget () {
             case "bookmarks": 
                 setBMarticles(bmdata)
                 break;
-        };
+        }
     };
 
     const saveBM = async (article)=>{
@@ -167,8 +167,8 @@ export default function NYTimesWidget () {
                 {/* real-time-feed/default */}
                     <div className="nytimes-display-frame" id="display-real-time-feed" hidden={ tab !== "real-time-feed" }>
                         <div>{tab}</div>
-                            { RTFarticles.map((article) => (
-                                <div className="article-row">
+                            { RTFarticles.map((article, i) => (
+                                <div key={i} className="article-row">
                                     <div>{article.headline}</div>
                                     <div>{article.byline}</div>
                                     <div>{article.date_published}</div>
@@ -199,8 +199,8 @@ export default function NYTimesWidget () {
                 {/* most-popular display, hidden until gets clicked */}
                     <div className="nytimes-display-frame" id="display-most-popular" hidden={ tab !== "most-popular" }>
                         <div>{tab}</div>
-                            { MParticles.map((article) => (
-                                <div className="article-row">
+                            { MParticles.map((article, i) => (
+                                <div key={i} className="article-row">
                                     <div>{article.headline}</div>
                                     <div>{article.byline}</div>
                                     <div>{article.date_published}</div>
@@ -216,8 +216,8 @@ export default function NYTimesWidget () {
                 {/* article-search display, hidden until gets clicked */}
                     <div className="nytimes-display-frame" id="display-article-search" hidden={ tab !== "article-search" }>
                         <div>{tab}</div>
-                            { ASarticles.map((article) => (
-                                <div className="article-row">
+                            { ASarticles.map((article, i) => (
+                                <div key={i} className="article-row">
                                     <div>{article.headline}</div>
                                     <div>{article.byline}</div>
                                     <div>{article.date_published}</div>
@@ -231,8 +231,8 @@ export default function NYTimesWidget () {
                 {/* bookmarks display, hidden until tab gets clicked */}
                     <div className="nytimes-display-frame" id="display-bookmarks" hidden={ tab !== "bookmarks" }>
                         <div>{tab}</div>
-                            { BMarticles.map((article) => (
-                                <div className="article-row">
+                            { BMarticles.map((article, i) => (
+                                <div key={i} className="article-row">
                                     <div>{article.headline}</div>
                                     <div>{article.byline}</div>
                                     <div>{article.date_published}</div>

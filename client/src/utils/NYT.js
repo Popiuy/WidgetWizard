@@ -9,7 +9,7 @@ class NYTtoolbox {
             nyt_url: article.web_url
         }));
         return articles;
-    };
+    }
     
     TS (NYTdata) {
         const articles = NYTdata.map((article) => ({
@@ -23,7 +23,7 @@ class NYTtoolbox {
             nyt_url: article.url
         }));
         return articles;
-    }; 
+    }
     
     RTF (NYTdata) {
         console.log(NYTdata);
@@ -37,7 +37,7 @@ class NYTtoolbox {
         }));
     
         return articles;
-    };
+    }
     
     MP (NYTdata) {
         const articles = NYTdata.map((article) => ({
@@ -52,7 +52,7 @@ class NYTtoolbox {
         }));
     
         return articles;
-    };
+    }
 
     
 }
