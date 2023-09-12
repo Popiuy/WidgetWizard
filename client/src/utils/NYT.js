@@ -25,7 +25,7 @@ class NYTtoolbox {
         return articles;
     }; 
     
-    RTS (NYTdata) {
+    RTF (NYTdata) {
         console.log(NYTdata);
         const articles = NYTdata.map((article) => ({
             headline: article.title,

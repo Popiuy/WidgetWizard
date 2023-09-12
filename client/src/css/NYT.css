@@ -15,12 +15,12 @@
 }
   
   /* Change background color of buttons on hover */
-.nytimes-navbar-tab button:hover {
+.nytimes-navbar-tab:hover {
     background-color: #ddd;
 }
   
   /* Create an active/current tablink class */
-.nytimes-navbar-tab button.active {
+.nytimes-navbar-tab.active {
     background-color: #ccc;
   }
   
