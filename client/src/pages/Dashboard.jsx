@@ -30,7 +30,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
+    <div className="body">
       <div className="dropdown">
         <button
           className="btn btn-secondary dropdown-toggle"
@@ -119,7 +119,7 @@ const Dashboard = () => {
           onStart={eventLogger}
           onDrag={eventLogger}
           onStop={eventLogger}
-          // bounds=".dashboard" // restrict every draggable div to the dashboard div
+          bounds="#root" // restrict every draggable div to the dashboard div
         >
           <div className="widget">
       <div className="handle">Drag from here</div>
