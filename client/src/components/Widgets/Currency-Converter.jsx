@@ -70,7 +70,7 @@ return (
     <div>
         <div style={{ width: '18rem' }}>
             <div>
-                <title>Currency Converter</title>
+                <h5 className="card-title">Joke</h5>
                 <form>
                     <div>
                         <label>From Currency</label>
