@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useQuery, useMutation } from '@apollo/client';
 
 export default function APODWidget() {
   const [photoData, setPhotoData] = useState({
@@ -32,7 +33,7 @@ export default function APODWidget() {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
+    const wrapper = async () => {
       const data = await getData();
       if (data) {
         setPhotoData({
@@ -46,7 +47,7 @@ export default function APODWidget() {
       }
     };
 
-    fetchData();
+    wrapper();
   }, []); // Provide an empty dependency array to run the effect once on mount
 
   const addToFavorites = async () => {
