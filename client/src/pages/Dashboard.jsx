@@ -1,19 +1,14 @@
 //import widgets from widget library
 //reference User.widgets
 //display appropriate widgets
-import bored from '../components/Widgets/Bored'
-import APOD from '../components/Widgets/NASA_apod'
-import NBAWidget from '../components/Widgets/NBA'
-import jokeWidget from '../components/widgets/JokeAPI'
-import BreweryWidget from '../components/Widgets/OpenBrewery'
 import currencyWidget from '../components/Widgets/Currency-Converter'
 
 import { useState } from 'react';
 import Draggable from 'react-draggable';
-import bored from '../components/Widgets/Bored';
-import APOD from '../components/Widgets/NASA_apod';
+import BoredAPIWidget from '../components/Widgets/Bored';
+import APODWidget from '../components/Widgets/NASA_apod';
 import NBAWidget from '../components/Widgets/NBA';
-import jokeWidget from '../components/widgets/JokeAPI';
+import JokeAPIWidget from '../components/widgets/JokeAPI';
 import BreweryWidget from '../components/Widgets/OpenBrewery';
 
 const Dashboard = () => {
@@ -48,7 +43,7 @@ const Dashboard = () => {
         <ul className="dropdown-menu">
           <li
             onClick={() => {
-              addWidget(APOD);
+              addWidget(APODWidget);
             }}
           >
             <a className="dropdown-item" href="#">
@@ -57,7 +52,7 @@ const Dashboard = () => {
           </li>
           <li
             onClick={() => {
-              addWidget(bored);
+              addWidget(BoredAPIWidget);
             }}
           >
             <a className="dropdown-item" href="#">
@@ -75,7 +70,7 @@ const Dashboard = () => {
           </li>
           <li
             onClick={() => {
-              addWidget(jokeWidget);
+              addWidget(JokeAPIWidget);
             }}
           >
             <a className="dropdown-item" href="#">
