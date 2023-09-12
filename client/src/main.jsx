@@ -8,7 +8,8 @@ import About from './pages/About';
 import ErrorPage from './pages/ErrorPage';
 // import JokeAPIWidget from './components/widgets/JokeAPI.jsx';
 // import SoundCloudWidget from './components/Widgets/Soundcloud.jsx';
-import CurrencyConverter from './components/Widgets/Currency-Converter.jsx';
+// import CurrencyConverter from './components/Widgets/Currency-Converter.jsx';
+import CatFactWidget from './components/widgets/CatFact.jsx';
 
 const router = createBrowserRouter([
   {
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/testing',
-        element: <CurrencyConverter/>
+        element: <CatFactWidget/>
       }
     ],
   },
