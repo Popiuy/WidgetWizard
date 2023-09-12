@@ -1,9 +1,9 @@
-import APODWidget from '../components/Widgets/NASA_apod'
+import APODHomePage from '../components/Widgets/NASAHOMEPAGE'
 
 const Home = () => {
     return (
         <div>
-        <APODWidget />
+        <APODHomePage />
         </div>
     )
 };
