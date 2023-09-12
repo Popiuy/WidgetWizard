@@ -27,14 +27,17 @@ export default function SignUpForm () {
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-        
+
         const { data } = await createUser({
             variables: {...formData}
         });
-        console.log(data)
-        const { token, user } = data.createUser
 
-        Auth.login(token);
+        Auth.login(
+            {
+                token: data.createUser.token, 
+                user: data.createUser.user
+            }
+        );
 
         setFormData({
             username: '',
