@@ -23,15 +23,16 @@ export default function SignUpForm () {
             ...formData,
             [name]: value
         })
-        console.log(formData)
     }
 
     const handleFormSubmit = async (e) => {
-        const response = await createUser({
+        e.preventDefault();
+        
+        const { data } = await createUser({
             variables: {...formData}
         });
-
-        const { token, user } = response.data.createUser
+        console.log(data)
+        const { token, user } = data.createUser
 
         Auth.login(token);
 

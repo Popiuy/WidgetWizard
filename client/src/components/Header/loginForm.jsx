@@ -3,7 +3,7 @@ import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { useMutation, useQuery } from '@apollo/client';
 
-const LoginForm = (props) => {
+const LoginForm = () => {
 
     const [formState, setFormState] = useState({ username: '', password: ''});
     const [login, {error, data}] = useMutation(LOGIN_USER);
@@ -20,10 +20,13 @@ const LoginForm = (props) => {
     }
 
     const formSubmit = (e) => {
+        e.preventDefault();
+
         try {
             const { data } = login({
                 variables: {...formState}
             })
+            console.log(data);
             Auth.login(data.login.token);
         } catch (err) {
             console.log(err);

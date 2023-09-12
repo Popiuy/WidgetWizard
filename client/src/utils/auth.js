@@ -2,9 +2,9 @@ import decode from 'jwt-decode';
 
 class Authenticator {
     
-    login(token, username){
+    login(token){
         localStorage.setItem('w_token', token);
-        window.assign(`/dashboard/${username}`);
+        window.location.assign(`/dashboard/`);
     }
 
     getToken(){
@@ -35,4 +35,4 @@ class Authenticator {
     }
 }
 
-export default new Authenticator;
+export default new Authenticator();
