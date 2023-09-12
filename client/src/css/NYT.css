@@ -30,3 +30,14 @@
     border: 1px solid #ccc;
     border-top: none;
   }
+
+  .hide {
+    display: none;
+  }
+  .article-row:hover + .hide {
+    display: block;
+  }
+
+  .bookmark-btn {
+    max-width: 10px;
+  }
