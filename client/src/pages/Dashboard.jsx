@@ -1,8 +1,8 @@
 //import widgets from widget library
 //reference User.widgets
 //display appropriate widgets
-import currencyWidget from '../components/Widgets/Currency-Converter'
 import { useState } from 'react';
+import currencyWidget from '../components/Widgets/Currency-Converter'
 import Draggable from 'react-draggable';
 import BoredAPIWidget from '../components/Widgets/Bored';
 import APODWidget from '../components/Widgets/NASA_apod';
@@ -10,6 +10,9 @@ import NBAWidget from '../components/Widgets/NBA';
 import JokeAPIWidget from '../components/widgets/JokeAPI';
 import BreweryWidget from '../components/Widgets/OpenBrewery';
 import CatFactWidget from '../components/widgets/CatFact';
+import NYTimesWidget from '../components/Widgets/NYTimes';
+import SoundCloudWidget from '../components/Widgets/Soundcloud';
+
 
 const Dashboard = () => {
   const [selectedWidgets, setSelectedWidgets] = useState([]);
@@ -48,6 +51,15 @@ const Dashboard = () => {
           >
             <a className="dropdown-item" href="#">
               Astronomy Picture of the Day
+            </a>
+          </li>
+          <li
+            onClick={() => {
+              addWidget(NYTimesWidget);
+            }}
+          >
+            <a className="dropdown-item" href="#">
+              New York Times
             </a>
           </li>
           <li
@@ -102,6 +114,15 @@ const Dashboard = () => {
           >
             <a className="dropdown-item" href="#">
               Currency Widget
+            </a>
+          </li>
+          <li
+            onClick={() => {
+              addWidget(SoundCloudWidget);
+            }}
+          >
+            <a className="dropdown-item" href="#">
+              Soundcloud
             </a>
           </li>
         </ul>

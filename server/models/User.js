@@ -1,8 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const NYTbookmarkSchema = require('./NYTbookmark');
-const NBATeamDataSchema = require('./NBATeamData');
-
+const nasa_favorites_schema = require('./NASA');
 const userSchema = new Schema(
     {
       username: {
@@ -24,14 +22,11 @@ const userSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'Widget'
         },
-        nyt_bookmarks: [NYTbookmarkSchema]
-    },
-    {
-      toJSON: {
-        virtuals: true,
-      },
+        NASA_favorites: [nasa_favorites_schema]
+
     }
-  );
+);
+
 userSchema.pre('save', async function (next) {
 if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
@@ -39,6 +34,7 @@ if (this.isNew || this.isModified('password')) {
 }
 next();
 });
+
 userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
