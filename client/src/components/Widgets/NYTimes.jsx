@@ -171,9 +171,7 @@ export default function NYTimesWidget () {
                                     <div className="hide">{article.abstract}</div>
                                     <div className="hide">{article.section}</div>
                                     <div className="hide">{article.nyt_url}</div>
-                                    <img className="bookmark-btn" 
-                                        src={BookmarkTag}
-                                        onClick={saveBM}/>
+                                    <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
                                 </div>
                             ))}
                     </div>
@@ -189,9 +187,7 @@ export default function NYTimesWidget () {
                                     <div className="hide">{article.section}</div>
                                     <div className="hide">{article.subsection}</div>
                                     <div className="hide">{article.nyt_url}</div>
-                                    <img className="bookmark-btn" 
-                                        src={BookmarkTag}
-                                        onClick={saveBM}/>
+                                    <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
                                 </div>
                             ))}
                     </div>
@@ -207,9 +203,7 @@ export default function NYTimesWidget () {
                                     <div className="hide">{article.subsection}</div>
                                     <div className="hide">{article.source}</div>
                                     <div className="hide">{article.nyt_url}</div>
-                                    <img className="bookmark-btn" 
-                                        src={BookmarkTag}
-                                        onClick={saveBM}/>
+                                    <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
                                 </div>
                             ))}
                     </div>
@@ -223,9 +217,7 @@ export default function NYTimesWidget () {
                                     <div className="hide">{article.blurb}</div>
                                     <div className="hide">{article.abstract}</div>
                                     <div className="hide">{article.nyt_url}</div>
-                                    <img className="bookmark-btn" 
-                                        src={BookmarkTag}
-                                        onClick={saveBM}/>
+                                    <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
                                 </div>
                             ))}
                     </div>
@@ -243,9 +235,7 @@ export default function NYTimesWidget () {
                                     <div className="hide">{article.subsection}</div>
                                     <div className="hide">{article.source}</div>
                                     <div className="hide">{article.nyt_url}</div>
-                                    <img className="bookmark-btn" 
-                                        src={BookmarkTag}
-                                        onClick={saveBM}/>
+                                    <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
                                 </div>
                             ))}
                     </div>
