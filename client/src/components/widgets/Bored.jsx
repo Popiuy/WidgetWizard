@@ -40,17 +40,14 @@ export default function BoredAPIWidget() {
 
     return (
         <div>
-            <div style={{ width: "18rem" }}>
+            <div className="widget" style={{ width: "18rem" }}>
                 <div className="card-body">
                     <h5 className="card-title">Random Activity</h5>
                     <p className="card-text">{activity.activity}</p>
                     <button className="btn btn-primary" type="button" onClick={fetchNewActivity}>Generate New</button>
-                    <a href="/Bored" className="btn btn-primary">
-                Go to Widget
-              </a>
-              <button className="favorite-btn" onClick={addToFavorites}>
-                ADD TO FAVORITES!
-              </button>
+                    <button className="favorite-btn" onClick={addToFavorites}>
+                        ADD TO FAVORITES!
+                    </button>
                 </div>
             </div>
         </div>

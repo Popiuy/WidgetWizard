@@ -56,7 +56,7 @@ export default function APODWidget() {
 
   return (
     <div>
-      <div className="card" style={{ width: '50rem' }}>
+      <div className="card widget" style={{ width: '50rem' }}>
         <div className="card-body">
           <h5 className="card-title">Astronomy Picture of the Day</h5>
           {viewFavorites ? (

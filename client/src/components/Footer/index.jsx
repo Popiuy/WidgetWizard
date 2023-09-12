@@ -1,7 +1,7 @@
 const Footer = () => {
     return (
         <footer>
-            <a className="nav-link" href="/about">About the Creators</a>
+            <a className="nav-link about-btn" href="/about">About the Creators</a>
         </footer>
     )
 }

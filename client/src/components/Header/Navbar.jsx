@@ -1,6 +1,6 @@
 import { Link } from 'react';
 import Auth from '../../utils/auth';
-import wizard from '../../images/wizard.jpg';
+import wizard from '../../images/wizard-modified.png';
 import { useState } from 'react';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
 import SignUpForm from './SignUpForm';
@@ -12,13 +12,13 @@ export default function NavBarComponent () {
 
   return (
     <header>
-      <nav className="navbar navbar-color navbar-expand-lg bg-body-tertiary d-flex justify-content-between mx-4">
+      <nav className="navbar navbar-color navbar-expand-lg d-flex justify-content-between">
           <div className="nav">
             <a className="navbar-brand website-title" href="/">WidgetWizard</a>
             <img className="wizard-img" src={wizard} alt="Wizard"></img>
           </div>
           <ul className="nav">
-            <li className="nav-item">
+            <li className="nav-item login-btn">
               {Auth.loggedIn() ? (
                 <Nav.Link to='/' onClick={Auth.logout}>Logout</Nav.Link>
                 ) : (
