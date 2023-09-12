@@ -18,3 +18,16 @@ export const CREATE_USER = gql`
         }
     }
 `;
+
+export const BOOKMARK_ARTICLE = gql`
+    mutation CreateUser($nyTarticleData: NYTbookmarkINPUT) {
+        bookmarkArticle(NYTarticleData: $nyTarticleData) {
+        abstract
+        byline
+        date_published
+        headline
+        nyt_url
+        source
+        }
+    }
+`;

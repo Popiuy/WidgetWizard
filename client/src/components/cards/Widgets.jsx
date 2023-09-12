@@ -7,7 +7,7 @@ const Widgets = (user_id) => {
 
     return (
         <div>
-            {widgetsArray.map( widget => <div>Widget</div>)}
+            {widgetsArray.map( widget => <div >Widget</div>)}
         </div>
         
         //display appropraite widget here
