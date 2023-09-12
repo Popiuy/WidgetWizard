@@ -56,6 +56,14 @@ const typeDefs = `
         banUser(userId: ID!, password: String!): Auth
         bookmarkArticle(NYTarticleData: NYTbookmarkINPUT): [NYTbookmark]
     }
+
+    type TeamData {
+        name: String
+        city: String
+        logo: String
+        allStar: String
+        nbaFranchise: String
+      }
 `;
 
 module.exports = typeDefs;
