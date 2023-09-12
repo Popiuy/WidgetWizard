@@ -50,6 +50,7 @@
 
 .btn-space {
     margin-right: 1rem;
+    margin-top: 1rem;
 }
 
 .widget {
@@ -57,7 +58,7 @@
     padding: 10px;
     background-color: white;
 }
-  
+
 .handle {
     cursor: move;
     background-color: #eee;
