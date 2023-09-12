@@ -6,10 +6,6 @@ import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import About from './pages/About';
 import ErrorPage from './pages/ErrorPage';
-// import JokeAPIWidget from './components/widgets/JokeAPI.jsx';
-// import SoundCloudWidget from './components/Widgets/Soundcloud.jsx';
-// import CurrencyConverter from './components/Widgets/Currency-Converter.jsx';
-import CatFactWidget from './components/widgets/CatFact.jsx';
 
 const router = createBrowserRouter([
   {
@@ -23,7 +19,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard',
-        // change back to /dashboard/:id
+        // change back to /dashboard/username
         element: <Dashboard />
       },
       {
@@ -34,10 +30,10 @@ const router = createBrowserRouter([
         path: '/about',
         element: <About />
       },
-      {
-        path: '/testing',
-        element: <CatFactWidget/>
-      }
+      // {
+      //   path: '/testing',
+      //   element: </>
+      // }
     ],
   },
 ]);
