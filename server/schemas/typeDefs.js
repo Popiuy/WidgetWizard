@@ -40,32 +40,13 @@ const typeDefs = `
         user: User
     }
     
-    type nasa_favorites_schema {
-        _id: ID!
-        date: String
-        title: String
-        src: String
-        caption: String
-        photographer: String
-        description: String
-    }
-    
-    input nasa_favorites_schema_input {
-        date: String
-        title: String
-        src: String
-        caption: String
-        photographer: String
-        description: String
-    }
-
-
     type Query {
         widget(widgetId: ID!): Widget
         widgets: [Widget]
         user(userId: ID!): User
         users: [User]
-        getNASAfavorites: [nasa_favorites_schema]
+        nyt_bookmarks: [NYTbookmark]
+        getTeamData: [getTeamData]
     }
 
     
@@ -74,7 +55,7 @@ const typeDefs = `
         login(username: String!, password: String!): Auth
         addWidget(widgetId: ID!): Widget
         banUser(userId: ID!, password: String!): Auth
-        NASAaddFavorite(photoData: nasa_favorites_schema_input): nasa_favorites_schema
+        bookmarkArticle(NYTarticleData: NYTbookmarkINPUT): [NYTbookmark]
     }
 
     type TeamData {
