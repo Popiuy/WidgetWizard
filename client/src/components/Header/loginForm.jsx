@@ -19,11 +19,11 @@ const LoginForm = () => {
         console.log(formState);
     }
 
-    const formSubmit = (e) => {
+    const formSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const { data } = login({
+            const { data } = await login({
                 variables: {...formState}
             })
             console.log(data);
