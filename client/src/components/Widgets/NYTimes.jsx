@@ -123,11 +123,11 @@ export default function NYTimesWidget () {
                 </div>
                 <img src={nytimesheader}></img>
                 <div className="nytimes-navbar-tabs">
-                    <button className="nytimes-navbar-tab" id="real-time-feed" onClick={(e)=>setTab(e.target.id)}>Real Time Feed</button>
-                    <button className="nytimes-navbar-tab" id="top-stories" onClick={(e)=>setTab(e.target.id)}>Top Stories</button>
-                    <button className="nytimes-navbar-tab" id="most-popular" onClick={(e)=>setTab(e.target.id)}>Most Popular</button>
-                    <button className="nytimes-navbar-tab" id="article-search" onClick={(e)=>setTab(e.target.id)}>Article Search</button>
-                    <button className="nytimes-navbar-tab" id="bookmarks" onClick={(e)=>setTab(e.target.id)}>Bookmarks</button>
+                    <button className={tab==='real-time-feed'?'nytimes-navbar-tab-active':"nytimes-navbar-tab"} id="real-time-feed" onClick={(e)=>setTab(e.target.id)} >Real Time Feed</button>
+                    <button className={tab==='top-stories'?'nytimes-navbar-tab-active':"nytimes-navbar-tab"} id="top-stories" onClick={(e)=>setTab(e.target.id)}>Top Stories</button>
+                    <button className={tab==='most-popular'?'nytimes-navbar-tab-active':"nytimes-navbar-tab"} id="most-popular" onClick={(e)=>setTab(e.target.id)}>Most Popular</button>
+                    <button className={tab==='article-search'?'nytimes-navbar-tab-active':"nytimes-navbar-tab"} id="article-search" onClick={(e)=>setTab(e.target.id)}>Article Search</button>
+                    <button className={tab==='bookmarks'?'nytimes-navbar-tab-active':"nytimes-navbar-tab"} id="bookmarks" onClick={(e)=>setTab(e.target.id)}>Bookmarks</button>
                 </div>
             </div>
             
