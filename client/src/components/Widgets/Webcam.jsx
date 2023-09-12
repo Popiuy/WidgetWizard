@@ -24,7 +24,7 @@ export default function webcamWidget() {
             }
             return response.json();
         } catch (error) {
-            console.error('Error fetching BoredAPI data:', error);
+            console.error('Error fetching Webcams API data:', error);
             setError('Failed to retrieve photo. Please try again later.');
             return null;
         }

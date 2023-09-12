@@ -10,6 +10,7 @@ import NBAWidget from '../components/Widgets/NBA';
 import JokeAPIWidget from '../components/widgets/JokeAPI';
 import BreweryWidget from '../components/Widgets/OpenBrewery';
 import CatFactWidget from '../components/widgets/CatFact';
+import webcamWidget from '../components/widgets/Webcam';
 
 const Dashboard = () => {
   const [selectedWidgets, setSelectedWidgets] = useState([]);
@@ -104,6 +105,16 @@ const Dashboard = () => {
               Currency Widget
             </a>
           </li>
+          <li
+            onClick={() => {
+              addWidget(webcamWidget);
+            }}
+          >
+            <a className="dropdown-item" href="#">
+              Webcams
+            </a>
+          </li>
+
         </ul>
       </div>
       <div className="dashboard">
