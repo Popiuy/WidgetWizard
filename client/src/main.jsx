@@ -6,7 +6,6 @@ import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import About from './pages/About';
 import ErrorPage from './pages/ErrorPage';
-// import JokeAPIWidget from './components/widgets/JokeAPI.jsx';
 import SoundCloudWidget from './components/Widgets/Soundcloud.jsx';
 import NBAWidget from './components/Widgets/NBA.jsx';
 import BreweryWidget from './components/Widgets/OpenBrewery.jsx';
@@ -58,8 +57,15 @@ const router = createBrowserRouter([
       {
         path: '/Joke',
         element: <JokeAPIWidget/>
-//         element: <CurrencyConverter/>
+      },
+      {
+        path: '/CurrencyConverter',
+        element: <CurrencyConverter/>
       }
+      // {
+      //   path: '/SoundCloud',
+      //   element: <SoundCloudWidget/>
+      // }
     ],
   },
 ]);

@@ -6,7 +6,7 @@
 // drop down to select output currency {rates.currency_output}
 // result display rate {rates.currency_output.rate}
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function CurrencyConverter () {
     const [currencies, setCurrencies] = useState([]);
@@ -20,7 +20,7 @@ export default function CurrencyConverter () {
     const fetchCurrencies = async () => {
         try {
             const response = await fetch(
-                'https://api.getgeoapi.com/v2/currency/list?api_key=308a45b3f970b6b7823c3265a349923c71265379&format=HTML/list'
+                `https://api.getgeoapi.com/v2/currency/list?api_key=${API_KEY}&format=HTML/list`
             );
 
             if (!response.ok) {
