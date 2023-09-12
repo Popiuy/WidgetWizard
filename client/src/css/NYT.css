@@ -30,3 +30,14 @@
     border: 1px solid #ccc;
     border-top: none;
   }
+
+  /* .myDIV:hover + .hide {
+    display: block;
+    color: red;
+  } */
+  .hide {
+    display: none;
+  }
+  .article-row:hover + .hide {
+    display: block;
+  }

@@ -168,11 +168,9 @@ export default function NYTimesWidget () {
                                     <div>{article.headline}</div>
                                     <div>{article.byline}</div>
                                     <div>{article.date_published}</div>
-                                    {/* Display content below on hover */}
-                                    {/* <div>{article.blurb}</div>
-                                    <div>{article.abstract}</div>
-                                    <div>{article.source}</div>
-                                    <div>{article.nyt_url}</div> */}
+                                    <div className="hide">{article.abstract}</div>
+                                    <div className="hide">{article.section}</div>
+                                    <div className="hide">{article.nyt_url}</div>
                                     <img className="bookmark-btn" 
                                         src={BookmarkTag}
                                         onClick={saveBM}/>
@@ -186,11 +184,11 @@ export default function NYTimesWidget () {
                                     <div>{article.headline}</div>
                                     <div>{article.byline}</div>
                                     <div>{article.date_published}</div>
-                                    {/* Display content below on hover */}
-                                    {/* <div>{article.blurb}</div>
-                                    <div>{article.abstract}</div>
-                                    <div>{article.source}</div>
-                                <div>{article.nyt_url}</div> */}
+                                    <div className="hide">{article.kicker}</div>
+                                    <div className="hide">{article.abstract}</div>
+                                    <div className="hide">{article.section}</div>
+                                    <div className="hide">{article.subsection}</div>
+                                    <div className="hide">{article.nyt_url}</div>
                                     <img className="bookmark-btn" 
                                         src={BookmarkTag}
                                         onClick={saveBM}/>
@@ -204,11 +202,11 @@ export default function NYTimesWidget () {
                                     <div>{article.headline}</div>
                                     <div>{article.byline}</div>
                                     <div>{article.date_published}</div>
-                                    {/* Display content below on hover */}
-                                    {/* <div>{article.blurb}</div>
-                                    <div>{article.abstract}</div>
-                                    <div>{article.source}</div>
-                                <div>{article.nyt_url}</div> */}
+                                    <div className="hide">{article.abstract}</div>
+                                    <div className="hide">{article.section}</div>
+                                    <div className="hide">{article.subsection}</div>
+                                    <div className="hide">{article.source}</div>
+                                    <div className="hide">{article.nyt_url}</div>
                                     <img className="bookmark-btn" 
                                         src={BookmarkTag}
                                         onClick={saveBM}/>
@@ -222,11 +220,9 @@ export default function NYTimesWidget () {
                                     <div>{article.headline}</div>
                                     <div>{article.byline}</div>
                                     <div>{article.date_published}</div>
-                                    {/* Display content below on hover */}
-                                    {/* <div>{article.blurb}</div>
-                                    <div>{article.abstract}</div>
-                                    <div>{article.source}</div>
-                                <div>{article.nyt_url}</div> */}
+                                    <div className="hide">{article.blurb}</div>
+                                    <div className="hide">{article.abstract}</div>
+                                    <div className="hide">{article.nyt_url}</div>
                                     <img className="bookmark-btn" 
                                         src={BookmarkTag}
                                         onClick={saveBM}/>
@@ -240,11 +236,13 @@ export default function NYTimesWidget () {
                                     <div>{article.headline}</div>
                                     <div>{article.byline}</div>
                                     <div>{article.date_published}</div>
-                                    {/* Display content below on hover */}
-                                    {/* <div>{article.blurb}</div>
-                                    <div>{article.abstract}</div>
-                                    <div>{article.source}</div>
-                                <div>{article.nyt_url}</div> */}
+                                    <div className="hide">{article.blurb}</div>
+                                    <div className="hide">{article.kicker}</div>
+                                    <div className="hide">{article.abstract}</div>
+                                    <div className="hide">{article.section}</div>
+                                    <div className="hide">{article.subsection}</div>
+                                    <div className="hide">{article.source}</div>
+                                    <div className="hide">{article.nyt_url}</div>
                                     <img className="bookmark-btn" 
                                         src={BookmarkTag}
                                         onClick={saveBM}/>
