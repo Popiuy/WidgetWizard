@@ -18,6 +18,10 @@ const userSchema = new Schema(
         type: String,
         required: true,
       },
+        widgets: {
+            type: Schema.Types.ObjectId,
+            ref: 'Widget'
+        },
     },
     {
       toJSON: {
