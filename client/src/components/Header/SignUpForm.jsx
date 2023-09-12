@@ -59,20 +59,20 @@ export default function SignUpForm() {
 // </form> */}
 
         <form className="signup-form" onSubmit={handleFormSubmit}>
-        <div className="mb-3">
-        <label for="exampleInputUsername1" className="form-label">Username</label>
-        <input type="text" name="username" className="signup-username form-control" onChange={handleFormData} value={formData.username}></input>
-        </div>
-        <div className="mb-3">
-        <label for="exampleInputEmail1" className="form-label">Email address</label>
-        <input type="email" name="email" className="signup-email form-control" onChange={handleFormData} value={formData.email}></input>
-        </div>
-        <div className="mb-3">
-        <label for="exampleInputPassword1" className="form-label">Password</label>
-        <input type="password" name="password" className="signup-password form-control" onChange={handleFormData} value={formData.password}></input>
-        </div>
-        <button type="submit" className="btn btn-primary">Sign Up</button>
+            <div className="mb-3">
+                <label for="exampleInputUsername1" className="form-label">Username</label>
+                <input type="text" name="username" className="signup-username form-control" onChange={handleFormData} value={formData.username}></input>
+            </div>
+            <div className="mb-3">
+                <label for="exampleInputEmail1" className="form-label">Email address</label>
+                <input type="email" name="email" className="signup-email form-control" onChange={handleFormData} value={formData.email}></input>
+            </div>
+            <div className="mb-3">
+                <label for="exampleInputPassword1" className="form-label">Password</label>
+                <input type="password" name="password" className="signup-password form-control" onChange={handleFormData} value={formData.password}></input>
+            </div>
+            <button type="submit" className="btn btn-primary">Sign Up</button>
         </form>
-        </div>
+    </div>
 )
 }
