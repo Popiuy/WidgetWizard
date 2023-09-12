@@ -64,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: '/CurrencyConverter',
         element: <CurrencyConverter/>
+      },
+      {
+        path: '/nytimes',
+        element: <NYTimesWidget/>
       }
       // {
       //   path: '/SoundCloud',
