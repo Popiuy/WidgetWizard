@@ -51,7 +51,7 @@ export default function NYTimesWidget () {
         const wrapper = async () => {
             const NYTresponse = await fetch(`https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`)
             const NYTdata = await NYTresponse.json();
-            const rtsarticles = await NYTtoolbox.RTS(NYTdata.results);
+            const rtsarticles = await NYTtoolbox.RTF(NYTdata.results);
             setRTFarticles(rtsarticles);
         };
         wrapper();      
@@ -64,6 +64,10 @@ export default function NYTimesWidget () {
 
         switch (tab) {
             
+            case "real-time-feed":
+                const rtfarticles = await NYTtoolbox.RTF(NYTdata.results);
+                setRTFarticles(rtfarticles);
+                break;
             case "top-stories":
                 const tsarticles = await NYTtoolbox.TS(NYTdata.results);
                 setTSarticles(tsarticles);
