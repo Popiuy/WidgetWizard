@@ -17,21 +17,27 @@ const typeDefs = `
     type NYTbookmark {
         _id: ID!
         headline: String
+        blurb: String
         byline: String
         date_published: String
         abstract: String
-        blurb: String
+        kicker: String
         source: String
+        section: String
+        subsection: String
         nyt_url: String
     }
 
     input NYTbookmarkINPUT {
         headline: String
+        blurb: String
         byline: String
         date_published: String
         abstract: String
-        blurb: String
+        kicker: String
         source: String
+        section: String
+        subsection: String
         nyt_url: String
     }
 

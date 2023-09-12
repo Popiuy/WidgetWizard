@@ -56,8 +56,10 @@ export default function NYTimesWidget () {
         };
         wrapper();      
     },[])
+
 //Makes request (async)
 ////////
+
     const requestData = async () => {
         const NYTresponse = await fetch(url)
         const NYTdata = await NYTresponse.json();
@@ -137,7 +139,7 @@ export default function NYTimesWidget () {
                     <select onChange={(e)=>setSection(e.target.value)}>
                         { sections.map((section, i) => <option value={section} key={i}>{section}</option>)}
                     </select>
-                    <button className="request-button" onClick={requestData}></button>
+                    <button className="request-button" onClick={requestData}>search</button>
                 </div>
                 <div hidden={ tab !== "most-popular" }>
                     {/* introduce option to select between viewed, emailed and shared, within the past day, week and month */}
@@ -151,16 +153,18 @@ export default function NYTimesWidget () {
                         <option value="7">Week</option>
                         <option value="30">Month</option>
                     </select>
-                    <button className="request-button" onClick={requestData}></button>
+                    <button className="request-button" onClick={requestData}>search</button>
                 </div>
                 <div hidden={ tab !== "article-search" }>
                     {/* article search bar & submit button */}
                     <input value={searchBarInfo} placeholder="Type keywords here" 
                         onChange={(e)=>{setSearchBarInfo(e.target.value)}}></input>
-                    <button className="request-button" onClick={requestData}></button>
+                    <button className="request-button" onClick={requestData}>search</button>
                 </div>
             </div>
+            {/* main frame where articles will be displayed */}
             <div className = "nytimes-main-frame">
+                {/* real-time-feed/default */}
                     <div className="nytimes-display-frame" id="display-real-time-feed" hidden={ tab !== "real-time-feed" }>
                         <div>{tab}</div>
                             { RTFarticles.map((article) => (
@@ -175,6 +179,7 @@ export default function NYTimesWidget () {
                                 </div>
                             ))}
                     </div>
+                {/* top-stories display, hidden until tab gets clicked */}
                     <div className="nytimes-display-frame" id="display-top-stories" hidden={ tab !== "top-stories" }>
                         <div>{tab}</div>
                             { TSarticles.map((article, i) => (
@@ -191,6 +196,7 @@ export default function NYTimesWidget () {
                                 </div>
                             ))}
                     </div>
+                {/* most-popular display, hidden until gets clicked */}
                     <div className="nytimes-display-frame" id="display-most-popular" hidden={ tab !== "most-popular" }>
                         <div>{tab}</div>
                             { MParticles.map((article) => (
@@ -207,6 +213,7 @@ export default function NYTimesWidget () {
                                 </div>
                             ))}
                     </div>
+                {/* article-search display, hidden until gets clicked */}
                     <div className="nytimes-display-frame" id="display-article-search" hidden={ tab !== "article-search" }>
                         <div>{tab}</div>
                             { ASarticles.map((article) => (
@@ -221,6 +228,7 @@ export default function NYTimesWidget () {
                                 </div>
                             ))}
                     </div>
+                {/* bookmarks display, hidden until tab gets clicked */}
                     <div className="nytimes-display-frame" id="display-bookmarks" hidden={ tab !== "bookmarks" }>
                         <div>{tab}</div>
                             { BMarticles.map((article) => (
@@ -244,8 +252,6 @@ export default function NYTimesWidget () {
         
     )
 }
-
-
 
 //TODOS
 // - fetch and render timing
