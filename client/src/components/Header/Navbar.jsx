@@ -12,7 +12,7 @@ export default function NavBarComponent () {
 
   return (
     <header>
-      <nav className="navbar navbar-color navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-color navbar-expand-lg bg-body-tertiary d-flex justify-content-between mx-4">
           <div className="nav">
             <a className="navbar-brand website-title" href="/">WidgetWizard</a>
             <img className="wizard-img" src={wizard} alt="Wizard"></img>

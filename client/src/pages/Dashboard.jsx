@@ -74,7 +74,7 @@ const Dashboard = () => {
             }}
           >
             <a className="dropdown-item" href="#">
-            Joke Widget
+              Joke Widget
             </a>
           </li>
           <li

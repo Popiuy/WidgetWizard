@@ -3,7 +3,7 @@
 }
 
 .wizard-img {
-    height: 40px;
+    height: 100px;
 }
 
 .website-title {
@@ -24,8 +24,13 @@
 
 .dashboard {
     border: black 3px solid;
-    padding: 20rem;
     margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 .btn-space {
