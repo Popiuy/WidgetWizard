@@ -1,6 +1,8 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const nasa_favorites_schema = require('./NASA');
+const NYTbookmarkSchema = require('./NYTbookmark');
+const NBATeamDataSchema = require('./NBATeamData');
+
 const userSchema = new Schema(
     {
       username: {
@@ -22,15 +24,12 @@ const userSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'Widget'
         },
-        NASA_favorites: [nasa_favorites_schema]
-
-    }
-);
-
-userSchema.pre('save', async (next) => {
-    if (this.isNew || this.isModified('password')) {
-        const saltRounds = 10;
-        this.password = await bcrypt.hash(this.passwword, saltRounds);
+        nyt_bookmarks: [NYTbookmarkSchema]
+    },
+    {
+      toJSON: {
+        virtuals: true,
+      },
     }
   );
 userSchema.pre('save', async function (next) {
