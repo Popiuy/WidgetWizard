@@ -15,6 +15,12 @@ const resolvers = {
         },
         widget: async (parent, {widgetId}) => {
             return await Widget.findById(widgetId);
+        },
+        getNASAfavorites: async (parent, args, context) => {
+            return await User.findById(
+                context.user._id,
+                'NASA_favorites'   
+            )
         }
     },
     Mutation: {
@@ -69,6 +75,15 @@ const resolvers = {
             const deletedUser = await User.deleteOne({userId})
             alert(`${user.username}'s account has been deleted.`)
         },
+        NASAaddFavorite: async (parent, {photoData}, context) => {
+            const user = await User.findByIdAndUpdate(
+                {_id: context.user._id},
+                {$addToSet: { NASA_favorites: photoData}},
+                { new: true }
+            )
+
+            return user.NASA_favorites;
+        }
 
     }
 };
