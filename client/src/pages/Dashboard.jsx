@@ -9,6 +9,7 @@ import APODWidget from '../components/Widgets/NASA_apod';
 import NBAWidget from '../components/Widgets/NBA';
 import JokeAPIWidget from '../components/widgets/JokeAPI';
 import BreweryWidget from '../components/Widgets/OpenBrewery';
+import CatFactWidget from '../components/widgets/CatFact';
 
 const Dashboard = () => {
   const [selectedWidgets, setSelectedWidgets] = useState([]);
@@ -83,6 +84,15 @@ const Dashboard = () => {
           >
             <a className="dropdown-item" href="#">
               OpenBreweryWidget
+            </a>
+          </li>
+          <li
+            onClick={() => {
+              addWidget(CatFactWidget);
+            }}
+          >
+            <a className="dropdown-item" href="#">
+              Random Cat Fact
             </a>
           </li>
           <li

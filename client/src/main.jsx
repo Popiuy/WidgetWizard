@@ -6,15 +6,6 @@ import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import About from './pages/About';
 import ErrorPage from './pages/ErrorPage';
-import SoundCloudWidget from './components/Widgets/Soundcloud.jsx';
-import NBAWidget from './components/Widgets/NBA.jsx';
-import BreweryWidget from './components/Widgets/OpenBrewery.jsx';
-import BoredAPIWidget from './components/Widgets/Bored.jsx';
-import JokeAPIWidget from './components/widgets/JokeAPI.jsx';
-// import SoundCloudWidget from './components/Widgets/Soundcloud.jsx';
-import CurrencyConverter from './components/Widgets/Currency-Converter.jsx';
-// import NYT
-
 
 const router = createBrowserRouter([
   {
@@ -28,7 +19,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard',
-        // change back to /dashboard/:id
+        // change back to /dashboard/username
         element: <Dashboard />
       },
       {
@@ -39,33 +30,9 @@ const router = createBrowserRouter([
         path: '/about',
         element: <About />
       },
-      {
-        path: '/testing',
-        element: <SoundCloudWidget/>
-      },
-      {
-        path: '/OpenBrewery',
-        element: <BreweryWidget/>
-      },
-      {
-        path: '/NBA',
-        element: <NBAWidget/>
-      },
-      {
-        path: '/Bored',
-        element: <BoredAPIWidget/>
-      },
-      {
-        path: '/Joke',
-        element: <JokeAPIWidget/>
-      },
-      {
-        path: '/CurrencyConverter',
-        element: <CurrencyConverter/>
-      }
       // {
-      //   path: '/SoundCloud',
-      //   element: <SoundCloudWidget/>
+      //   path: '/testing',
+      //   element: </>
       // }
     ],
   },
