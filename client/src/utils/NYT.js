@@ -61,5 +61,5 @@ class NYTtoolbox {
 
 
 
-export default new NYTtoolbox;
+export default new NYTtoolbox();
 

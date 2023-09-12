@@ -19,7 +19,7 @@ export default function NYTimesWidget () {
     const sections = ['all','arts', 'automobiles', 'books/review', 'business', 'fashion', 'food', 'health', 'home', 'insider', 'magazine', 'movies', 'nyregion', 'obituaries', 'opinion', 'politics', 'realestate', 'science', 'sports', 'sundayreview', 'technology', 'theater', 't-magazine', 'travel', 'upshot', 'us', 'world']
     const {loading, bmdata } = useQuery(GET_NYT_BOOKMARKS);
     const [bookmarkArticle, {error}] = useMutation(BOOKMARK_ARTICLE);
-    const [RTSarticles, setRTSarticles] = useState([])
+    const [RTFarticles, setRTFarticles] = useState([])
     const [TSarticles, setTSarticles] = useState([])
     const [MParticles, setMParticles] = useState([])
     const [ASarticles, setASarticles] = useState([])
@@ -58,7 +58,7 @@ export default function NYTimesWidget () {
         switch (tab) {
             case "real-time-feed": 
                 const rtsarticles = await NYTtoolbox.RTS(NYTdata.results);
-                setRTSarticles(rtsarticles);
+                setRTFarticles(rtsarticles);
                 break;
             case "top-stories":
                 const tsarticles = await NYTtoolbox.TS(NYTdata.results);
@@ -76,6 +76,12 @@ export default function NYTimesWidget () {
                 setBMarticles(bmdata)
                 break;
         }
+
+        console.log('RTF: ', RTFarticles);
+        console.log('TSL ', TSarticles);
+        console.log('MP: ', MParticles);
+        console.log('AS: ', ASarticles);
+        console.log('BM: ', BMarticles);
     }
 
     const saveBM = async (article)=>{
@@ -184,7 +190,7 @@ export default function NYTimesWidget () {
                 { tab === "real-time-feed" ? 
                     <div className="nytimes-display-frame" id="display-real-time-feed">
                         <div>{tab}</div>
-                            { RTSarticles.map((article) => (
+                            { RTFarticles.map((article) => (
                                 <div className="article-row">
                                     <div>{article.headline}</div>
                                     <div>{article.byline}</div>
