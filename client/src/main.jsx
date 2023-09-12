@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import About from './pages/About';
 import ErrorPage from './pages/ErrorPage';
+
 import SoundCloudWidget from './components/Widgets/Soundcloud.jsx';
 import NBAWidget from './components/Widgets/NBA.jsx';
 import BreweryWidget from './components/Widgets/OpenBrewery.jsx';
@@ -16,6 +17,7 @@ import CurrencyConverter from './components/Widgets/Currency-Converter.jsx';
 import NYT from './utils/NYT.js';
 import NYTimesWidget from './components/Widgets/NYTimes.jsx';
 // import NYT
+
 
 
 const router = createBrowserRouter([
@@ -29,8 +31,9 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: '/dashboard/',
-        // change back to /dashboard/:id
+
+        path: '/dashboard',
+        // change back to /dashboard/username
         element: <Dashboard />
       },
       {
@@ -70,8 +73,8 @@ const router = createBrowserRouter([
         element: <NYTimesWidget/>
       }
       // {
-      //   path: '/SoundCloud',
-      //   element: <SoundCloudWidget/>
+      //   path: '/testing',
+      //   element: </>
       // }
     ],
   },
