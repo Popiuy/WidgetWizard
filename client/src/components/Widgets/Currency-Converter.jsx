@@ -62,9 +62,9 @@ export default function CurrencyConverter () {
         }
     };
 
-useEffect(() => {
-    fetchExchangeRate ();
-      }, [currencyInput, currencyOutput]);
+// useEffect(() => {
+//     fetchExchangeRate ();
+//       }, [currencyInput, currencyOutput]);
 
 return (
     <div>
@@ -72,10 +72,9 @@ return (
             <div>
                 <title>Currency Converter</title>
                 <form>
-                    <div controlId="currencyInput">
+                    <div>
                         <label>From Currency</label>
                         <select
-                            as="select"
                             value={currencyInput}
                             onChange={(e) => setCurrencyInput(e.target.value)}
                         >
@@ -88,10 +87,9 @@ return (
                         </select>
                     </div>
 
-                    <div controlId="currencyOutput">
+                    <div>
                         <label>To Currency</label>
                         <select
-                            as="select"
                             value={currencyOutput}
                             onChange={(e) => setCurrencyOutput(e.target.value)}
                         >
