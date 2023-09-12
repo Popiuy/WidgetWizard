@@ -47,19 +47,23 @@ export default function NYTimesWidget () {
         
     }, [tab, section, days, most, searchBarInfo] );
 
+    useEffect(()=>{
+        const wrapper = async () => {
+            const NYTresponse = await fetch(`https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7`)
+            const NYTdata = await NYTresponse.json();
+            const rtsarticles = await NYTtoolbox.RTS(NYTdata.results);
+            setRTFarticles(rtsarticles);
+        };
+        wrapper();      
+    },[])
 //Makes request (async)
 ////////
     const requestData = async () => {
         const NYTresponse = await fetch(url)
         const NYTdata = await NYTresponse.json();
 
-        //We want the switch case to run AFTER NYTdata is ready...
-
         switch (tab) {
-            case "real-time-feed": 
-                const rtsarticles = await NYTtoolbox.RTS(NYTdata.results);
-                setRTFarticles(rtsarticles);
-                break;
+            
             case "top-stories":
                 const tsarticles = await NYTtoolbox.TS(NYTdata.results);
                 setTSarticles(tsarticles);
@@ -112,21 +116,7 @@ export default function NYTimesWidget () {
     
     };
 
-    const chooseTab = (value) => {
-        setTab(value);
-        
-
-        const frameId = 'display-' + value;
-        const frame = getElementsByClass("nytimes-display-frame");
-        const tab = getElementsByClass("nytimes-navbar-tab");
     
-        
-        frame.forEach((frame) => frame.style.display = "none");
-        tab.forEach((tab) => {tab.className = tab.className.replace(" active", "")});
-    
-        getElementById(value).className += "active";
-        getElementById(frameId).style.display = "block";
-    };
 
     // const pageLoad = async () => {
     //     const iResponse = await fetch(url);
@@ -182,13 +172,13 @@ export default function NYTimesWidget () {
                 </div>
                 <div hidden={ tab !== "article-search" }>
                     {/* article search bar & submit button */}
-                    <input value={searchBarInfo} placeholder="Type keywords here" onChange={(e)=>{setSearchBarInfo(e.target.value)}}></input>
+                    <input value={searchBarInfo} placeholder="Type keywords here" 
+                        onChange={(e)=>{setSearchBarInfo(e.target.value)}}></input>
                     <button className="request-button" onClick={requestData}></button>
                 </div>
             </div>
             <div className = "nytimes-main-frame">
-                { tab === "real-time-feed" ? 
-                    <div className="nytimes-display-frame" id="display-real-time-feed">
+                    <div className="nytimes-display-frame" id="display-real-time-feed" hidden={ tab !== "real-time-feed" }>
                         <div>{tab}</div>
                             { RTFarticles.map((article) => (
                                 <div className="article-row">
@@ -206,8 +196,7 @@ export default function NYTimesWidget () {
                                 </div>
                             ))}
                     </div>
-                : tab === "top-stories" ?
-                    <div className="nytimes-display-frame" id="display-top-stories">
+                    <div className="nytimes-display-frame" id="display-top-stories" hidden={ tab !== "top-stories" }>
                         <div>{tab}</div>
                             { TSarticles.map((article, i) => (
                                 <div className="article-row" key={i}>
@@ -225,8 +214,7 @@ export default function NYTimesWidget () {
                                 </div>
                             ))}
                     </div>
-                : tab === "most-popular" ?
-                    <div className="nytimes-display-frame" id="display-most-popular">
+                    <div className="nytimes-display-frame" id="display-most-popular" hidden={ tab !== "most-popular" }>
                         <div>{tab}</div>
                             { MParticles.map((article) => (
                                 <div className="article-row">
@@ -244,8 +232,7 @@ export default function NYTimesWidget () {
                                 </div>
                             ))}
                     </div>
-                : tab === "article-search" ?
-                    <div className="nytimes-display-frame" id="display-article-search">
+                    <div className="nytimes-display-frame" id="display-article-search" hidden={ tab !== "article-search" }>
                         <div>{tab}</div>
                             { ASarticles.map((article) => (
                                 <div className="article-row">
@@ -263,8 +250,7 @@ export default function NYTimesWidget () {
                                 </div>
                             ))}
                     </div>
-                : tab === "bookmarks" ?
-                    <div className="nytimes-display-frame" id="display-bookmarks">
+                    <div className="nytimes-display-frame" id="display-bookmarks" hidden={ tab !== "bookmarks" }>
                         <div>{tab}</div>
                             { BMarticles.map((article) => (
                                 <div className="article-row">
@@ -282,8 +268,6 @@ export default function NYTimesWidget () {
                                 </div>
                             ))}
                     </div>
-                : <div>This won't happen.</div>
-                }    
             </div>
         </div>
         

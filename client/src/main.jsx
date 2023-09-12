@@ -13,6 +13,8 @@ import BoredAPIWidget from './components/Widgets/Bored.jsx';
 import JokeAPIWidget from './components/widgets/JokeAPI.jsx';
 // import SoundCloudWidget from './components/Widgets/Soundcloud.jsx';
 import CurrencyConverter from './components/Widgets/Currency-Converter.jsx';
+import NYT from './utils/NYT.js';
+import NYTimesWidget from './components/Widgets/NYTimes.jsx';
 // import NYT
 
 
@@ -27,7 +29,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: '/dashboard',
+        path: '/dashboard/',
         // change back to /dashboard/:id
         element: <Dashboard />
       },
@@ -41,7 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/testing',
-        element: <SoundCloudWidget/>
+        element: <NYTimesWidget/>
       },
       {
         path: '/OpenBrewery',
