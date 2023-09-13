@@ -7,7 +7,6 @@ import CatFactWidget from '../components/Widgets/CatFact';
 // import webcamWidget from '../components/Widgets/Webcam';
 import NYTimesWidget from '../components/Widgets/NYTimes';
 // import SoundCloudWidget from '../components/Widgets/SoundCloud';
-import NYTimesWidget from '../components/Widgets/NYTimes';
 import CurrencyConverter from '../components/Widgets/Currency-Converter'
 
 const getWidget = (widgetName) => {
