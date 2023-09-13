@@ -13,15 +13,15 @@ const About = () => {
         <div>
             <div className="row row-cols-1 row-cols-md-4 g-4 mt-2">
                 <div className="col d-flex justify-content-center">
-                    <div className="card" style={cardStyle}>
-                        <img src={minhee} className="card-img-top" alt="Minhee's pfp"></img>
-                        <div className="card-body">
-                            <h5 className="card-title">Minhee Chung</h5>
-                            <a href="https://www.linkedin.com/in/minhee-chung/" target="_blank" className="btn btn-space btn-primary">LinkedIn</a>
-                            <a href="https://github.com/mchung03" target="_blank" className="btn btn-space btn-primary">GitHub</a>
+                        <div className="card" style={cardStyle}>
+                            <img src={justin} className="card-img-top" alt="Justin's pfp"></img>
+                            <div className="card-body">
+                                <h5 className="card-title">Justin Choi</h5>
+                                <a href="https://www.linkedin.com/in/justinschoi93/" target="_blank" className="btn btn-space btn-primary">LinkedIn</a>
+                                <a href="https://github.com/justinschoi93" target="_blank" className="btn btn-space btn-primary">GitHub</a>
+                            </div>
                         </div>
                     </div>
-                </div>
                 <div className="col d-flex justify-content-center">
                     <div className="card" style={cardStyle}>
                         <img src={ryan} className="card-img-top" alt="Ryan's pfp"></img>
@@ -34,11 +34,11 @@ const About = () => {
                 </div>
                 <div className="col d-flex justify-content-center">
                     <div className="card" style={cardStyle}>
-                        <img src={justin} className="card-img-top" alt="Justin's pfp"></img>
+                        <img src={minhee} className="card-img-top" alt="Minhee's pfp"></img>
                         <div className="card-body">
-                            <h5 className="card-title">Justin Choi</h5>
-                            <a href="https://www.linkedin.com/in/justinschoi93/" target="_blank" className="btn btn-space btn-primary">LinkedIn</a>
-                            <a href="https://github.com/justinschoi93" target="_blank" className="btn btn-space btn-primary">GitHub</a>
+                            <h5 className="card-title">Minhee Chung</h5>
+                            <a href="https://www.linkedin.com/in/minhee-chung/" target="_blank" className="btn btn-space btn-primary">LinkedIn</a>
+                            <a href="https://github.com/mchung03" target="_blank" className="btn btn-space btn-primary">GitHub</a>
                         </div>
                     </div>
                 </div>
