@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import {NASA_ADD_FAVORITE} from '../../utils/mutations';
 import { GET_NASA_FAVORITES } from '../../utils/queries';
+import nasa_logo from '../../images/nasa_official.png';
 
 export default function APODWidget() {
   const [photoData, setPhotoData] = useState({
@@ -58,6 +59,7 @@ export default function APODWidget() {
     <div>
     <div className="card" style={{ width: '19rem' }}>
       <div className="card-body">
+        <img className="nasa-logo" src={nasa_logo}></img>
         <h5 className="card-title">Astronomy Picture of the Day</h5>
         {viewFavorites ? (
           <div className="favorites-display">

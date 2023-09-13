@@ -7,16 +7,17 @@ import { GET_ME } from '../utils/queries';
 import { useQuery, useMutation } from '@apollo/client';
 import Draggable from 'react-draggable';
 
-// import currencyWidget from '../components/Widgets/Currency-Converter'
-// import BoredAPIWidget from '../components/Widgets/Bored';
-// import APODWidget from '../components/Widgets/NASA_apod';
-// import NBAWidget from '../components/Widgets/NBA';
-// import JokeAPIWidget from '../components/Widgets/JokeAPI';
-// import BreweryWidget from '../components/Widgets/OpenBrewery';
-// import CatFactWidget from '../components/Widgets/CatFact';
-// import webcamWidget from '../components/widgets/Webcam';
-// import NYTimesWidget from '../components/Widgets/NYTimes';
-// import SoundCloudWidget from '../components/Widgets/Soundcloud';
+import brewLogo from '.././images/BREWERY.jpg'
+import nbaLogo from '.././images/nbalogopt2.png'
+import nasaLogo from '.././images/nasa.png'
+import soundcloudLogo from '.././images/soundcloud.jpg'
+import nytLogo from '.././images/nyt.jpg'
+import randomcatfactLogo from '.././images/store-cat-img.png'
+import jokeLogo from '.././images/jokes.jpeg'
+import boredLogo from '.././images/bored.jpg'
+import currencyLogo from '.././images/currency.jpg'
+import webcamLogo from '.././images/webcam.jpg'
+
 import getWidget from '../utils/widgets';
 
 
@@ -74,97 +75,126 @@ const Dashboard = () => {
           Add Widget
         </button>
         <ul className="dropdown-menu">
-          <li
+        <li
             onClick={() => {
               addWidgetHandler('APODWidget');
             }}
           >
-            <a className="dropdown-item" href="#">
-              Astronomy Picture of the Day
-            </a>
+            <div className="widget-option">
+                <a className="dropdown-item" href="#">
+                Astronomy Picture of the Day!
+                </a>
+                <img className="nasalogo" src={nasaLogo} alt="NASA Logo" />
+            </div>
           </li>
           <li
             onClick={() => {
               addWidgetHandler('BoredAPIWidget');
             }}
           >
-            <a className="dropdown-item" href="#">
-              BoredAPI
-            </a>
+            <div className="widget-option">
+                <a className="dropdown-item" href="#">
+                BoredAPI!
+                </a>
+                <img className="boredlogo" src={boredLogo} alt="Bored Logo" />
+            </div>
           </li>
           <li
             onClick={() => {
               addWidgetHandler('CurrencyConverter');
             }}
           >
-            <a className="dropdown-item" href="#">
-              Currency Widget
-            </a>
+            <div className="widget-option">
+                <a className="dropdown-item" href="#">
+                Currency Widget!
+                </a>
+                <img className="currencylogo" src={currencyLogo} alt="Currency Logo" />
+            </div>
           </li>
           <li
             onClick={() => {
               addWidgetHandler('JokeAPIWidget');
             }}
           >
-            <a className="dropdown-item" href="#">
-              Joke Widget
-            </a>
+            <div className="widget-option">
+                <a className="dropdown-item" href="#">
+                Joke Widget!
+                </a>
+                <img className="jokelogo" src={jokeLogo} alt="Joke Logo" />
+            </div>
           </li>
           <li
             onClick={() => {
               addWidgetHandler('NBAWidget');
             }}
           >
-            <a className="dropdown-item" href="#">
-              NBAWidget
-            </a>
+            <div className="widget-option">
+                <a className="dropdown-item" href="#">
+                 NBAWidget!
+                </a>
+                <img className="nbalogo" src={nbaLogo} alt="NBA Logo" />
+            </div>
           </li>
           <li
             onClick={() => {
               addWidgetHandler('NYTimesWidget');
             }}
           >
-            <a className="dropdown-item" href="#">
-              New York Times
-            </a>
+            <div className="widget-option">
+                <a className="dropdown-item" href="#">
+                New York Times!
+                </a>
+                <img className="nytlogo" src={nytLogo} alt="NBA Logo" />
+            </div>
           </li>
           <li
             onClick={() => {
               addWidgetHandler('BreweryWidget');
             }}
           >
-            <a className="dropdown-item" href="#">
-              OpenBreweryWidget
-            </a>
+            <div className="widget-option">
+                <a className="dropdown-item" href="#">
+                OpenBreweryWidget!
+                </a>
+                <img className="brewlogo" src={brewLogo} alt="Brewery Logo" />
+            </div>
           </li>
           <li
             onClick={() => {
               addWidgetHandler('CatFactWidget');
             }}
           >
-            <a className="dropdown-item" href="#">
-              Random Cat Fact
-            </a>
+            <div className="widget-option">
+                <a className="dropdown-item" href="#">
+                Random Cat Fact!
+                </a>
+                <img className="catlogo" src={randomcatfactLogo} alt="Brewery Logo" />
+            </div>
           </li>
           <li
             onClick={() => {
               addWidgetHandler('SoundCloudWidget');
             }}
           >
-            <a className="dropdown-item" href="#">
-              Soundcloud
-            </a>
+            <div className="widget-option">
+                <a className="dropdown-item" href="#">
+                Soundcloud!
+                </a>
+                <img className="catlogo" src={soundcloudLogo} alt="Brewery Logo" />
+            </div>
           </li>
           <li
             onClick={() => {
               addWidgetHandler('webcamWidget');
             }}
           >
-            <a className="dropdown-item" href="#">
-              Webcams
-            </a>
+            <div className="widget-option">
+                <a className="dropdown-item" href="#">
+                Webcams from around the world!
+                </a>
+                <img className="catlogo" src={webcamLogo} alt="Brewery Logo" />
+            </div>
           </li>
-
         </ul>
       </div>
       <div className="dashboard">
