@@ -9,7 +9,7 @@ import ErrorPage from './pages/ErrorPage';
 
 import NBAWidget from './components/Widgets/NBA.jsx';
 import BreweryWidget from './components/Widgets/OpenBrewery.jsx';
-import BoredAPIWidget from './components/Widgets/Bored.jsx';
+// import BoredAPIWidget from './components/Widgets/Bored.jsx';
 import JokeAPIWidget from './components/Widgets/JokeAPI.jsx';
 // import SoundCloudWidget from './components/Widgets/Soundcloud.jsx';
 import CurrencyConverter from './components/Widgets/Currency-Converter.jsx';
@@ -59,10 +59,6 @@ const router = createBrowserRouter([
       {
         path: '/NBA',
         element: <NBAWidget/>
-      },
-      {
-        path: '/Bored',
-        element: <BoredAPIWidget/>
       },
       {
         path: '/Joke',
