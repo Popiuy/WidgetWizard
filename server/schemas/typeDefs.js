@@ -97,7 +97,6 @@ const typeDefs = `
     }
     
     input nba_favorites_schema_input {
-        _id: ID!
         name: String
         city: String
         logo: String
@@ -121,9 +120,9 @@ const typeDefs = `
         login(username: String!, password: String!): Auth
         addWidget(widgetId: ID!): Widget
         banUser(userId: ID!, password: String!): Auth
-        NASAaddFavorite(photoData: nasa_favorites_schema_input): nasa_favorites_schema
-        BREWaddFavorite(brewData: brew_favorites_schema_input): brew_favorites_schema
-        NBAaddFavorite(teamData: nba_favorites_schema_input): nba_favorites_schema
+        NASAaddFavorite(photoData: nasa_favorites_schema_input): [nasa_favorites_schema]
+        BREWaddFavorite(brewData: brew_favorites_schema_input): [brew_favorites_schema]
+        NBAaddFavorite(teamData: nba_favorites_schema_input): [nba_favorites_schema]
     }
 `;
 

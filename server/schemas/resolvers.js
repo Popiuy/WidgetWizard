@@ -100,7 +100,7 @@ const resolvers = {
                 {$addToSet: { BREW_favorites: brewData}},
                 { new: true }
             )
-            return user.NASA_favorites;
+            return user.BREW_favorites;
         },
         NBAaddFavorite: async (parent, {teamData}, context) => {
             const user = await User.findByIdAndUpdate(
@@ -108,7 +108,7 @@ const resolvers = {
                 {$addToSet: { NBA_favorites: teamData}},
                 { new: true }
             )
-            return user.NASA_favorites;
+            return user.NBA_favorites;
         },
 
     }
