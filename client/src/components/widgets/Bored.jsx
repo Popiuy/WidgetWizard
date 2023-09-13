@@ -33,10 +33,10 @@ export default function BoredAPIWidget() {
         fetchNewActivity();
     }, []);
 
-    const addToFavorites = async () => {
-        // Implement your logic to add photoData to favorites here
-        console.log(activity);
-      };
+    // const addToFavorites = async () => {
+    //     // Implement your logic to add photoData to favorites here
+    //     console.log(activity);
+    //   };
 
     return (
         <div>
