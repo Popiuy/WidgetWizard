@@ -4,7 +4,7 @@ import NBAWidget from '../components/Widgets/NBA';
 import JokeAPIWidget from '../components/Widgets/JokeAPI';
 import BreweryWidget from '../components/Widgets/OpenBrewery';
 import CatFactWidget from '../components/Widgets/CatFact';
-import webcamWidget from '../components/widgets/Webcam';
+import webcamWidget from '../components/Widgets/Webcam';
 import NYTimesWidget from '../components/Widgets/NYTimes';
 import SoundCloudWidget from '../components/Widgets/Soundcloud';
 import CurrencyConverter from '../components/Widgets/Currency-Converter'
