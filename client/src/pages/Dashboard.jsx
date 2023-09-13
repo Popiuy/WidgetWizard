@@ -50,9 +50,14 @@ const Dashboard = () => {
       refetchQueries: [GET_ME]
     });
     setSelectedWidgets((currentWidgets) =>
-      currentWidgets.filter((widget) => widget.name !== widgetName),
-      console.log(widgetName),
-    );
+    // currentWidgets.filter((item) => item !== widget)
+    // );
+    {
+    const updatedWidgets = { ...currentWidgets };
+    delete updatedWidgets[widgetName];
+    return updatedWidgets;
+  });
+
   };
 
   const eventLogger = (e, data) => {
