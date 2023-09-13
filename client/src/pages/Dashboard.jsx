@@ -10,6 +10,7 @@ import NBAWidget from '../components/Widgets/NBA';
 import JokeAPIWidget from '../components/Widgets/JokeAPI';
 import BreweryWidget from '../components/Widgets/OpenBrewery';
 import CatFactWidget from '../components/Widgets/CatFact';
+import webcamWidget from '../components/widgets/Webcam';
 import NYTimesWidget from '../components/Widgets/NYTimes';
 import SoundCloudWidget from '../components/Widgets/Soundcloud';
 
@@ -125,6 +126,16 @@ const Dashboard = () => {
               Soundcloud
             </a>
           </li>
+          <li
+            onClick={() => {
+              addWidget(webcamWidget);
+            }}
+          >
+            <a className="dropdown-item" href="#">
+              Webcams
+            </a>
+          </li>
+
         </ul>
       </div>
       <div className="dashboard">

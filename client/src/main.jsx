@@ -17,6 +17,7 @@ import CurrencyConverter from './components/Widgets/Currency-Converter.jsx';
 import NYT from './utils/NYT.js';
 import NYTimesWidget from './components/Widgets/NYTimes.jsx';
 // import NYT
+import webcamWidget from './components/Widgets/Webcam.jsx';
 
 
 
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
       {
         path: '/nytimes',
         element: <NYTimesWidget/>
+      },
+      {
+        path: '/Webcam',
+        element: <webcamWidget/>
       }
       // {
       //   path: '/testing',
