@@ -31,7 +31,7 @@ export default function BoredAPIWidget() {
 
     useEffect(() => {
         fetchNewActivity();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
     }, []);
 
     // const addToFavorites = async () => {
