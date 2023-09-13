@@ -1,8 +1,8 @@
-import { Link } from 'react';
+// import { Link } from 'react';
 import Auth from '../../utils/auth';
 import wizard from '../../images/wizard-modified.png';
 import { useState } from 'react';
-import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
+import {  Nav, Modal, Tab } from 'react-bootstrap';
 import SignUpForm from './SignUpForm';
 import LoginForm from './loginForm';
 

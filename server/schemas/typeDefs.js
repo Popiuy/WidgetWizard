@@ -4,14 +4,14 @@ const typeDefs = `
         username: String!
         email: String!
         password: String!
-        widgets: [Widget]
+        widgets: [String]
         nyt_bookmarks: [NYTbookmark]
     }
-    
+
     type Widget {
         _id: ID!
-        title: String!
-        description: String!
+        title: String
+        componentName: String
     }
     
     type NYTbookmark {
@@ -97,7 +97,6 @@ const typeDefs = `
     }
     
     input nba_favorites_schema_input {
-        _id: ID!
         name: String
         city: String
         logo: String
@@ -106,8 +105,7 @@ const typeDefs = `
     }
 
     type Query {
-        widget(widgetId: ID!): Widget
-        widgets: [Widget]
+        me: User
         user(userId: ID!): User
         users: [User]
         getNASAfavorites: [nasa_favorites_schema]
@@ -119,11 +117,12 @@ const typeDefs = `
     type Mutation {
         createUser(username: String!, email: String!, password: String! ): Auth
         login(username: String!, password: String!): Auth
-        addWidget(widgetId: ID!): Widget
+        addWidget(widgetName: String): User
+        deleteWidget(widgetName: String): User
         banUser(userId: ID!, password: String!): Auth
-        NASAaddFavorite(photoData: nasa_favorites_schema_input): nasa_favorites_schema
-        BREWaddFavorite(brewData: brew_favorites_schema_input): brew_favorites_schema
-        NBAaddFavorite(teamData: nba_favorites_schema_input): nba_favorites_schema
+        NASAaddFavorite(photoData: nasa_favorites_schema_input): [nasa_favorites_schema]
+        BREWaddFavorite(brewData: brew_favorites_schema_input): [brew_favorites_schema]
+        NBAaddFavorite(teamData: nba_favorites_schema_input): [nba_favorites_schema]
     }
 `;
 

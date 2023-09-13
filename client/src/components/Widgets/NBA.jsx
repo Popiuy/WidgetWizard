@@ -17,8 +17,8 @@ export default function NBAWidget() {
     console.log(teamData);
   }, [teamData]);
 
-  const [addToFavorites, {error}] = useMutation(NASA_ADD_FAVORITE);
-  const {loading, data} = useQuery(GET_NBA_FAVORITES);
+  const [addToFavorites] = useMutation(NBA_ADD_FAVORITE);
+  const {data} = useQuery(GET_NBA_FAVORITES);
   const [viewFavorites, setViewFavorites] = useState(false) 
 
   const getData = async () => {

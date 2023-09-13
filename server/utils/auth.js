@@ -11,6 +11,8 @@ module.exports = {
         }
     }),
     authMiddleware: function ({req}) {
+      console.log(req.headers.authorization)
+
         let token = req.query.token || req.headers.authorization;
     
         if (req.headers.authorization) {
@@ -20,6 +22,9 @@ module.exports = {
         if (!token) {
           return req;
         }
+
+
+        console.log(token)
     
         try {
           const { data } = jwt.verify(token, secret, { maxAge: expiration });
