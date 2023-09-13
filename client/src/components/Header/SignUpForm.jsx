@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { CREATE_USER } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 import Auth from '../../utils/auth';
+import Swal from 'sweetalert2';
 
 export default function SignUpForm() {
 
@@ -25,7 +26,8 @@ export default function SignUpForm() {
     const handleFormSubmit = async (e) => {
         e.preventDefault();
 
-        const { data } = await createUser({
+        try {
+            const { data } = await createUser({
             variables: { ...formData }
         });
 
@@ -35,26 +37,23 @@ export default function SignUpForm() {
                 user: data.createUser.user
             }
         );
-
         setFormData({
             username: '',
             email: '',
             password: '',
         })
+        } catch(err) {
+            Swal.fire(
+                'Duplicate user!',
+                'Could not signup',
+                'error'
+              )
+        }
+
     }
 
     return (
         <div>
-{/* /* // <form className="signup-form" onSubmit={handleFormSubmit}>
-//     <label>Username: </label>
-//     <input className="signup-username" type='text' name="username" onChange={handleFormData} value={formData.username} placeholder='MikeWazowski'></input>
-//     <label>Email: </label>
-//     <input className="signup-email" type="email" name="email" onChange={handleFormData} value={formData.email} placeholder="greenmamba@monster.inc"></input>
-//     <label>Password: </label>
-//     <input className="signup-password" type="password" name="password" onChange={handleFormData} value={formData.password} placeholder="password"></input>
-//     <button type="submit">Sign Up</button>
-// </form> */}
-
         <form className="signup-form" onSubmit={handleFormSubmit}>
             <div className="mb-3">
                 <label htmlFor="exampleInputUsername1" className="form-label">Username</label>

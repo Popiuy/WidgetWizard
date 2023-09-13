@@ -25,6 +25,7 @@
   "dependencies": {
     "@apollo/server": "^4.9.3",
     "mongodb": "^6.0.0",
-    "react-bootstrap": "^2.8.0"
+    "react-bootstrap": "^2.8.0",
+    "sweetalert2": "^11.7.27"
   }
 }
