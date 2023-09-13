@@ -43,6 +43,8 @@ export default function webcamWidget() {
       setCityInfo({ latitude: '40.7128', longitude: '-74.0060' });
     }, []);
 
+    
+
     return (
       <div>
         <div className="search-form">
