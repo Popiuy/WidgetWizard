@@ -52,7 +52,6 @@ export const BREW_ADD_FAVORITE = gql`
 export const NBA_ADD_FAVORITE = gql`
     mutation NBAaddFavorite($teamData: nba_favorites_schema_input) {
         NBAaddFavorite(teamData: $teamData) {
-        _id
         name
         city
         logo
