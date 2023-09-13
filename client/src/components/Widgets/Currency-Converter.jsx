@@ -70,10 +70,10 @@ return (
     <div>
         <div className="widget" style={{ width: '18rem' }}>
             <div>
-                <h5 className="card-title">Currency Converter</h5>
+                <h5 className="card-title mb-2">Currency Converter</h5>
                 <form>
                     <div className='font'>
-                        <label className='font'>From Currency</label>
+                        <label className='font mb-3'>From Currency</label>
                         <select
                             value={currencyInput}
                             onChange={(e) => setCurrencyInput(e.target.value)}
@@ -88,7 +88,7 @@ return (
                     </div>
 
                     <div className='font'>
-                        <label className='font'>To Currency</label>
+                        <label className='font mb-2'>To Currency</label>
                         <select
                             value={currencyOutput}
                             onChange={(e) => setCurrencyOutput(e.target.value)}
