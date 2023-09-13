@@ -166,86 +166,81 @@ export default function NYTimesWidget () {
             <div className = "nytimes-main-frame">
                 {/* real-time-feed/default */}
                     <div className="nytimes-display-frame" id="display-real-time-feed" hidden={ tab !== "real-time-feed" }>
-                        <div>{tab}</div>
-                            { RTFarticles.map((article, i) => (
-                                <div key={i} className="article-row">
-                                    <div>{article.headline}</div>
-                                    <div>{article.byline}</div>
-                                    <div>{article.date_published}</div>
-                                    <div className="hide">{article.abstract}</div>
-                                    <div className="hide">{article.section}</div>
-                                    <div className="hide">{article.nyt_url}</div>
-                                    <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
-                                </div>
-                            ))}
+                        { RTFarticles.map((article, i) => (
+                            <div key={i} className="article-row">
+                                <div className="article-headline">{article.headline}</div>
+                                <div className="article-byline">{article.byline}</div>
+                                <div className="article-date">{article.date_published}</div>
+                                <div className="article-abstract hide">{article.abstract}</div>
+                                <div className="article-section hide">{article.section}</div>
+                                <div className="article-url hide"><a href={article.nyt_url}>go to article!</a></div>
+                                <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
+                            </div>
+                        ))}
                     </div>
                 {/* top-stories display, hidden until tab gets clicked */}
                     <div className="nytimes-display-frame" id="display-top-stories" hidden={ tab !== "top-stories" }>
-                        <div>{tab}</div>
-                            { TSarticles.map((article, i) => (
-                                <div className="article-row" key={i}>
-                                    <div>{article.headline}</div>
-                                    <div>{article.byline}</div>
-                                    <div>{article.date_published}</div>
-                                    <div className="hide">{article.kicker}</div>
-                                    <div className="hide">{article.abstract}</div>
-                                    <div className="hide">{article.section}</div>
-                                    <div className="hide">{article.subsection}</div>
-                                    <div className="hide">{article.nyt_url}</div>
-                                    <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
-                                </div>
-                            ))}
+                        { TSarticles.map((article, i) => (
+                            <div className="article-row" key={i}>
+                                <div className="article-headline">{article.headline}</div>
+                                <div className="article-byline">{article.byline}</div>
+                                <div className="article-date">{article.date_published}</div>
+                                <div className="article-kicker hide">{article.kicker}</div>
+                                <div className="article-abstract hide">{article.abstract}</div>
+                                <div className="article-section hide">{article.section}</div>
+                                <div className="article-subsection hide">{article.subsection}</div>
+                                <div className="article-url hide"><a href={article.nyt_url}>go to article</a></div>
+                                <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
+                            </div>
+                        ))}
                     </div>
                 {/* most-popular display, hidden until gets clicked */}
                     <div className="nytimes-display-frame" id="display-most-popular" hidden={ tab !== "most-popular" }>
-                        <div>{tab}</div>
-                            { MParticles.map((article, i) => (
-                                <div key={i} className="article-row">
-                                    <div>{article.headline}</div>
-                                    <div>{article.byline}</div>
-                                    <div>{article.date_published}</div>
-                                    <div className="hide">{article.abstract}</div>
-                                    <div className="hide">{article.section}</div>
-                                    <div className="hide">{article.subsection}</div>
-                                    <div className="hide">{article.source}</div>
-                                    <div className="hide">{article.nyt_url}</div>
-                                    <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
-                                </div>
-                            ))}
+                        { MParticles.map((article, i) => (
+                            <div key={i} className="article-row">
+                                <div className="article-headline">{article.headline}</div>
+                                <div className="article-byline">{article.byline}</div>
+                                <div className="article-date">{article.date_published}</div>
+                                <div className="article-abstract hide">{article.abstract}</div>
+                                <div className="article-section hide">{article.section}</div>
+                                <div className="article-subsection hide">{article.subsection}</div>
+                                <div className="article-source hide">{article.source}</div>
+                                <div className="article-url hide"><a href={article.nyt_url}>go to article</a></div>
+                                <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
+                            </div>
+                        ))}
                     </div>
                 {/* article-search display, hidden until gets clicked */}
                     <div className="nytimes-display-frame" id="display-article-search" hidden={ tab !== "article-search" }>
-                        <div>{tab}</div>
-                            { ASarticles.map((article, i) => (
-                                <div key={i} className="article-row">
-                                    <div>{article.headline}</div>
-                                    <div>{article.byline}</div>
-                                    <div>{article.date_published}</div>
-                                    <div className="hide">{article.blurb}</div>
-                                    <div className="hide">{article.abstract}</div>
-                                    <div className="hide">{article.nyt_url}</div>
-                                    <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
-                                </div>
-                            ))}
+                        { ASarticles.map((article, i) => (
+                            <div key={i} className="article-row">
+                                <div className="article-headline">{article.headline}</div>
+                                <div className="article-byline">{article.byline}</div>
+                                <div className="article-date">{article.date_published}</div>
+                                <div className="article-blurb hide">{article.blurb}</div>
+                                <div className="article-abstract hide">{article.abstract}</div>
+                                <div className="article-url hide"><a href={article.nyt_url}>go to article</a></div>
+                                <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
+                            </div>
+                        ))}
                     </div>
                 {/* bookmarks display, hidden until tab gets clicked */}
                     <div className="nytimes-display-frame" id="display-bookmarks" hidden={ tab !== "bookmarks" }>
-                        <div>{tab}</div>
-                            { BMarticles.map((article, i) => (
-                                <div key={i} className="article-row">
-                                    <div>{article.headline}</div>
-                                    <div>{article.byline}</div>
-                                    <div>{article.date_published}</div>
-                                    <div className="hide">{article.blurb}</div>
-                                    <div className="hide">{article.kicker}</div>
-                                    <div className="hide">{article.abstract}</div>
-                                    <div className="hide">{article.section}</div>
-                                    <div className="hide">{article.subsection}</div>
-                                    <div className="hide">{article.source}</div>
-                                    <div className="hide">{article.nyt_url}</div>
-                                    <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
-                                </div>
-                            ))}
+                        { BMarticles.map((article, i) => (
+                            <div key={i} className="article-row">
+                                <div className="article-headline">{article.headline}</div>
+                                <div className="article-byline">{article.byline}</div>
+                                <div className="article-date">{article.date_published}</div>
+                                <div className="article-blurb hide">{article.blurb}</div>
+                                <div className="article-kicker hide">{article.kicker}</div>
+                                <div className="article-abstract hide">{article.abstract}</div>
+                                <div className="article-section hide">{article.section}</div>
+                                <div className="article-subsection hide">{article.subsection}</div>
+                                <div className="article-source hide">{article.source}</div>
+                                <div className="article-url hide"><a href={article.nyt_url}>go to article</a></div>
+                                <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
+                            </div>
+                        ))}
                     </div>
             </div>
         </div>

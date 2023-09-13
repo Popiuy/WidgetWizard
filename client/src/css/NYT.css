@@ -1,3 +1,11 @@
+
+.nytimes-widget {
+  width: 500px;
+  max-height: 400px;
+  font-family:'Times New Roman', Times, serif; 
+  overflow-y: scroll; 
+}
+
 .nytimes-navbar-tabs {
     overflow: hidden;
     border: 1px solid #ccc;
@@ -5,13 +13,15 @@
 }
   
 .nytimes-navbar-tab {
+  font-family:'Times New Roman', Times, serif; 
     background-color: inherit;
     float: left;
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
+    padding: 0px 5px;
     transition: 0.3s;
+    font-size: 15px;
 }
   
   /* Change background color of buttons on hover */
@@ -34,10 +44,36 @@
   .hide {
     display: none;
   }
-  .article-row:hover + .hide {
+  .article-row:hover .hide {
     display: block;
   }
 
   .bookmark-btn {
-    max-width: 10px;
+    width: 15px;
+  }
+
+  .nasa-logo {
+    width: 40px;
+  }
+
+  .article-row div{
+    font-family:'Times New Roman', Times, serif; 
+    font-size: 14px;
+  }
+  
+  .article-headline {
+    font-size: 20px;
+    font-style: bold;
+  }
+  
+  .article-byline, .article-date{
+    font-size: 14px;
+  }
+
+  .article-abstract {
+    font-size: 16px;
+  }
+
+  .article-section {
+    font-size: 14px;
   }
