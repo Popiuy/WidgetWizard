@@ -7,7 +7,7 @@ import CatFactWidget from '../components/Widgets/CatFact';
 import webcamWidget from '../components/widgets/Webcam';
 import NYTimesWidget from '../components/Widgets/NYTimes';
 import SoundCloudWidget from '../components/Widgets/Soundcloud';
-import currencyWidget from '../components/Widgets/Currency-Converter'
+import CurrencyConverter from '../components/Widgets/Currency-Converter'
 
 const getWidget = (widgetName) => {
     switch(widgetName) {
@@ -29,8 +29,8 @@ const getWidget = (widgetName) => {
             return NYTimesWidget
         case 'SoundCloudWidget':
             return SoundCloudWidget
-        case 'currencyWidget':
-            return currencyWidget
+        case 'CurrencyConverter':
+            return CurrencyConverter
     }
 }
 

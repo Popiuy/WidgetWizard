@@ -10,13 +10,13 @@ import ErrorPage from './pages/ErrorPage';
 import NBAWidget from './components/Widgets/NBA.jsx';
 import BreweryWidget from './components/Widgets/OpenBrewery.jsx';
 import BoredAPIWidget from './components/Widgets/Bored.jsx';
-import JokeAPIWidget from './components/widgets/JokeAPI.jsx';
+import JokeAPIWidget from './components/Widgets/JokeAPI.jsx';
 // import SoundCloudWidget from './components/Widgets/Soundcloud.jsx';
 import CurrencyConverter from './components/Widgets/Currency-Converter.jsx';
-import NYT from './utils/NYT.js';
+// import NYT from './utils/NYT.js';
 import NYTimesWidget from './components/Widgets/NYTimes.jsx';
 // import NYT
-import webcamWidget from './components/Widgets/Webcam.jsx';
+// import webcamWidget from './components/Widgets/Webcam.jsx';
 
 
 
