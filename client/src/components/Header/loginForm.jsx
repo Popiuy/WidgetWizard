@@ -49,11 +49,11 @@ const LoginForm = () => {
         ): (
         <form onSubmit={formSubmit}>
         <div className="mb-3">
-            <label for="exampleInputUsername1" className="form-label">Username</label>
+            <label htmlFor="exampleInputUsername1" className="form-label">Username</label>
             <input type="text" name="username" className="username-field form-control" value={formState.username} onChange={formResponse}></input>
         </div>
         <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">Password</label>
+            <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
             <input type="password" name="password" className="password-field form-control" value={formState.password} onChange={formResponse}></input>
         </div>
         <button type="submit" className="submit-button btn btn-primary">Submit</button>
