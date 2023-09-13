@@ -26,14 +26,6 @@ const Dashboard = () => {
   
   const [selectedWidgets, setSelectedWidgets] = useState([]);
 
-<<<<<<< HEAD
-  const addWidget = (widget) => {
-    // setSelectedWidgets([...selectedWidgets, widget]);
-    setSelectedWidgets((currentWidgets) => ({
-      ...currentWidgets,
-      [widget.name]: widget,
-    }));
-=======
   const userWidgets = data?.me?.widgets || [];
 
   const [ addWidget ] = useMutation(ADD_WIDGET);
@@ -47,7 +39,6 @@ const Dashboard = () => {
     });
     const selectedWidget = getWidget(widgetName)
     setSelectedWidgets((currentWidgets) => [...currentWidgets, selectedWidget]);
->>>>>>> afe0f1a577b5938eeb546d4acecc947a354f7ab9
   };
 
   const deleteWidgetHandler = (widgetName) => {
@@ -58,19 +49,9 @@ const Dashboard = () => {
       refetchQueries: [GET_ME]
     });
     setSelectedWidgets((currentWidgets) =>
-<<<<<<< HEAD
-    // currentWidgets.filter((item) => item !== widget)
-    // );
-    {
-    const updatedWidgets = { ...currentWidgets };
-    delete updatedWidgets[widget];
-    return updatedWidgets;
-  });
-=======
       currentWidgets.filter((widget) => widget.name !== widgetName),
       console.log(widgetName),
     );
->>>>>>> afe0f1a577b5938eeb546d4acecc947a354f7ab9
   };
 
   const eventLogger = (e, data) => {
@@ -217,21 +198,6 @@ const Dashboard = () => {
         </ul>
       </div>
       <div className="dashboard">
-<<<<<<< HEAD
-        <div>
-
-          {/* {selectedWidgets.map((Widget, index) => (
-            <div key={index}>
-              <Widget />
-              <button onClick={() => deleteWidget(Widget)}>Delete</button> */}
-
-              {Object.values(selectedWidgets).map((Widget) => (
-                <div key={Widget.name}>
-                    <Widget />
-                    <button onClick={() => deleteWidget(Widget.name)}>Delete</button>                  
-            </div>
-          ))}
-=======
         {userWidgets.map((widgetName) =>{
           const Widget = getWidget(widgetName);
 
@@ -253,7 +219,6 @@ const Dashboard = () => {
         <div className="handle">Drag from here</div>
         <div className="widget-content"> 
           <Widget />
->>>>>>> afe0f1a577b5938eeb546d4acecc947a354f7ab9
         </div>
         <button className="delete-btn" onClick={() => deleteWidgetHandler(widgetName)}>Delete</button>
       </div>
