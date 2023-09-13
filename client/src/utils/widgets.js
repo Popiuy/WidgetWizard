@@ -1,4 +1,4 @@
-import BoredAPIWidget from '../components/Widgets/Bored.jsx';
+import BoredAPIWidget from '../components/Widgets/Bored';
 import APODWidget from '../components/Widgets/NASA_apod';
 import NBAWidget from '../components/Widgets/NBA';
 import JokeAPIWidget from '../components/Widgets/JokeAPI';

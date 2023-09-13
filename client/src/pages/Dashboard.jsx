@@ -1,7 +1,7 @@
 //import widgets from widget library
 //reference User.widgets
 //display appropriate widgets
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { ADD_WIDGET, DELETE_WIDGET } from '../utils/mutations'
 import { GET_ME } from '../utils/queries';
 import { useQuery, useMutation } from '@apollo/client';
@@ -203,7 +203,7 @@ const Dashboard = () => {
 
           return  (
             <Draggable
-            key={Widget.name}
+            key={widgetName}
             axis="both" // Allow both horizontal and vertical dragging
             handle=".handle"
             defaultPosition={{ x: 0, y: 0 }}
