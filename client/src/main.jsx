@@ -7,19 +7,6 @@ import Dashboard from './pages/Dashboard';
 import About from './pages/About';
 import ErrorPage from './pages/ErrorPage';
 
-import NBAWidget from './components/Widgets/NBA.jsx';
-import BreweryWidget from './components/Widgets/OpenBrewery.jsx';
-// import BoredAPIWidget from './components/Widgets/Bored.jsx';
-import JokeAPIWidget from './components/Widgets/JokeAPI.jsx';
-// import SoundCloudWidget from './components/Widgets/Soundcloud.jsx';
-import CurrencyConverter from './components/Widgets/Currency-Converter.jsx';
-// import NYT from './utils/NYT.js';
-import NYTimesWidget from './components/Widgets/NYTimes.jsx';
-// import NYT
-// import webcamWidget from './components/Widgets/Webcam.jsx';
-
-
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -48,38 +35,8 @@ const router = createBrowserRouter([
         path: '/about',
         element: <About />
       },
-      {
-        path: '/testing',
-        element: <NYTimesWidget/>
-      },
-      {
-        path: '/OpenBrewery',
-        element: <BreweryWidget/>
-      },
-      {
-        path: '/NBA',
-        element: <NBAWidget/>
-      },
-      {
-        path: '/Joke',
-        element: <JokeAPIWidget/>
-      },
-      {
-        path: '/CurrencyConverter',
-        element: <CurrencyConverter/>
-      },
-      {
-        path: '/nytimes',
-        element: <NYTimesWidget/>
-      },
-      {
-        path: '/Webcam',
-        element: <webcamWidget/>
-      }
-      // {
-      //   path: '/testing',
-      //   element: </>
-      // }
+      
+      
     ],
   },
 ]);
