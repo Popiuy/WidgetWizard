@@ -2,9 +2,9 @@ import decode from 'jwt-decode';
 
 class Authenticator {
     
-    login(token, user){
+    login({token}, user){
         localStorage.setItem('w_token', token);
-        window.location.assign(`/dashboard/${user.username}`);
+        window.location.assign(`/dashboard/`);
     }
 
     getToken(){
