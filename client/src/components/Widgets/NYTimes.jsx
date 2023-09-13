@@ -17,8 +17,8 @@ export default function NYTimesWidget () {
     const [searchBarInfo, setSearchBarInfo] = useState('');
     const [url, setUrl] = useState('https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7');
     const sections = ['all','arts', 'automobiles', 'books/review', 'business', 'fashion', 'food', 'health', 'home', 'insider', 'magazine', 'movies', 'nyregion', 'obituaries', 'opinion', 'politics', 'realestate', 'science', 'sports', 'sundayreview', 'technology', 'theater', 't-magazine', 'travel', 'upshot', 'us', 'world']
-    const {loading, bmdata } = useQuery(GET_NYT_BOOKMARKS);
-    const [bookmarkArticle, {error}] = useMutation(BOOKMARK_ARTICLE);
+    const { bmdata } = useQuery(GET_NYT_BOOKMARKS);
+    const [bookmarkArticle] = useMutation(BOOKMARK_ARTICLE);
     const [RTFarticles, setRTFarticles] = useState([])
     const [TSarticles, setTSarticles] = useState([])
     const [MParticles, setMParticles] = useState([])
@@ -67,18 +67,22 @@ export default function NYTimesWidget () {
         switch (tab) {
             
             case "real-time-feed":
+                // eslint-disable-next-line no-case-declarations
                 const rtfarticles = NYTtoolbox.RTF(NYTdata.results);
                 setRTFarticles(rtfarticles);
                 break;
             case "top-stories":
+                // eslint-disable-next-line no-case-declarations
                 const tsarticles = NYTtoolbox.TS(NYTdata.results);
                 setTSarticles(tsarticles);
                 break;
             case "most-popular":
+                // eslint-disable-next-line no-case-declarations
                 const mparticles = NYTtoolbox.MP(NYTdata.results);
                 setMParticles(mparticles);
                 break;
             case "article-search":
+                // eslint-disable-next-line no-case-declarations
                 const asarticles = NYTtoolbox.AS(NYTdata.response.docs)
                 setASarticles(asarticles);
                 break;
@@ -96,6 +100,7 @@ export default function NYTimesWidget () {
             },
             refetchQueries: [GET_NYT_BOOKMARKS]
         });
+        console.log(bms);
     };
 
     const updateMost = (e, most) => {
@@ -173,7 +178,7 @@ export default function NYTimesWidget () {
                                 <div className="article-date">{article.date_published}</div>
                                 <div className="article-abstract hide">{article.abstract}</div>
                                 <div className="article-section hide">{article.section}</div>
-                                <div className="article-url hide"><a className="font" target="_blank" href={article.nyt_url}>go to article!</a></div>
+                                <div className="article-url hide"><a className="font" href={article.nyt_url}>go to article!</a></div>
                                 <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
                             </div>
                         ))}

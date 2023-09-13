@@ -6,8 +6,8 @@ import { GET_BREW_FAVORITES } from '../../utils/queries';
 export default function BreweryWidget() {
   const [searchInput, setSearchInput] = useState('');
   const [viewFavorites, setViewFavorites] = useState(false) 
-  const [addToFavorites, {error}] = useMutation(BREW_ADD_FAVORITE);
-  const {loading, data} = useQuery(GET_BREW_FAVORITES);
+  const [addToFavorites] = useMutation(BREW_ADD_FAVORITE);
+  const {data} = useQuery(GET_BREW_FAVORITES);
   const [brewData, setBrewData] = useState({
     name: '',
     brewery_type: '',

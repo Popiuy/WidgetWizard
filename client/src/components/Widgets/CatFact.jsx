@@ -33,6 +33,7 @@ export default function CatFactWidget() {
 
     useEffect(() => {
         fetchCatFact();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

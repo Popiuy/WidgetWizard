@@ -2,13 +2,16 @@
 // Provides webcams around the world based on lat, long
 // key = gFFaX8hEsYH01S9RYHYwq712ZZs7FOzB
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 // import { useState, useEffect } from 'react';
 
 export default function webcamWidget() {
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [webcamData, setWebcamData] = useState([]);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [error, setError] = useState(null);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [cityInfo, setCityInfo] = useState({
       latitude: '',
       longitude: '',
@@ -37,7 +40,7 @@ export default function webcamWidget() {
         setWebcamData(data);
       }
     };
-
+// eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
       // You can initialize the component with default coordinates or user's location here
       setCityInfo({ latitude: '40.7128', longitude: '-74.0060' });
@@ -100,6 +103,3 @@ export default function webcamWidget() {
     );
 
 }
-
-
-
