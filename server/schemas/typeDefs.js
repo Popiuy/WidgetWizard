@@ -17,21 +17,27 @@ const typeDefs = `
     type NYTbookmark {
         _id: ID!
         headline: String
+        blurb: String
         byline: String
         date_published: String
         abstract: String
-        blurb: String
+        kicker: String
         source: String
+        section: String
+        subsection: String
         nyt_url: String
     }
 
     input NYTbookmarkINPUT {
         headline: String
+        blurb: String
         byline: String
         date_published: String
         abstract: String
-        blurb: String
+        kicker: String
         source: String
+        section: String
+        subsection: String
         nyt_url: String
     }
 
@@ -40,13 +46,73 @@ const typeDefs = `
         user: User
     }
     
+    type nasa_favorites_schema {
+        _id: ID!
+        date: String
+        title: String
+        src: String
+        caption: String
+        photographer: String
+        description: String
+    }
+    
+    input nasa_favorites_schema_input {
+        date: String
+        title: String
+        src: String
+        caption: String
+        photographer: String
+        description: String
+    }
+
+    type brew_favorites_schema {
+        _id: ID!
+        name: String
+        brewery_type: String
+        street: String
+        city: String
+        state: String
+        phone: String
+        website_url: String
+    }
+    
+    input brew_favorites_schema_input {
+        _id: ID!
+        name: String
+        brewery_type: String
+        street: String
+        city: String
+        state: String
+        phone: String
+        website_url: String
+    }
+
+    type nba_favorites_schema {
+        _id: ID!
+        name: String
+        city: String
+        logo: String
+        allStar: Boolean
+        nbaFranchise: Boolean
+    }
+    
+    input nba_favorites_schema_input {
+        _id: ID!
+        name: String
+        city: String
+        logo: String
+        allStar: Boolean
+        nbaFranchise: Boolean
+    }
+
     type Query {
         widget(widgetId: ID!): Widget
         widgets: [Widget]
         user(userId: ID!): User
         users: [User]
-        nyt_bookmarks: [NYTbookmark]
-        getTeamData: [getTeamData]
+        getNASAfavorites: [nasa_favorites_schema]
+        getBREWfavorites: [brew_favorites_schema]
+        getNBAfavorites: [nba_favorites_schema]
     }
 
     
@@ -55,16 +121,10 @@ const typeDefs = `
         login(username: String!, password: String!): Auth
         addWidget(widgetId: ID!): Widget
         banUser(userId: ID!, password: String!): Auth
-        bookmarkArticle(NYTarticleData: NYTbookmarkINPUT): [NYTbookmark]
+        NASAaddFavorite(photoData: nasa_favorites_schema_input): nasa_favorites_schema
+        BREWaddFavorite(brewData: brew_favorites_schema_input): brew_favorites_schema
+        NBAaddFavorite(teamData: nba_favorites_schema_input): nba_favorites_schema
     }
-
-    type TeamData {
-        name: String
-        city: String
-        logo: String
-        allStar: String
-        nbaFranchise: String
-      }
 `;
 
 module.exports = typeDefs;

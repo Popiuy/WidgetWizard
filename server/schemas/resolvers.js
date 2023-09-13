@@ -15,20 +15,25 @@ const resolvers = {
         widget: async (parent, {widgetId}) => {
             return await Widget.findById(widgetId);
         },
-        nyt_bookmarks: async (parent, args, context) => {
-            return await User.find(
-                {_id: context.user._id},
-                {nyt_bookmarks}
+        getNASAfavorites: async (parent, args, context) => {
+            return await User.findById(
+                context.user._id,
+                'NASA_favorites'   
             )
         },
-        getTeamData: async (parent, { teamData }, context) => {
-            return await User.find(
-                {_id: context.user._id},
-                {teamData}
-            );
-          },
+        getBREWfavorites: async (parent, args, context) => {
+            return await User.findById(
+                context.user._id,
+                'BREW_favorites'   
+            )
         },
-        // You can also add mutation resolvers here if needed.
+        getNBAfavorites: async (parent, args, context) => {
+            return await User.findById(
+                context.user._id,
+                'NBA_favorites'   
+            )
+        },
+    },
     Mutation: {
         createUser: async ( parent, { username, email, password }) => {
             
@@ -81,25 +86,30 @@ const resolvers = {
             const deletedUser = await User.deleteOne({userId})
             alert(`${user.username}'s account has been deleted.`)
         },
-        bookmarkArticle: async (parent, {NYTarticleData}, context) => {
+        NASAaddFavorite: async (parent, {photoData}, context) => {
             const user = await User.findByIdAndUpdate(
-                { _id: context.user._id },
-                { $push: {nyt_bookmarks: NYTarticleData} },
+                {_id: context.user._id},
+                {$addToSet: { NASA_favorites: photoData}},
                 { new: true }
-            );
-
-            return user.nyt_bookmarks;
+            )
+            return user.NASA_favorites;
         },
-        bookmarkArticle: async (parent, {NYTarticleData}, context) => {
+        BREWaddFavorite: async (parent, {brewData}, context) => {
             const user = await User.findByIdAndUpdate(
-                { _id: context.user._id },
-                { $push: {nyt_bookmarks: NYTarticleData} },
+                {_id: context.user._id},
+                {$addToSet: { BREW_favorites: brewData}},
                 { new: true }
-            );
-
-            return user.nyt_bookmarks;
-        }
-        
+            )
+            return user.NASA_favorites;
+        },
+        NBAaddFavorite: async (parent, {teamData}, context) => {
+            const user = await User.findByIdAndUpdate(
+                {_id: context.user._id},
+                {$addToSet: { NBA_favorites: teamData}},
+                { new: true }
+            )
+            return user.NASA_favorites;
+        },
 
     }
 };

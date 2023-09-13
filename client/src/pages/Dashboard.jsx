@@ -1,16 +1,19 @@
 //import widgets from widget library
 //reference User.widgets
 //display appropriate widgets
-import currencyWidget from '../components/Widgets/Currency-Converter'
 import { useState } from 'react';
+import currencyWidget from '../components/Widgets/Currency-Converter'
 import Draggable from 'react-draggable';
 import BoredAPIWidget from '../components/Widgets/Bored';
 import APODWidget from '../components/Widgets/NASA_apod';
 import NBAWidget from '../components/Widgets/NBA';
-import JokeAPIWidget from '../components/widgets/JokeAPI';
+import JokeAPIWidget from '../components/Widgets/JokeAPI';
 import BreweryWidget from '../components/Widgets/OpenBrewery';
-import CatFactWidget from '../components/widgets/CatFact';
+import CatFactWidget from '../components/Widgets/CatFact';
 import webcamWidget from '../components/widgets/Webcam';
+import NYTimesWidget from '../components/Widgets/NYTimes';
+import SoundCloudWidget from '../components/Widgets/Soundcloud';
+
 
 const Dashboard = () => {
   const [selectedWidgets, setSelectedWidgets] = useState([]);
@@ -62,11 +65,11 @@ const Dashboard = () => {
           </li>
           <li
             onClick={() => {
-              addWidget(NBAWidget);
+              addWidget(currencyWidget);
             }}
           >
             <a className="dropdown-item" href="#">
-              NBAWidget
+              Currency Widget
             </a>
           </li>
           <li
@@ -76,6 +79,24 @@ const Dashboard = () => {
           >
             <a className="dropdown-item" href="#">
               Joke Widget
+            </a>
+          </li>
+          <li
+            onClick={() => {
+              addWidget(NBAWidget);
+            }}
+          >
+            <a className="dropdown-item" href="#">
+              NBAWidget
+            </a>
+          </li>
+          <li
+            onClick={() => {
+              addWidget(NYTimesWidget);
+            }}
+          >
+            <a className="dropdown-item" href="#">
+              New York Times
             </a>
           </li>
           <li
@@ -98,11 +119,11 @@ const Dashboard = () => {
           </li>
           <li
             onClick={() => {
-              addWidget(currencyWidget);
+              addWidget(SoundCloudWidget);
             }}
           >
             <a className="dropdown-item" href="#">
-              Currency Widget
+              Soundcloud
             </a>
           </li>
           <li

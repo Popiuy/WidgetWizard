@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import { useQuery, useMutation } from '@apollo/client';
+import {NASA_ADD_FAVORITE} from '../../utils/mutations';
+import { GET_NASA_FAVORITES } from '../../utils/queries';
 
 export default function APODWidget() {
   const [photoData, setPhotoData] = useState({
@@ -10,9 +13,11 @@ export default function APODWidget() {
     description: '',
   });
 
-  const [error, setError] = useState(null);
-
-  const getData = async () => {
+  const [addToFavorites, {error}] = useMutation(NASA_ADD_FAVORITE);
+  const {loading, data} = useQuery(GET_NASA_FAVORITES);
+  const [viewFavorites, setViewFavorites] = useState(false) 
+  const getData = async() => {
+  
     try {
       const response = await fetch(
         'https://api.nasa.gov/planetary/apod?api_key=ldu00DPMmJO4nb9rTFgemhoA8TEwoKso0Adud0pe'
@@ -24,24 +29,24 @@ export default function APODWidget() {
 
       const data = await response.json();
       return data;
+      
     } catch (error) {
       console.error('Could not retrieve photo.', error)
-      setError('Failed to retrieve photo. Please try again later.');
       return null;
     }
   };
 
   useEffect(() => {
     const wrapper = async () => {
-      const data = await getData();
-      if (data) {
+      const NASAdata = await getData();
+      if (NASAdata) {
         setPhotoData({
-          date: data.date,
-          title: data.title,
-          src: data.url,
-          caption: data.explanation,
-          photographer: data.hdurl,
-          description: data.description,
+          date: NASAdata.date,
+          title: NASAdata.title,
+          src: NASAdata.url,
+          caption: NASAdata.explanation,
+          photographer: NASAdata.hdurl,
+          description: NASAdata.description,
         });
       }
     };
@@ -49,33 +54,45 @@ export default function APODWidget() {
     wrapper();
   }, []); // Provide an empty dependency array to run the effect once on mount
 
-  const addToFavorites = async () => {
-    // Implement your logic to add photoData to favorites here
-    console.log(photoData);
-  };
-
   return (
     <div>
-      <div class="card mb-3" style={{width: '700px'}}>
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src={photoData.src} class="img-fluid rounded-start" alt={photoData.title}></img>
+    <div className="card" style={{ width: '19rem' }}>
+      <div className="card-body">
+        <h5 className="card-title">Astronomy Picture of the Day</h5>
+        {viewFavorites ? (
+          <div className="favorites-display">
+            {data.map((fav)=>{
+              <div className="favorite-photo">
+                <div>{fav.title}</div>
+                <img src={fav.src} id={fav.title}/>
+                <div>{fav.caption}</div>
+              </div>
+            })}
+            <button onClick={()=>setViewFavorites(false)}>⭐⭐⭐Photo of the Day⭐⭐⭐</button>
           </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">Astronomy Photo of the Day</h5>
-              <p class="card-text">{photoData.title}</p>
-              <p class="card-text"><small class="text-body-secondary">{photoData.date}</small></p>
-              <a href="/" className="btn btn-primary">
-                Go to Widget
-              </a>
-              <button className="favorite-btn" onClick={addToFavorites}>
-                ADD TO FAVORITES!
-              </button>
-            </div>
+          
+        ) : (
+          <div className="astronomy-photo-of-the-day-display">
+            <div className="photo-title">{photoData.title}</div>
+            <img
+              src={photoData.src}
+              className="card-img-top"
+              alt={photoData.title}
+            ></img>
+            <div className="photo-date">{photoData.date}</div>
+            <button className="favorite-btn" 
+              onClick={()=>addToFavorites({
+                variables: {
+                  photoData: {...photoData}
+                }
+              })}>
+              ⭐Add to Favorites⭐
+            </button>
+            <button onClick={()=>setViewFavorites(true)}>⭐View Favorites⭐</button>
           </div>
-        </div>
+        )}
       </div>
     </div>
+  </div>
   );
 }
