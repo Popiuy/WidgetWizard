@@ -220,7 +220,7 @@ const Dashboard = () => {
         <div className="widget-content"> 
           <Widget />
         </div>
-        <button className="delete-btn" onClick={() => deleteWidgetHandler(Widget.name)}>Delete</button>
+        <button className="delete-btn" onClick={() => deleteWidgetHandler(widgetName)}>Delete</button>
       </div>
     </Draggable>
   )
