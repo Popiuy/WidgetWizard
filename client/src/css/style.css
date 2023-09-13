@@ -44,6 +44,18 @@
     font-family: 'Rubik Iso';
     font-size: 64px;
     color: white;
+    margin-left: 20px;
+}
+
+.website-clock {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    font-family: 'Rubik Iso' ;
+    font-size: 30px;
+    color: white;
+    justify-content: center;
 }
 
 .nav-link {
