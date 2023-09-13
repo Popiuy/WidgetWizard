@@ -45,9 +45,6 @@ export default function BoredAPIWidget() {
                     <h5 className="card-title">Random Activity</h5>
                     <p className="card-text">{activity.activity}</p>
                     <button className="btn btn-primary" type="button" onClick={fetchNewActivity}>Generate New</button>
-                    <button className="favorite-btn" onClick={addToFavorites}>
-                        ADD TO FAVORITES!
-                    </button>
                 </div>
             </div>
         </div>

@@ -4,7 +4,7 @@ import wizard from '../../images/wizard-modified.png';
 import { useState } from 'react';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
 import SignUpForm from './SignUpForm';
-import LoginForm from './LoginForm';
+import LoginForm from './loginForm';
 
 export default function NavBarComponent () {
 
