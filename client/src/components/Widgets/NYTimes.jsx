@@ -136,30 +136,30 @@ export default function NYTimesWidget () {
             <div className="additional-queries">
                 <div hidden={ tab !== "top-stories" }>
                     {/* dropdown menu of sections */}
-                    <select onChange={(e)=>setSection(e.target.value)}>
+                    <select className="font" onChange={(e)=>setSection(e.target.value)}>
                         { sections.map((section, i) => <option value={section} key={i}>{section}</option>)}
                     </select>
-                    <button className="request-button" onClick={requestData}>search</button>
+                    <button className="font request-button" onClick={requestData}>search</button>
                 </div>
                 <div hidden={ tab !== "most-popular" }>
                     {/* introduce option to select between viewed, emailed and shared, within the past day, week and month */}
-                    <select onChange={(e)=>setMost(e.target.value)}>
+                    <select className="font" onChange={(e)=>setMost(e.target.value)}>
                         <option value={`viewed/${days}`}>Most viewed</option>
                         <option value={`emailed/${days}`}>Most emailed</option>
                         <option value={`shared/${days}/facebook`}>Most shared on facebook</option>
                     </select>
-                    <select onChange={(e)=>updateMost(e, most)}> 
+                    <select className="font" onChange={(e)=>updateMost(e, most)}> 
                         <option value="1">Day</option>
                         <option value="7">Week</option>
                         <option value="30">Month</option>
                     </select>
-                    <button className="request-button" onClick={requestData}>search</button>
+                    <button className="font request-button" onClick={requestData}>search</button>
                 </div>
                 <div hidden={ tab !== "article-search" }>
                     {/* article search bar & submit button */}
-                    <input value={searchBarInfo} placeholder="Type keywords here" 
+                    <input className="font" value={searchBarInfo} placeholder="Type keywords here" 
                         onChange={(e)=>{setSearchBarInfo(e.target.value)}}></input>
-                    <button className="request-button" onClick={requestData}>search</button>
+                    <button className="font request-button" onClick={requestData}>search</button>
                 </div>
             </div>
             {/* main frame where articles will be displayed */}

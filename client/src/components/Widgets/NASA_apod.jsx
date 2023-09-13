@@ -82,7 +82,7 @@ export default function APODWidget() {
               alt={photoData.title}
             ></img>
             <div className="photo-date">{photoData.date}</div>
-            <button className="favorite-btn" 
+            <button className="me-2 favorite-btn" 
               onClick={()=>addToFavorites({
                 variables: {
                   photoData: {...photoData}
@@ -90,7 +90,7 @@ export default function APODWidget() {
               })}>
               ⭐Add to Favorites⭐
             </button>
-            <button onClick={()=>setViewFavorites(true)}>⭐View Favorites⭐</button>
+            <button className="favorite-btn" onClick={()=>setViewFavorites(true)}>⭐View Favorites⭐</button>
           </div>
         )}
       </div>

@@ -3,7 +3,10 @@ import APODHomePage from '../components/Widgets/NASAHOMEPAGE'
 const Home = () => {
     return (
         <div>
-        <APODHomePage />
+            <div className="alert alert-primary" role="alert">
+                Sign up to create your own dashboard with more widgets!
+            </div>
+            <APODHomePage />
         </div>
     )
 };
