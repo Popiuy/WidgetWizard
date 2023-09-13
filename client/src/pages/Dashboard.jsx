@@ -8,10 +8,10 @@ import { useQuery, useMutation } from '@apollo/client';
 import Draggable from 'react-draggable';
 
 import brewLogo from '.././images/BREWERY.jpg'
-import nbaLogo from '.././images/nba-logo-transparent.png'
+import nbaLogo from '.././images/nbalogopt2.png'
 import nasaLogo from '.././images/nasa.png'
 import soundcloudLogo from '.././images/soundcloud.jpg'
-import nytLogo from '.././images/nytimes_api_logo.png'
+import nytLogo from '.././images/nyt.jpg'
 import randomcatfactLogo from '.././images/store-cat-img.png'
 import jokeLogo from '.././images/jokes.jpeg'
 import boredLogo from '.././images/bored.jpg'
