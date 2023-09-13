@@ -88,7 +88,7 @@ export default function APODWidget() {
               })}>
               ⭐Add to Favorites⭐
             </button>
-            <button onClick={()=>setViewFavorites(true)}>⭐View Favorites⭐</button>
+            <button className="favorite-btn" onClick={()=>setViewFavorites(true)}>⭐View Favorites⭐</button>
           </div>
         )}
       </div>

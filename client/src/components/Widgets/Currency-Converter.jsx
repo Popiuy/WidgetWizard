@@ -72,8 +72,8 @@ return (
             <div>
                 <h5 className="card-title">Currency Converter</h5>
                 <form>
-                    <div>
-                        <label>From Currency</label>
+                    <div className='font'>
+                        <label className='font'>From Currency</label>
                         <select
                             value={currencyInput}
                             onChange={(e) => setCurrencyInput(e.target.value)}
@@ -87,8 +87,8 @@ return (
                         </select>
                     </div>
 
-                    <div>
-                        <label>To Currency</label>
+                    <div className='font'>
+                        <label className='font'>To Currency</label>
                         <select
                             value={currencyOutput}
                             onChange={(e) => setCurrencyOutput(e.target.value)}
@@ -103,7 +103,7 @@ return (
                     </div>
                 </form>
 
-                <button className="btn btn-primary" type="button" onClick={fetchExchangeRate}>
+                <button className="generate-btn btn btn-primary" type="button" onClick={fetchExchangeRate}>
                     Convert
                 </button>
 

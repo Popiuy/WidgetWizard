@@ -62,9 +62,9 @@ export default function NBAWidget() {
   return (
     <div>
       <div className="card widget" style={{ width: '15rem' }}>
-        <div className="search-bar">
+        <div className="search-bar font">
           <input type="text" placeholder="Enter NBA team name" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
-          <button onClick={handleSearchClick}>Search</button>
+          <button className="ms-2" onClick={handleSearchClick}>Search</button>
         </div>
         <img className="nbalogo" src={nbaLogo}></img>
         {viewFavorites ? (
@@ -81,13 +81,13 @@ export default function NBAWidget() {
           
         ) : (
         <div className="card-body">
-          <h5 className="card-teamData">Your Favorite NBA Team</h5>
+          <h5 className="font card-teamData">Your Favorite NBA Team</h5>
           <div className="teamData-name">{teamData.name}</div>
           <img src={teamData.logo} className="card-img-top" alt={teamData.name} />
-          <div className="teamData-city">City: {teamData.city}</div>
+          <div className="font teamData-city mb-2">City: {teamData.city}</div>
           <div className="teamData-allStar">{teamData.allStar}</div>
           <div className="teamData-nbaFranchise">{teamData.nbaFranchise}</div>
-          <button className="favorite-btn" 
+          <button className="mb-2 favorite-btn" 
               onClick={()=>addToFavorites({
                 variables: {
                   teamData: {...teamData}
@@ -95,7 +95,7 @@ export default function NBAWidget() {
               })}>
               ⭐Add to Favorites⭐
             </button>
-            <button onClick={()=>setViewFavorites(true)}>⭐View Favorites⭐</button>
+            <button className="font" onClick={()=>setViewFavorites(true)}>⭐View Favorites⭐</button>
         </div>
         )}
       </div>

@@ -44,7 +44,7 @@ export default function BoredAPIWidget() {
                 <div className="card-body">
                     <h5 className="card-title">Random Activity</h5>
                     <p className="card-text">{activity.activity}</p>
-                    <button className="btn btn-primary" type="button" onClick={fetchNewActivity}>Generate New</button>
+                    <button className="btn btn-primary generate-btn" type="button" onClick={fetchNewActivity}>Generate New</button>
                 </div>
             </div>
         </div>

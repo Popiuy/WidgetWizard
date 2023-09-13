@@ -47,10 +47,10 @@ export default function webcamWidget() {
 
     return (
       <div>
-        <div className="search-form">
-          <h2>Webcams Around The World</h2>
-          <div className="form-group">
-            <label htmlFor="latitude">Latitude:</label>
+        <div className="font search-form">
+          <h2 className="card-title my-2">Webcams Around The World</h2>
+          <div className="font form-group">
+            <label className="font mb-2" htmlFor="latitude">Latitude:</label>
             <input
               type="text"
               id="latitude"
@@ -58,8 +58,8 @@ export default function webcamWidget() {
               onChange={(e) => setCityInfo({ ...cityInfo, latitude: e.target.value })}
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="longitude">Longitude:</label>
+          <div className="font form-group">
+            <label className="font mb-2" htmlFor="longitude">Longitude:</label>
             <input
               type="text"
               id="longitude"
@@ -67,7 +67,7 @@ export default function webcamWidget() {
               onChange={(e) => setCityInfo({ ...cityInfo, longitude: e.target.value })}
             />
           </div>
-          <button className="btn btn-primary" onClick={handleSearch}>
+          <button className="btn btn-primary mb-2" onClick={handleSearch}>
             Search
           </button>
         </div>

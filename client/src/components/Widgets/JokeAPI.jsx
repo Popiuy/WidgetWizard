@@ -48,15 +48,15 @@ const addToFavorites = async () => {
         {/* <img src={photo.src} className="card-img-top" alt={photo.title}></img> */}
           <div className="card-body">
             {/* <h5 className="card-title">Joke</h5> */}
-            <img className="jokesImage" src={jokesImage} alt="Jokes Image" style={{ width: '100px', height: '75px' }}/>
-            <div className="category">{joke.category}</div>
-            <div className="joke">{joke.joke}</div>
-            <button className="btn btn-primary" type="button" onClick={fetchJoke}>New Joke</button>
-            <a href="/Joke" className="btn btn-primary">
+            <img className="jokesImage font" src={jokesImage} alt="Jokes Image" style={{ width: '100px', height: '75px' }}/>
+            <div className="category font">Category: {joke.category}</div>
+            <div className="joke font">{joke.joke}</div>
+            <button className="font btn btn-primary me-2" type="button" onClick={fetchJoke}>New Joke</button>
+            <a href="/Joke" className="my-2 font btn btn-primary">
                 Go to Widget
               </a>
               <button className="favorite-btn" onClick={addToFavorites}>
-                ADD TO FAVORITES!
+              ⭐Add to Favorites⭐
               </button>
           </div>
       </div>

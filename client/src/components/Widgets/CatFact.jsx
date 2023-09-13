@@ -39,10 +39,10 @@ export default function CatFactWidget() {
         <div>
             <div className="widget" style={{ width: "18rem" }}>
                 <div className="card-body">
-                    <h5 className="card-title">Random Cat Fact</h5>
-                    <img className="storeCat" src={storeCat} alt="Store Cat" />
+                    <h5 className="card-title mb-2">Random Cat Fact</h5>
+                    <img className="storeCat mb-2" src={storeCat} alt="Store Cat" />
                     <p className="card-text">{fact.fact}</p>
-                    <button className="btn btn-primary" type="button" onClick={fetchCatFact}>Generate New</button>
+                    <button className="font btn btn-primary" type="button" onClick={fetchCatFact}>Generate New</button>
                 </div>
             </div>
         </div>
