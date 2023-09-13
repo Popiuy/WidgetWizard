@@ -173,7 +173,7 @@ export default function NYTimesWidget () {
                                 <div className="article-date">{article.date_published}</div>
                                 <div className="article-abstract hide">{article.abstract}</div>
                                 <div className="article-section hide">{article.section}</div>
-                                <div className="article-url hide"><a href={article.nyt_url}>go to article!</a></div>
+                                <div className="article-url hide"><a className="font" target="_blank" href={article.nyt_url}>go to article!</a></div>
                                 <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
                             </div>
                         ))}
