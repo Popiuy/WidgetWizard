@@ -1,6 +1,6 @@
 const { Schema } = require('mongoose');
 
-const NBATeamDataSchema = new Schema (
+const nba_favorites_schema = new Schema (
     {
         name: {
             type: String,
@@ -20,6 +20,6 @@ const NBATeamDataSchema = new Schema (
     }
 );
 
-module.exports = NBATeamDataSchema;
+module.exports = nba_favorites_schema;
 
 //headline, byline, date published, abstract, blurb, source, url

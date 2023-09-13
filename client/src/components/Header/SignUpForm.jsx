@@ -14,7 +14,7 @@ export default function SignUpForm() {
         password: '',
     })
 
-    const [createUser, { error, data }] = useMutation(CREATE_USER)
+    const [createUser] = useMutation(CREATE_USER)
 
     const handleFormData = (e) => {
         const { name, value } = e.target;
@@ -60,15 +60,15 @@ export default function SignUpForm() {
 
         <form className="signup-form" onSubmit={handleFormSubmit}>
             <div className="mb-3">
-                <label for="exampleInputUsername1" className="form-label">Username</label>
+                <label htmlFor="exampleInputUsername1" className="form-label">Username</label>
                 <input type="text" name="username" className="signup-username form-control" onChange={handleFormData} value={formData.username}></input>
             </div>
             <div className="mb-3">
-                <label for="exampleInputEmail1" className="form-label">Email address</label>
+                <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                 <input type="email" name="email" className="signup-email form-control" onChange={handleFormData} value={formData.email}></input>
             </div>
             <div className="mb-3">
-                <label for="exampleInputPassword1" className="form-label">Password</label>
+                <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                 <input type="password" name="password" className="signup-password form-control" onChange={handleFormData} value={formData.password}></input>
             </div>
             <button type="submit" className="btn btn-primary">Sign Up</button>
