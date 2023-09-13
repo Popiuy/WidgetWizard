@@ -2,22 +2,22 @@
 // Provides webcams around the world based on lat, long
 // key = gFFaX8hEsYH01S9RYHYwq712ZZs7FOzB
 
-
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 
 export default function webcamWidget() {
 
-    const [webcamData, setWebcamData] = useState({
-        city: '',
-        key: 'gFFaX8hEsYH01S9RYHYwq712ZZs7FOzB',
+    const [webcamData, setWebcamData] = useState([]);
+    const [error, setError] = useState(null);
+    const [cityInfo, setCityInfo] = useState({
+      latitude: '',
+      longitude: '',
     });
 
-    const [error, setError] = useState(null);
-
-    const searchWebcam = async () => {
+    const searchWebcams = async () => {
         try {
             const response = await fetch(
-                'https://api.windy.com/webcams/v3/list/nearby=40.7128,-74.0060,10?key=gFFaX8hEsYH01S9RYHYwq712ZZs7FOzB'
+                'https://api.windy.com/webcams/v3/list/nearby=${cityInfo.latitude},${cityInfo.longitude},10?key=gFFaX8hEsYH01S9RYHYwq712ZZs7FOzB'
             );
             if (!response.ok) {
                 throw new Error('Failed to fetch data');
@@ -31,49 +31,73 @@ export default function webcamWidget() {
         }
       };
 
+    const handleSearch = async () => {
+      const data = await searchWebcams();
+      if (data.length > 0) {
+        setWebcamData(data);
+      }
+    };
 
     useEffect(() => {
-      const fetchWebcams = async () => {
-        const data = await searchWebcams();
-        if (data.length > 0) {
-          setWebcamData(data);
-        }
-      };
-  
-      fetchWebcams();
+      // You can initialize the component with default coordinates or user's location here
+      setCityInfo({ latitude: '40.7128', longitude: '-74.0060' });
     }, []);
-
-
-
 
     return (
       <div>
-        {webcamData.map((webcam, index) => (
-          <div key={index} className="card mb-3" style={{ width: '700px' }}>
-            <div className="row g-0">
-              <div className="col-md-4">
-                <img
-                  src={webcam.image.current.preview}
-                  className="img-fluid rounded-start"
-                  alt={webcam.title}
-                />
-              </div>
-              <div className="col-md-8">
-                <div className="card-body">
-                  <h5 className="card-title">Webcam {index + 1}</h5>
-                  <p className="card-text">{webcam.title}</p>
-                  <p className="card-text">
-                    <small className="text-muted">Location: {webcam.location.city}</small>
-                  </p>
+        <div className="search-form">
+          <h2>Webcams Around The World</h2>
+          <div className="form-group">
+            <label htmlFor="latitude">Latitude:</label>
+            <input
+              type="text"
+              id="latitude"
+              value={cityInfo.latitude}
+              onChange={(e) => setCityInfo({ ...cityInfo, latitude: e.target.value })}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="longitude">Longitude:</label>
+            <input
+              type="text"
+              id="longitude"
+              value={cityInfo.longitude}
+              onChange={(e) => setCityInfo({ ...cityInfo, longitude: e.target.value })}
+            />
+          </div>
+          <button className="btn btn-primary" onClick={handleSearch}>
+            Search
+          </button>
+        </div>
+        <div>
+          {webcamData.map((webcam, index) => (
+            <div key={index} className="card mb-3" style={{ width: '700px' }}>
+              <div className="row g-0">
+                <div className="col-md-4">
+                  <img
+                    src={webcam.image.current.preview}
+                    className="img-fluid rounded-start"
+                    alt={webcam.title}
+                  />
+                </div>
+                <div className="col-md-8">
+                  <div className="card-body">
+                    <h5 className="card-title">Webcam {index + 1}</h5>
+                    <p className="card-text">{webcam.title}</p>
+                    <p className="card-text">
+                      <small className="text-muted">Location: {webcam.location.city}</small>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
-        {error && <p>{error}</p>}
+          ))}
+          {error && <p>{error}</p>}
+        </div>
       </div>
     );
 
 }
+
 
 
