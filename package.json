@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "## To-do",
   "main": "server/server.js",
+  "engines": {
+    "node": "v18.17.0"
+  },
   "scripts": {
     "start": "node server/server.js",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
