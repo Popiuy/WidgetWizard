@@ -48,7 +48,8 @@ const Dashboard = () => {
       refetchQueries: [GET_ME]
     });
     setSelectedWidgets((currentWidgets) =>
-      currentWidgets.filter((widget) => widget.name !== widgetName)
+      currentWidgets.filter((widget) => widget.name !== widgetName),
+      console.log(widgetName),
     );
   };
 
@@ -93,7 +94,7 @@ const Dashboard = () => {
           </li>
           <li
             onClick={() => {
-              addWidgetHandler('currencyWidget');
+              addWidgetHandler('CurrencyConverter');
             }}
           >
             <a className="dropdown-item" href="#">
