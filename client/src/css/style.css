@@ -85,6 +85,7 @@
     padding-left: 1rem;
     padding-right: 1rem;
     background-color: #5E60CE;
+    position: relative; /* Important for absolute positioning */
 }
 
 .btn-space {
@@ -97,6 +98,7 @@
     padding: 10px;
     background-color: white;
     border-radius: 12px;
+    position: absolute; /* Specify the top and left coordinates for each widget */
 }
 
 .handle {
