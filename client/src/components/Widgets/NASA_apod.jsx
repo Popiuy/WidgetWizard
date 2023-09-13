@@ -14,8 +14,8 @@ export default function APODWidget() {
     description: '',
   });
 
-  const [addToFavorites, {error}] = useMutation(NASA_ADD_FAVORITE);
-  const {loading, data} = useQuery(GET_NASA_FAVORITES);
+  const [addToFavorites] = useMutation(NASA_ADD_FAVORITE);
+  const {data} = useQuery(GET_NASA_FAVORITES);
   const [viewFavorites, setViewFavorites] = useState(false) 
   const getData = async() => {
   

@@ -35,6 +35,7 @@ const fetchJoke = async () => {
 
 useEffect(() => {
   fetchJoke();
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, []);
 
 const addToFavorites = async () => {
