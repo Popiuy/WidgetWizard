@@ -213,7 +213,7 @@ const Dashboard = () => {
             onStart={eventLogger}
             onDrag={eventLogger}
             onStop={eventLogger}
-            bounds="#root" // restrict every draggable div to the dashboard div
+            bounds="#root" // restrict every draggable div to the root of the page
           >
             <div className="widget">
         <div className="handle">Drag from here</div>
