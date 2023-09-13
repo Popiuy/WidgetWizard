@@ -54,22 +54,22 @@
   We have received advice from the UC Berkeley Extension tutors Joem Casusi, James Harding and Kyle Vance on debugging our code. We also reached out to the official documentation of most of the technologies listed above.
 
   ### Developer Information:
-Justin Choi
-    - GitHub URL: https://github.com/justinschoi93
-    - LinkedIn URL: https://www.linkedin.com/in/justinschoi93/
-    - e-mail address: justinschoi93@gmail.com 
+  - Justin Choi
+  - GitHub URL: https://github.com/justinschoi93
+  - LinkedIn URL: https://www.linkedin.com/in/justinschoi93/
+  - e-mail address: justinschoi93@gmail.com 
 
-Minhee Chung
-    - GitHub URL: https://github.com/mchung03
-    - LinkedIn URL: https://www.linkedin.com/in/minhee-chung/
-    - e-mail address: minhee.chung14@gmail.com
+  - Minhee Chung
+  - GitHub URL: https://github.com/mchung03
+  - LinkedIn URL: https://www.linkedin.com/in/minhee-chung/
+  - e-mail address: minhee.chung14@gmail.com
 
-Ryan Payne
-    - GitHub URL: https://github.com/Popiuy
-    - LinkedIn URL: https://www.linkedin.com/in/ryan-payne-218378280/
-    - e-mail address: rymaxpayne@gmail.com
+  - Ryan Payne
+  - GitHub URL: https://github.com/Popiuy
+  - LinkedIn URL: https://www.linkedin.com/in/ryan-payne-218378280/
+  - e-mail address: rymaxpayne@gmail.com
 
-Virginia Freitas
-    - GitHub URL: https://github.com/virginiafreitas
-    - LinkedIn URL: https://www.linkedin.com/in/virginia-freitas/
-    - e-mail address: virginiacdefreitas@gmail.com
+  - Virginia Freitas
+  - GitHub URL: https://github.com/virginiafreitas
+  - LinkedIn URL: https://www.linkedin.com/in/virginia-freitas/
+  - e-mail address: virginiacdefreitas@gmail.com
