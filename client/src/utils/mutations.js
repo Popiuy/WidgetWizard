@@ -33,6 +33,34 @@ export const NASA_ADD_FAVORITE = gql`
     }
 `;
 
+export const BREW_ADD_FAVORITE = gql`
+    mutation BREWaddFavorite($brewData: brew_favorites_schema_input) {
+        BREWaddFavorite(brewData: $brewData) {
+        _id
+        name
+        brewery_type
+        street
+        city
+        state
+        phone
+        website_url
+        }
+    }
+`;
+
+export const NBA_ADD_FAVORITE = gql`
+    mutation NBAaddFavorite($teamData: nba_favorites_schema_input) {
+        NBAaddFavorite(teamData: $teamData) {
+        _id
+        name
+        city
+        logo
+        allStar
+        nbaFranchise
+        }
+    }
+`;
+
 export const BOOKMARK_ARTICLE = gql`
     mutation CreateUser($nyTarticleData: NYTbookmarkINPUT) {
         bookmarkArticle(NYTarticleData: $nyTarticleData) {

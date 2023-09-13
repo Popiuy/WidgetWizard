@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import { useQuery, useMutation } from '@apollo/client';
+import {NBA_ADD_FAVORITE} from '../../utils/mutations';
+import { GET_NBA_FAVORITES } from '../../utils/queries';
 
 export default function NBAWidget() {
   const [searchInput, setSearchInput] = useState('');
@@ -13,6 +16,10 @@ export default function NBAWidget() {
   useEffect(() => {
     console.log(teamData);
   }, [teamData]);
+
+  const [addToFavorites, {error}] = useMutation(NASA_ADD_FAVORITE);
+  const {loading, data} = useQuery(GET_NBA_FAVORITES);
+  const [viewFavorites, setViewFavorites] = useState(false) 
 
   const getData = async () => {
     const url = `https://api-nba-v1.p.rapidapi.com/teams?search=${searchInput}`;
@@ -52,21 +59,26 @@ export default function NBAWidget() {
     getData();
   };
 
-  
-
-
-  const addToFavorites = () => {
-    // Implement your logic to add teamData to favorites here
-    console.log(teamData);
-  };
-
   return (
     <div>
-      <div className="card widget" style={{ width: '40rem' }}>
+      <div className="card widget" style={{ width: '15rem' }}>
         <div className="search-bar">
           <input type="text" placeholder="Enter NBA team name" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
           <button onClick={handleSearchClick}>Search</button>
         </div>
+        {viewFavorites ? (
+          <div className="favorites-display">
+            {data.map((fav)=>{
+              <div className="favorite-photo">
+                <div>{fav.title}</div>
+                <img src={fav.src} id={fav.title}/>
+                <div>{fav.caption}</div>
+              </div>
+            })}
+            <button onClick={()=>setViewFavorites(false)}>⭐⭐⭐Photo of the Day⭐⭐⭐</button>
+          </div>
+          
+        ) : (
         <div className="card-body">
           <h5 className="card-teamData">Your Favorite NBA Team</h5>
           <div className="teamData-name">{teamData.name}</div>
@@ -74,13 +86,17 @@ export default function NBAWidget() {
           <div className="teamData-city">City: {teamData.city}</div>
           <div className="teamData-allStar">{teamData.allStar}</div>
           <div className="teamData-nbaFranchise">{teamData.nbaFranchise}</div>
-          <a href="/NBA" className="btn btn-primary">
-            Go to Widget
-          </a>
-          <button className="favorite-btn" onClick={addToFavorites}>
-            ADD TO FAVORITES!
-          </button>
+          <button className="favorite-btn" 
+              onClick={()=>addToFavorites({
+                variables: {
+                  teamData: {...teamData}
+                }
+              })}>
+              ⭐Add to Favorites⭐
+            </button>
+            <button onClick={()=>setViewFavorites(true)}>⭐View Favorites⭐</button>
         </div>
+        )}
       </div>
     </div>
   );

@@ -20,7 +20,19 @@ const resolvers = {
                 context.user._id,
                 'NASA_favorites'   
             )
-        }
+        },
+        getBREWfavorites: async (parent, args, context) => {
+            return await User.findById(
+                context.user._id,
+                'BREW_favorites'   
+            )
+        },
+        getNBAfavorites: async (parent, args, context) => {
+            return await User.findById(
+                context.user._id,
+                'NBA_favorites'   
+            )
+        },
     },
     Mutation: {
         createUser: async ( parent, { username, email, password }) => {
@@ -81,7 +93,24 @@ const resolvers = {
                 { new: true }
             )
             return user.NASA_favorites;
-        }
+        },
+        BREWaddFavorite: async (parent, {brewData}, context) => {
+            const user = await User.findByIdAndUpdate(
+                {_id: context.user._id},
+                {$addToSet: { BREW_favorites: brewData}},
+                { new: true }
+            )
+            return user.NASA_favorites;
+        },
+        NBAaddFavorite: async (parent, {teamData}, context) => {
+            const user = await User.findByIdAndUpdate(
+                {_id: context.user._id},
+                {$addToSet: { NBA_favorites: teamData}},
+                { new: true }
+            )
+            return user.NASA_favorites;
+        },
+
     }
 };
 
