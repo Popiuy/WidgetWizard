@@ -9,7 +9,7 @@ import Draggable from 'react-draggable';
 
 import brewLogo from '.././images/BREWERY.jpg'
 import nbaLogo from '.././images/nbalogopt2.png'
-import nasaLogo from '.././images/nasa.png'
+import nasaLogo from '.././images/nasa_official.png'
 import soundcloudLogo from '.././images/soundcloud.jpg'
 import nytLogo from '.././images/nyt.jpg'
 import randomcatfactLogo from '.././images/store-cat-img.png'

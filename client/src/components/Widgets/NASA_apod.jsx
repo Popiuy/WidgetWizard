@@ -82,7 +82,7 @@ export default function APODWidget() {
               alt={photoData.title}
             ></img>
             <div className="photo-date">{photoData.date}</div>
-            <button className="favorite-btn" 
+            <button className="me-2 favorite-btn" 
               onClick={()=>addToFavorites({
                 variables: {
                   photoData: {...photoData}
