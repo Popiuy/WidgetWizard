@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useQuery, useMutation } from '@apollo/client';
-import {NASA_ADD_FAVORITE} from '../../utils/mutations';
-import { GET_NASA_FAVORITES } from '../../utils/queries';
+// import { useQuery, useMutation } from '@apollo/client';
+// import {NASA_ADD_FAVORITE} from '../../utils/mutations';
+// import { GET_NASA_FAVORITES } from '../../utils/queries';
 import nasa_logo from '../../images/nasa_official.png';
 
 export default function APODWidget() {
@@ -14,9 +14,9 @@ export default function APODWidget() {
     description: '',
   });
 
-  const [addToFavorites] = useMutation(NASA_ADD_FAVORITE);
-  const {data} = useQuery(GET_NASA_FAVORITES);
-  const [viewFavorites, setViewFavorites] = useState(false) 
+  // const [addToFavorites] = useMutation(NASA_ADD_FAVORITE);
+  // const {data} = useQuery(GET_NASA_FAVORITES);
+  // const [viewFavorites, setViewFavorites] = useState(false) 
   const getData = async() => {
   
     try {
@@ -61,7 +61,7 @@ export default function APODWidget() {
       <div className="card-body">
         <img className="nasa-logo" src={nasa_logo}></img>
         <h5 className="card-title">Astronomy Picture of the Day</h5>
-        {viewFavorites ? (
+        {/* {viewFavorites ? (
           <div className="favorites-display">
             {data.map((fav)=>{
               <div className="favorite-photo">
@@ -71,9 +71,9 @@ export default function APODWidget() {
               </div>
             })}
             <button onClick={()=>setViewFavorites(false)}>⭐⭐⭐Photo of the Day⭐⭐⭐</button>
-          </div>
+          </div> */}
           
-        ) : (
+        {/* ) : ( */}
           <div className="astronomy-photo-of-the-day-display">
             <div className="photo-title">{photoData.title}</div>
             <img
@@ -82,7 +82,7 @@ export default function APODWidget() {
               alt={photoData.title}
             ></img>
             <div className="photo-date">{photoData.date}</div>
-            <button className="me-2 favorite-btn" 
+            {/* <button className="me-2 favorite-btn" 
               onClick={()=>addToFavorites({
                 variables: {
                   photoData: {...photoData}
@@ -90,9 +90,9 @@ export default function APODWidget() {
               })}>
               ⭐Add to Favorites⭐
             </button>
-            <button className="favorite-btn" onClick={()=>setViewFavorites(true)}>⭐View Favorites⭐</button>
+            <button className="favorite-btn" onClick={()=>setViewFavorites(true)}>⭐View Favorites⭐</button> */}
           </div>
-        )}
+        {/* )} */}
       </div>
     </div>
   </div>

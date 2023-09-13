@@ -49,10 +49,10 @@ export default function APODHomePage() {
     wrapper();
   }, []); // Provide an empty dependency array to run the effect once on mount
 
-  const addToFavorites = async () => {
-    // Implement your logic to add photoData to favorites here
-    console.log(photoData);
-  };
+  // const addToFavorites = async () => {
+  //   // Implement your logic to add photoData to favorites here
+  //   console.log(photoData);
+  // };
 
   return (
     <div>
@@ -73,12 +73,12 @@ export default function APODHomePage() {
               <div className="font photo-credit">{photoData.photographer}</div>
               <div className="font photo-description">{photoData.description}</div>
               <div className="font photo-date">{photoData.date}</div>
-              <a href="/" className="font me-2 btn btn-primary">
+              {/* <a href="/" className="font me-2 btn btn-primary">
                 Go to Widget
               </a>
               <button className="favorite-btn" onClick={addToFavorites}>
                 ADD TO FAVORITES!
-              </button>
+              </button> */}
             </>
           )}
         </div>
