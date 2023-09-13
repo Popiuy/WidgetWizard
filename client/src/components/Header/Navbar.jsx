@@ -1,23 +1,24 @@
-import { Link } from 'react';
+// import { Link } from 'react';
 import Auth from '../../utils/auth';
-import wizard from '../../images/wizard.jpg';
+import wizard from '../../images/wizard-modified.png';
 import { useState } from 'react';
-import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
+import {  Nav, Modal, Tab } from 'react-bootstrap';
 import SignUpForm from './SignUpForm';
-import LoginForm from './LoginForm';
+import LoginForm from './loginForm';
 
 export default function NavBarComponent () {
 
   const [showModal, setShowModal] = useState(false);
 
   return (
-      <header>
-      <nav className="navbar navbar-color navbar-expand-lg bg-body-tertiary">
-        <div className="container-fluid">
-          <img className="wizard-img" src={wizard} alt="Wizard"></img>
-          <a className="navbar-brand d-flex justify-content-center" href="/">WidgetWizard</a>
-          <ul className="nav justify-content-end">
-            <li className="nav-item">
+    <header>
+      <nav className="navbar navbar-color navbar-expand-lg d-flex justify-content-between">
+          <div className="nav">
+            <a className="navbar-brand website-title" href="/">WidgetWizard</a>
+            <img className="wizard-img" src={wizard} alt="Wizard"></img>
+          </div>
+          <ul className="nav">
+            <li className="nav-item login-btn">
               {Auth.loggedIn() ? (
                 <Nav.Link to='/' onClick={Auth.logout}>Logout</Nav.Link>
                 ) : (
@@ -25,7 +26,6 @@ export default function NavBarComponent () {
                   )}
             </li>
           </ul>
-        </div>
       </nav>
       <Modal
         size='lg'

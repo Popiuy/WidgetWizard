@@ -18,8 +18,13 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+
         path: '/dashboard',
-        // change back to /dashboard/:id
+        // change back to /dashboard/username
+        element: <Dashboard />
+      },
+      {
+        path: '/dashboard/:username',
         element: <Dashboard />
       },
       {
@@ -29,7 +34,9 @@ const router = createBrowserRouter([
       {
         path: '/about',
         element: <About />
-      }
+      },
+      
+      
     ],
   },
 ]);

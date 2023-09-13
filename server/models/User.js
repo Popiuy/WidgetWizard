@@ -1,47 +1,45 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-
+const nasa_favorites_schema = require('./NASA');
+const brew_favorites_schema = require('./BREW');
+const nba_favorites_schema = require('./NBA');
 const userSchema = new Schema(
     {
-
-        username: {
-            type: String,
-            require: true,
-            unique: true,
-            trim: true,
-        },
-        email: {
-            type: String,
-            required: true,
-            unique: true,
-            match: [/.+@.+\..+/, 'Must match an email address!']
-        },
-        password: {
-            type: String,
-            required: true,
-            unique: true,
-            minlegnth: 6,
-        },
-        widgets: {
-            type: Schema.Types.ObjectId,
-            ref: 'Widget'
-        }
-
+      username: {
+        type: String,
+        required: true,
+        unique: true,
+      },
+      email: {
+        type: String,
+        required: true,
+        unique: true,
+        match: [/.+@.+\..+/, 'Must use a valid email address'],
+      },
+      password: {
+        type: String,
+        required: true,
+      },
+        widgets: [String],
+            // type: Schema.Types.ObjectId,
+            // ref: 'Widget'
+        NASA_favorites: [nasa_favorites_schema],
+        BREW_favorites: [brew_favorites_schema],
+        NBA_favorites: [nba_favorites_schema],
     }
 );
 
-userSchema.pre('save', async (next) => {
-    if (this.isNew || this.isModified('password')) {
-        const saltRounds = 10;
-        this.password = await bcrypt.hash(this.passwword, saltRounds);
-    }
-
-    next();
+userSchema.pre('save', async function (next) {
+if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+}
+next();
 });
 
-userSchema.methods.isCorrectPassword = async (password) => {
-    return bcrypt.compare(password, this.password);
-}
+userSchema.methods.isCorrectPassword = async function (password) {
+  return bcrypt.compare(password, this.password);
+};
 
 const User = model('User', userSchema);
 

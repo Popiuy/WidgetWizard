@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react';
+import jokesImage  from '../../images/jokes.jpeg'
 
 export default function JokeAPIWidget() {
 const searchJoke = async () => {
@@ -34,17 +35,30 @@ const fetchJoke = async () => {
 
 useEffect(() => {
   fetchJoke();
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, []);
+
+const addToFavorites = async () => {
+  // Implement your logic to add photoData to favorites here
+  console.log(joke);
+};
 
   return (
     <>
-      <div className="card" style={{width:"18rem"}}>
+      <div className="widget" style={{width:"18rem"}}>
         {/* <img src={photo.src} className="card-img-top" alt={photo.title}></img> */}
           <div className="card-body">
-            <h5 className="card-title">Joke: </h5>
-            <div className="card-category">{joke.category}</div>
-            <div className="card-joke">{joke.joke}</div>
-            <button className="btn btn-primary" type="button" onClick={fetchJoke}>New Joke</button>
+            {/* <h5 className="card-title">Joke</h5> */}
+            <img className="jokesImage font" src={jokesImage} alt="Jokes Image" style={{ width: '100px', height: '75px' }}/>
+            <div className="category font">Category: {joke.category}</div>
+            <div className="joke font">{joke.joke}</div>
+            <button className="font btn btn-primary me-2" type="button" onClick={fetchJoke}>New Joke</button>
+            <a href="/Joke" className="my-2 font btn btn-primary">
+                Go to Widget
+              </a>
+              <button className="favorite-btn" onClick={addToFavorites}>
+              ⭐Add to Favorites⭐
+              </button>
           </div>
       </div>
     </>
