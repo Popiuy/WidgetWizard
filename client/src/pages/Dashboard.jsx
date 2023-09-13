@@ -57,6 +57,7 @@ const Dashboard = () => {
     delete updatedWidgets[widgetName];
     return updatedWidgets;
   });
+
   };
 
   const eventLogger = (e, data) => {
