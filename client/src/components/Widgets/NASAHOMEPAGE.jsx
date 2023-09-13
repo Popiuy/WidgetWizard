@@ -66,7 +66,7 @@ export default function APODHomePage() {
               <div className="photo-title">{photoData.title}</div>
               <img
                 src={photoData.src}
-                className="card-img-top"
+                className="card-img-top home-img"
                 alt={photoData.title}
               ></img>
               <div className="photo-caption">{photoData.caption}</div>
