@@ -7,9 +7,9 @@ import Draggable from 'react-draggable';
 import BoredAPIWidget from '../components/Widgets/Bored';
 import APODWidget from '../components/Widgets/NASA_apod';
 import NBAWidget from '../components/Widgets/NBA';
-import JokeAPIWidget from '../components/widgets/JokeAPI';
+import JokeAPIWidget from '../components/Widgets/JokeAPI';
 import BreweryWidget from '../components/Widgets/OpenBrewery';
-import CatFactWidget from '../components/widgets/CatFact';
+import CatFactWidget from '../components/Widgets/CatFact';
 import NYTimesWidget from '../components/Widgets/NYTimes';
 import SoundCloudWidget from '../components/Widgets/Soundcloud';
 
@@ -55,20 +55,29 @@ const Dashboard = () => {
           </li>
           <li
             onClick={() => {
-              addWidget(NYTimesWidget);
-            }}
-          >
-            <a className="dropdown-item" href="#">
-              New York Times
-            </a>
-          </li>
-          <li
-            onClick={() => {
               addWidget(BoredAPIWidget);
             }}
           >
             <a className="dropdown-item" href="#">
               BoredAPI
+            </a>
+          </li>
+          <li
+            onClick={() => {
+              addWidget(currencyWidget);
+            }}
+          >
+            <a className="dropdown-item" href="#">
+              Currency Widget
+            </a>
+          </li>
+          <li
+            onClick={() => {
+              addWidget(JokeAPIWidget);
+            }}
+          >
+            <a className="dropdown-item" href="#">
+              Joke Widget
             </a>
           </li>
           <li
@@ -82,11 +91,11 @@ const Dashboard = () => {
           </li>
           <li
             onClick={() => {
-              addWidget(JokeAPIWidget);
+              addWidget(NYTimesWidget);
             }}
           >
             <a className="dropdown-item" href="#">
-              Joke Widget
+              New York Times
             </a>
           </li>
           <li
@@ -105,15 +114,6 @@ const Dashboard = () => {
           >
             <a className="dropdown-item" href="#">
               Random Cat Fact
-            </a>
-          </li>
-          <li
-            onClick={() => {
-              addWidget(currencyWidget);
-            }}
-          >
-            <a className="dropdown-item" href="#">
-              Currency Widget
             </a>
           </li>
           <li
