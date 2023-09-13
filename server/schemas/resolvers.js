@@ -3,18 +3,25 @@ const {signToken, AuthenticationError} = require('../utils/auth');
 
 const resolvers = {
     Query: {
+        me: async (parent, args, context) => {
+            if(!context.user) {
+                throw AuthenticationError;
+            } else {
+                return await User.findById(context.user._id)
+            }
+        },
         users: async () => {
             return await User.find();
         },
         user: async (parent, {userId}) => {
             return await User.findById(userId);
         },
-        widgets: async () => {
-            return await Widget.find();
-        },
-        widget: async (parent, {widgetId}) => {
-            return await Widget.findById(widgetId);
-        },
+        // widgets: async () => {
+        //     return await Widget.find();
+        // },
+        // widget: async (parent, {widgetId}) => {
+        //     return await Widget.findById(widgetId);
+        // },
         getNASAfavorites: async (parent, args, context) => {
             return await User.findById(
                 context.user._id,
@@ -61,11 +68,23 @@ const resolvers = {
             return { token, user };
         },
 
-        addWidget: async (parent, {widgetId}, context) => {
+        addWidget: async (parent, {widgetName}, context) => {
+
+            console.log(context.user)
             
             const user = await User.findByIdAndUpdate(
                 { _id: context.user._id },
-                { $addToSet : { widgets: widgetId} },
+                { $addToSet : { widgets: widgetName} },
+                { new: true }
+            );
+
+            return user;
+        },
+        deleteWidget: async (parent, {widgetName}, context) => {
+            
+            const user = await User.findByIdAndUpdate(
+                { _id: context.user._id },
+                { $pull : { widgets: widgetName} },
                 { new: true }
             );
 

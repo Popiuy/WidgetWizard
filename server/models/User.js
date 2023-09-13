@@ -20,10 +20,9 @@ const userSchema = new Schema(
         type: String,
         required: true,
       },
-        widgets: {
-            type: Schema.Types.ObjectId,
-            ref: 'Widget'
-        },
+        widgets: [String],
+            // type: Schema.Types.ObjectId,
+            // ref: 'Widget'
         NASA_favorites: [nasa_favorites_schema],
         BREW_favorites: [brew_favorites_schema],
         NBA_favorites: [nba_favorites_schema],
