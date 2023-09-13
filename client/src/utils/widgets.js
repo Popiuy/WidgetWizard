@@ -6,7 +6,7 @@ import BreweryWidget from '../components/Widgets/OpenBrewery';
 import CatFactWidget from '../components/Widgets/CatFact';
 import webcamWidget from '../components/Widgets/Webcam';
 import NYTimesWidget from '../components/Widgets/NYTimes';
-import SoundCloudWidget from '../components/Widgets/Soundcloud';
+// import SoundCloudWidget from '../components/Widgets/SoundCloud';
 import CurrencyConverter from '../components/Widgets/Currency-Converter'
 
 const getWidget = (widgetName) => {
@@ -27,8 +27,8 @@ const getWidget = (widgetName) => {
             return webcamWidget
         case 'NYTimesWidget':
             return NYTimesWidget
-        case 'SoundCloudWidget':
-            return SoundCloudWidget
+        // case 'SoundCloudWidget':
+        //     return SoundCloudWidget
         case 'CurrencyConverter':
             return CurrencyConverter
     }
