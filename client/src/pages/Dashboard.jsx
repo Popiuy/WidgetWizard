@@ -24,6 +24,7 @@ import getWidget from '../utils/widgets';
 const Dashboard = () => {
   const {loading, data} = useQuery(GET_ME)
   
+  // eslint-disable-next-line no-unused-vars
   const [selectedWidgets, setSelectedWidgets] = useState([]);
 
 <<<<<<< HEAD

@@ -22,6 +22,7 @@ const resolvers = {
         // widget: async (parent, {widgetId}) => {
         //     return await Widget.findById(widgetId);
         // },
+
         getNASAfavorites: async (parent, args, context) => {
             return await User.findById(
                 context.user._id,

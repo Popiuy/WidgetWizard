@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
-import { useQuery, useMutation } from '@apollo/client';
-import {BREW_ADD_FAVORITE} from '../../utils/mutations';
-import { GET_BREW_FAVORITES } from '../../utils/queries';
+// import { useQuery, useMutation } from '@apollo/client';
+// import {BREW_ADD_FAVORITE} from '../../utils/mutations';
+// import { GET_BREW_FAVORITES } from '../../utils/queries';
 
 export default function BreweryWidget() {
   const [searchInput, setSearchInput] = useState('');
-  const [viewFavorites, setViewFavorites] = useState(false) 
-  const [addToFavorites] = useMutation(BREW_ADD_FAVORITE);
-  const {data} = useQuery(GET_BREW_FAVORITES);
+  // const [viewFavorites, setViewFavorites] = useState(false) 
+  // const [addToFavorites] = useMutation(BREW_ADD_FAVORITE);
+  // const {data} = useQuery(GET_BREW_FAVORITES);
   const [brewData, setBrewData] = useState({
     name: '',
     brewery_type: '',
@@ -82,7 +82,7 @@ export default function BreweryWidget() {
         </div>
         <div className="card-body">
           <h5 className="card-brewery font">Your Favorite Brewery Search Engine</h5>
-          {viewFavorites ? (
+          {/* {viewFavorites ? (
           <div className="favorites-display">
             {data.map((fav)=>{
               <div className="favorite-photo">
@@ -94,7 +94,7 @@ export default function BreweryWidget() {
             <button onClick={()=>setViewFavorites(false)}>⭐⭐⭐Photo of the Day⭐⭐⭐</button>
           </div>
           
-        ) : (
+        ) : ( */}
           <div>
           <div className="font brewery-name">{brewData.name}</div>
           <div className="font brewery-brewery_type">Type: {brewData.brewery_type}</div>
@@ -107,7 +107,7 @@ export default function BreweryWidget() {
           <div className="font brewery-website_url">
             Website: <a href={brewData.website_url} target="_blank" rel="noopener noreferrer">{brewData.website_url}</a>
           </div>
-          <button className="favorite-btn mb-2" 
+          {/* <button className="favorite-btn mb-2" 
               onClick={()=>addToFavorites({
                 variables: {
                   brewData: {...brewData}
@@ -115,9 +115,9 @@ export default function BreweryWidget() {
               })}>
               ⭐Add to Favorites⭐
             </button>
-            <button className="font" onClick={()=>setViewFavorites(true)}>⭐View Favorites⭐</button>
+            <button className="font" onClick={()=>setViewFavorites(true)}>⭐View Favorites⭐</button> */}
             </div>
-            )}
+            {/* )} */}
         </div>
       </div>
     </div>

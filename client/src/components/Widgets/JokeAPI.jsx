@@ -38,10 +38,10 @@ useEffect(() => {
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, []);
 
-const addToFavorites = async () => {
-  // Implement your logic to add photoData to favorites here
-  console.log(joke);
-};
+// const addToFavorites = async () => {
+//   // Implement your logic to add photoData to favorites here
+//   console.log(joke);
+// };
 
   return (
     <>
@@ -53,12 +53,12 @@ const addToFavorites = async () => {
             <div className="category font">Category: {joke.category}</div>
             <div className="joke font">{joke.joke}</div>
             <button className="font btn btn-primary me-2" type="button" onClick={fetchJoke}>New Joke</button>
-            <a href="/Joke" className="my-2 font btn btn-primary">
+            {/* <a href="/Joke" className="my-2 font btn btn-primary">
                 Go to Widget
               </a>
               <button className="favorite-btn" onClick={addToFavorites}>
               ⭐Add to Favorites⭐
-              </button>
+              </button> */}
           </div>
       </div>
     </>

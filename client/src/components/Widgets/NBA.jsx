@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useQuery, useMutation } from '@apollo/client';
-import {NBA_ADD_FAVORITE} from '../../utils/mutations';
-import { GET_NBA_FAVORITES } from '../../utils/queries';
+// import { useQuery, useMutation } from '@apollo/client';
+// import {NBA_ADD_FAVORITE} from '../../utils/mutations';
+// import { GET_NBA_FAVORITES } from '../../utils/queries';
 export default function NBAWidget() {
   const [searchInput, setSearchInput] = useState('');
   const [teamData, setTeamData] = useState({
@@ -16,9 +16,9 @@ export default function NBAWidget() {
     console.log(teamData);
   }, [teamData]);
 
-  const [addToFavorites] = useMutation(NBA_ADD_FAVORITE);
-  const {data} = useQuery(GET_NBA_FAVORITES);
-  const [viewFavorites, setViewFavorites] = useState(false) 
+  // const [addToFavorites] = useMutation(NBA_ADD_FAVORITE);
+  // const {data} = useQuery(GET_NBA_FAVORITES);
+  // const [viewFavorites, setViewFavorites] = useState(false) 
 
   const getData = async () => {
     const url = `https://api-nba-v1.p.rapidapi.com/teams?search=${searchInput}`;
@@ -65,7 +65,7 @@ export default function NBAWidget() {
           <input type="text" placeholder="Enter NBA team name" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
           <button className="ms-2" onClick={handleSearchClick}>Search</button>
         </div>
-        {viewFavorites ? (
+        {/* {viewFavorites ? (
           <div className="favorites-display">
             {data.map((fav)=>{
               <div className="favorite-photo">
@@ -77,7 +77,7 @@ export default function NBAWidget() {
             <button onClick={()=>setViewFavorites(false)}>⭐⭐⭐Photo of the Day⭐⭐⭐</button>
           </div>
           
-        ) : (
+        ) : ( */}
         <div className="card-body">
           <h5 className="font card-teamData">Your Favorite NBA Team</h5>
           <div className="teamData-name">{teamData.name}</div>
@@ -85,7 +85,7 @@ export default function NBAWidget() {
           <div className="font teamData-city mb-2">City: {teamData.city}</div>
           <div className="teamData-allStar">{teamData.allStar}</div>
           <div className="teamData-nbaFranchise">{teamData.nbaFranchise}</div>
-          <button className="mb-2 favorite-btn" 
+          {/* <button className="mb-2 favorite-btn" 
               onClick={()=>addToFavorites({
                 variables: {
                   teamData: {...teamData}
@@ -93,9 +93,9 @@ export default function NBAWidget() {
               })}>
               ⭐Add to Favorites⭐
             </button>
-            <button className="font" onClick={()=>setViewFavorites(true)}>⭐View Favorites⭐</button>
+            <button className="font" onClick={()=>setViewFavorites(true)}>⭐View Favorites⭐</button> */}
         </div>
-        )}
+        {/* )} */}
       </div>
     </div>
   );
