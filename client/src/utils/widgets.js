@@ -1,4 +1,4 @@
-import BoredAPIWidget from '../components/Widgets/Bored';
+// import BoredAPIWidget from '../components/Widgets/Bored';
 import APODWidget from '../components/Widgets/NASA_apod';
 import NBAWidget from '../components/Widgets/NBA';
 import JokeAPIWidget from '../components/Widgets/JokeAPI';
@@ -11,8 +11,8 @@ import CurrencyConverter from '../components/Widgets/Currency-Converter'
 
 const getWidget = (widgetName) => {
     switch(widgetName) {
-        case 'BoredAPIWidget': 
-            return BoredAPIWidget
+        // case 'BoredAPIWidget': 
+        //     return BoredAPIWidget
         case 'APODWidget':
             return APODWidget
         case 'NBAWidget':
