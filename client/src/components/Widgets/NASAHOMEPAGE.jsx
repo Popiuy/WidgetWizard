@@ -69,11 +69,11 @@ export default function APODHomePage() {
                 className="card-img-top home-img"
                 alt={photoData.title}
               ></img>
-              <div className="photo-caption">{photoData.caption}</div>
-              <div className="photo-credit">{photoData.photographer}</div>
-              <div className="photo-description">{photoData.description}</div>
-              <div className="photo-date">{photoData.date}</div>
-              <a href="/" className="btn btn-primary">
+              <div className="font photo-caption">{photoData.caption}</div>
+              <div className="font photo-credit">{photoData.photographer}</div>
+              <div className="font photo-description">{photoData.description}</div>
+              <div className="font photo-date">{photoData.date}</div>
+              <a href="/" className="font me-2 btn btn-primary">
                 Go to Widget
               </a>
               <button className="favorite-btn" onClick={addToFavorites}>
