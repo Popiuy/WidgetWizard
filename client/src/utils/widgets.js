@@ -1,12 +1,12 @@
-import BoredAPIWidget from '../components/Widgets/Bored';
+import BoredAPIWidget from '../components/Widgets/Bored.jsx';
 import APODWidget from '../components/Widgets/NASA_apod';
 import NBAWidget from '../components/Widgets/NBA';
 import JokeAPIWidget from '../components/Widgets/JokeAPI';
 import BreweryWidget from '../components/Widgets/OpenBrewery';
 import CatFactWidget from '../components/Widgets/CatFact';
-import webcamWidget from '../components/Widgets/Webcam';
+import webcamWidget from '../components/Widgets/Webcam.jsx';
 import NYTimesWidget from '../components/Widgets/NYTimes';
-import SoundCloudWidget from '../components/Widgets/SoundCloud';
+import SoundCloudWidget from '../components/Widgets/SoundCloud.jsx';
 import CurrencyConverter from '../components/Widgets/Currency-Converter'
 
 const getWidget = (widgetName) => {
