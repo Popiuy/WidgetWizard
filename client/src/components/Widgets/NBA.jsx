@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import {NBA_ADD_FAVORITE} from '../../utils/mutations';
 import { GET_NBA_FAVORITES } from '../../utils/queries';
-import nbaLogo from '../../images/nba-logo-transparent.png'
 export default function NBAWidget() {
   const [searchInput, setSearchInput] = useState('');
   const [teamData, setTeamData] = useState({
@@ -66,7 +65,6 @@ export default function NBAWidget() {
           <input type="text" placeholder="Enter NBA team name" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
           <button onClick={handleSearchClick}>Search</button>
         </div>
-        <img className="nbalogo" src={nbaLogo}></img>
         {viewFavorites ? (
           <div className="favorites-display">
             {data.map((fav)=>{
