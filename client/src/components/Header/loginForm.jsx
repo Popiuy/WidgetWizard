@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/client';
+import Swal from 'sweetalert2';
 
 const LoginForm = () => {
 
@@ -37,6 +38,11 @@ const LoginForm = () => {
             
         } catch (err) {
             console.log(err);
+            Swal.fire(
+                'User does not exist!',
+                'Could not login',
+                'error'
+              )
         }
     }
 
@@ -59,27 +65,6 @@ const LoginForm = () => {
         <button type="submit" className="submit-button btn btn-primary">Submit</button>
         </form>
         )}
-        {/* <form onSubmit={formSubmit}>
-            <label>Username: </label>
-            <input className='username-field'
-                placeholder ='JiminiCricket'
-                name = 'username'
-                type = 'text'
-                value = {formState.username}
-                onChange = {formResponse}
-            ></input>
-            <label>Password: </label>
-            <input className='password-field'
-                placeholder='******'
-                name = 'password'
-                type = 'password'
-                value = {formState.password}
-                onChange = {formResponse}
-                ></input>
-            <button className = 'submit-button' type='submit'>
-                Submit
-            </button>
-        </form> */}
         </>
     )
 
