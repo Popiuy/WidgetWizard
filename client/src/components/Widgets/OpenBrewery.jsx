@@ -71,7 +71,7 @@ export default function BreweryWidget() {
 
   return (
     <div>
-      <div className="widget card" style={{ width: '15rem' }}>
+      <div className="card" style={{ width: '15rem' }}>
         <div className="search-bar font">
           <input
             type="text"

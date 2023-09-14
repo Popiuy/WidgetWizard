@@ -60,7 +60,7 @@ export default function NBAWidget() {
 
   return (
     <div>
-      <div className="card widget" style={{ width: '15rem' }}>
+      <div className="card" style={{ width: '15rem' }}>
         <div className="search-bar font">
           <input type="text" placeholder="Enter NBA team name" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
           <button className="ms-2" onClick={handleSearchClick}>Search</button>

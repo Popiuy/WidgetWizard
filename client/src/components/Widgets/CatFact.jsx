@@ -38,7 +38,7 @@ export default function CatFactWidget() {
 
     return (
         <div>
-            <div className="widget" style={{ width: "18rem" }}>
+            <div className="card" style={{ width: "18rem" }}>
                 <div className="card-body">
                     <h5 className="card-title mb-2">Random Cat Fact</h5>
                     <img className="storeCat mb-2" src={storeCat} alt="Store Cat" />
