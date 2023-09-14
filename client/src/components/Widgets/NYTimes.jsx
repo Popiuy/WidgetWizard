@@ -176,9 +176,11 @@ export default function NYTimesWidget () {
                                 <div className="article-headline">{article.headline}</div>
                                 <div className="article-byline">{article.byline}</div>
                                 <div className="article-date">{article.date_published}</div>
-                                <div className="article-abstract hide">{article.abstract}</div>
-                                <div className="article-section hide">{article.section}</div>
-                                <div className="article-url hide"><a className="font" href={article.nyt_url}>go to article!</a></div>
+                                <div className="article-hidden">
+                                    <div className="article-abstract hide">{article.abstract}</div>
+                                    <div className="article-section hide">section: {article.section}</div>
+                                    <div className="article-url hide"><a className="font" href={article.nyt_url}>go to article!</a></div>
+                                </div>
                                 <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
                             </div>
                         ))}
@@ -190,11 +192,13 @@ export default function NYTimesWidget () {
                                 <div className="article-headline">{article.headline}</div>
                                 <div className="article-byline">{article.byline}</div>
                                 <div className="article-date">{article.date_published}</div>
-                                <div className="article-kicker hide">{article.kicker}</div>
-                                <div className="article-abstract hide">{article.abstract}</div>
-                                <div className="article-section hide">{article.section}</div>
-                                <div className="article-subsection hide">{article.subsection}</div>
-                                <div className="article-url hide"><a href={article.nyt_url}>go to article</a></div>
+                                <div className="article-hidden">
+                                    <div className="article-kicker hide">{article.kicker}</div>
+                                    <div className="article-abstract hide">{article.abstract}</div>
+                                    <div className="article-section hide">section: {article.section}</div>
+                                    <div className="article-subsection hide">subsection: {article.subsection}</div>
+                                    <div className="article-url hide"><a href={article.nyt_url}>go to article</a></div>
+                                </div>
                                 <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
                             </div>
                         ))}
@@ -206,11 +210,13 @@ export default function NYTimesWidget () {
                                 <div className="article-headline">{article.headline}</div>
                                 <div className="article-byline">{article.byline}</div>
                                 <div className="article-date">{article.date_published}</div>
-                                <div className="article-abstract hide">{article.abstract}</div>
-                                <div className="article-section hide">{article.section}</div>
-                                <div className="article-subsection hide">{article.subsection}</div>
-                                <div className="article-source hide">{article.source}</div>
-                                <div className="article-url hide"><a href={article.nyt_url}>go to article</a></div>
+                                <div className="article-hidden">
+                                    <div className="article-abstract hide">{article.abstract}</div>
+                                    <div className="article-section hide">section: {article.section}</div>
+                                    <div className="article-subsection hide">subsection: {article.subsection}</div>
+                                    <div className="article-source hide">{article.source}</div>
+                                    <div className="article-url hide"><a href={article.nyt_url}>go to article</a></div>
+                                </div>
                                 <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
                             </div>
                         ))}
@@ -222,9 +228,11 @@ export default function NYTimesWidget () {
                                 <div className="article-headline">{article.headline}</div>
                                 <div className="article-byline">{article.byline}</div>
                                 <div className="article-date">{article.date_published}</div>
-                                <div className="article-blurb hide">{article.blurb}</div>
-                                <div className="article-abstract hide">{article.abstract}</div>
-                                <div className="article-url hide"><a href={article.nyt_url}>go to article</a></div>
+                                <div className="article-hidden">
+                                    <div className="article-blurb hide">{article.blurb}</div>
+                                    <div className="article-abstract hide">{article.abstract}</div>
+                                    <div className="article-url hide"><a href={article.nyt_url}>go to article</a></div>
+                                </div>
                                 <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
                             </div>
                         ))}
@@ -236,13 +244,15 @@ export default function NYTimesWidget () {
                                 <div className="article-headline">{article.headline}</div>
                                 <div className="article-byline">{article.byline}</div>
                                 <div className="article-date">{article.date_published}</div>
-                                <div className="article-blurb hide">{article.blurb}</div>
-                                <div className="article-kicker hide">{article.kicker}</div>
-                                <div className="article-abstract hide">{article.abstract}</div>
-                                <div className="article-section hide">{article.section}</div>
-                                <div className="article-subsection hide">{article.subsection}</div>
-                                <div className="article-source hide">{article.source}</div>
-                                <div className="article-url hide"><a href={article.nyt_url}>go to article</a></div>
+                                <div className="article-hidden">
+                                    <div className="article-blurb hide">{article.blurb}</div>
+                                    <div className="article-kicker hide">{article.kicker}</div>
+                                    <div className="article-abstract hide">{article.abstract}</div>
+                                    <div className="article-section hide">{article.section}</div>
+                                    <div className="article-subsection hide">{article.subsection}</div>
+                                    <div className="article-source hide">{article.source}</div>
+                                    <div className="article-url hide"><a href={article.nyt_url}>go to article</a></div>
+                                </div>
                                 <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
                             </div>
                         ))}
