@@ -39,7 +39,3 @@ const NYTbookmarkSchema = new Schema (
 
     }
 );
-
-module.exports = NYTbookmarkSchema;
-
-//headline, byline, date published, abstract, blurb, source, url
