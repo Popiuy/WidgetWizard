@@ -20,10 +20,12 @@
 }
 
 .delete-btn {
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
     border-radius: 3px;
     width: 100%;
     height: 100%;
-    color: tan;
+    background-color: #eee;
 }
 
 .alert {
@@ -103,7 +105,8 @@
 
 .handle {
     cursor: move;
-    background-color: #eee;
+    background-color: rgb(133, 131, 131);
+    color: white;
     padding: 5px;
     text-align: center;
 }
