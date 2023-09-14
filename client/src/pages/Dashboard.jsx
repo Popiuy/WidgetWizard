@@ -16,7 +16,7 @@ import randomcatfactLogo from '.././images/store-cat-img.png'
 import jokeLogo from '.././images/jokes.jpeg'
 import boredLogo from '.././images/bored.jpg'
 import currencyLogo from '.././images/currency.jpg'
-import webcamLogo from '.././images/webcam.jpg'
+// import webcamLogo from '.././images/webcam.jpg'
 
 import getWidget from '../utils/widgets';
 
@@ -190,7 +190,7 @@ const Dashboard = () => {
                 <img className="catlogo" src={soundcloudLogo} alt="Brewery Logo" />
             </div>
           </li>
-          <li
+          {/* <li
             onClick={() => {
               addWidgetHandler('webcamWidget');
             }}
@@ -201,7 +201,7 @@ const Dashboard = () => {
                 </a>
                 <img className="catlogo" src={webcamLogo} alt="Brewery Logo" />
             </div>
-          </li>
+          </li> */}
         </ul>
       </div>
       <div className="dashboard">
