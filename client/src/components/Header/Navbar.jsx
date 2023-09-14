@@ -5,11 +5,11 @@ import { useState } from 'react';
 import {  Nav, Modal, Tab } from 'react-bootstrap';
 import SignUpForm from './SignUpForm';
 import LoginForm from './loginForm';
-import * as dayjs from 'dayjs';
+// import dayjs from 'dayjs';
 export default function NavBarComponent () {
 
   const [showModal, setShowModal] = useState(false);
-  const DT = dayjs().format('dddd h:mm a MMMM D, YYYY');
+  // const DT = dayjs().format('dddd h:mm a MMMM D, YYYY');
   
   return (
     <header>
@@ -17,7 +17,7 @@ export default function NavBarComponent () {
           <div className="nav">
             <img className="wizard-img" src={wizard} alt="Wizard"></img>
             <a className="navbar-brand website-title" href="/">WidgetWizard</a>
-            <div className="navbar-brand website-clock" >{DT}</div>
+            {/* <div className="navbar-brand website-clock" >{DT}</div> */}
           </div>
           <ul className="nav">
             <li className="nav-item login-btn">
