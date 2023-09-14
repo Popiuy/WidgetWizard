@@ -1,7 +1,4 @@
 import { useState, useEffect } from 'react';
-// import { useQuery, useMutation } from '@apollo/client';
-// import {NASA_ADD_FAVORITE} from '../../utils/mutations';
-// import { GET_NASA_FAVORITES } from '../../utils/queries';
 import nasa_logo from '../../images/nasa_official.png';
 import '../../css/NASA.css';
 
@@ -15,9 +12,6 @@ export default function APODWidget() {
     description: '',
   });
 
-  // const [addToFavorites] = useMutation(NASA_ADD_FAVORITE);
-  // const {data} = useQuery(GET_NASA_FAVORITES);
-  // const [viewFavorites, setViewFavorites] = useState(false) 
   const getData = async() => {
   
     try {

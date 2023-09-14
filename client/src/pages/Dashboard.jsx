@@ -23,9 +23,6 @@ import getWidget from '../utils/widgets';
 
 const Dashboard = () => {
   const {loading, data} = useQuery(GET_ME)
-  
-  // eslint-disable-next-line no-unused-vars
-  // const [selectedWidgets, setSelectedWidgets] = useState([]);
 
   const userWidgets = data?.me?.widgets || [];
 
@@ -38,8 +35,6 @@ const Dashboard = () => {
         widgetName
       }
     });
-    // const selectedWidget = getWidget(widgetName)
-    // setSelectedWidgets([...[selectedWidgets], selectedWidget]);
   };
 
   const deleteWidgetHandler = (widgetName) => {
@@ -49,19 +44,7 @@ const Dashboard = () => {
       }, 
       refetchQueries: [GET_ME]
     });
-    // setSelectedWidgets((currentWidgets) =>
-    //  {
-    // currentWidgets.filter((item) => item !== widget)
-    // );
-    // const updatedWidgets = { ...currentWidgets };
-    // delete updatedWidgets[widgetName];
-    // return updatedWidgets;
   };
-
-  // const eventLogger = (e, data) => {
-  //   console.log('Event: ', e);
-  //   console.log('Data: ', data);
-  // };
 
   if(loading) {
     return (<h1>LOADING</h1>)

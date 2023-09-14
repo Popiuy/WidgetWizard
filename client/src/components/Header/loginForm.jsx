@@ -35,12 +35,6 @@ const LoginForm = () => {
                     user: data.login.user
                 }
             );
-            Swal.fire(
-                'User has been logged in!',
-                'Success!',
-                'success'
-              )
-            
         } catch (err) {
             console.log(err);
             Swal.fire(

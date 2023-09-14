@@ -49,7 +49,7 @@
     - When I am in my dashboard page I can click the Logout button if desired to sign out.
     ![screenshot](./client/src/images/demo.gif)
   
-  ## Contributing
+  ## Contributors
   We have received advice from the UC Berkeley Extension tutors Joem Casusi, James Harding and Kyle Vance on debugging our code. We also reached out to the official documentation of most of the technologies listed above.
 
   ## Developer Information:

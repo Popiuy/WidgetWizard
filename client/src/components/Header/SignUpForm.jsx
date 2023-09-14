@@ -42,11 +42,6 @@ export default function SignUpForm() {
             email: '',
             password: '',
         })
-        Swal.fire(
-            'User has been signed up!',
-            'Success!',
-            'success'
-          )
         } catch(err) {
             Swal.fire(
                 'Duplicate user!',
