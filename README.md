@@ -33,7 +33,6 @@
   - NPM
   - Express
   - MySQL
-  - Sequelize ORM  
   - User Authentication - bcrypt
   - GraphQL
   - Apollo Server
