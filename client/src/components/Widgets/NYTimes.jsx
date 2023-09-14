@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import NYTapiLogo from '../../images/nytimes_api_logo.png';
 import nytimesheader from '../../images/nytimes-wordmark.svg'
 import BookmarkTag from '../../images/bookmark.png'
-import { useQuery, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { BOOKMARK_ARTICLE } from '../../utils/mutations';
 import { GET_NYT_BOOKMARKS } from '../../utils/queries';
 import NYTtoolbox from '../../utils/NYT';
@@ -17,13 +17,13 @@ export default function NYTimesWidget () {
     const [searchBarInfo, setSearchBarInfo] = useState('');
     const [url, setUrl] = useState('https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=mSmLxowneVbMEuIyM8wkLqmMe06Gubv7');
     const sections = ['all','arts', 'automobiles', 'books/review', 'business', 'fashion', 'food', 'health', 'home', 'insider', 'magazine', 'movies', 'nyregion', 'obituaries', 'opinion', 'politics', 'realestate', 'science', 'sports', 'sundayreview', 'technology', 'theater', 't-magazine', 'travel', 'upshot', 'us', 'world']
-    const { bmdata } = useQuery(GET_NYT_BOOKMARKS);
+    // const { bmdata } = useQuery(GET_NYT_BOOKMARKS);
     const [bookmarkArticle] = useMutation(BOOKMARK_ARTICLE);
     const [RTFarticles, setRTFarticles] = useState([])
     const [TSarticles, setTSarticles] = useState([])
     const [MParticles, setMParticles] = useState([])
     const [ASarticles, setASarticles] = useState([])
-    const [BMarticles, setBMarticles] = useState([])
+    // const [BMarticles, setBMarticles] = useState([])
     const [most, setMost] = useState(`viewed/${days}`);
 
 //Sets URL in response to user input
@@ -86,9 +86,9 @@ export default function NYTimesWidget () {
                 const asarticles = NYTtoolbox.AS(NYTdata.response.docs)
                 setASarticles(asarticles);
                 break;
-            case "bookmarks": 
-                setBMarticles(bmdata)
-                break;
+            // case "bookmarks": 
+            //     setBMarticles(bmdata)
+            //     break;
         }
     };
 
@@ -238,7 +238,7 @@ export default function NYTimesWidget () {
                         ))}
                     </div>
                 {/* bookmarks display, hidden until tab gets clicked */}
-                    <div className="nytimes-display-frame" id="display-bookmarks" hidden={ tab !== "bookmarks" }>
+                    {/* <div className="nytimes-display-frame" id="display-bookmarks" hidden={ tab !== "bookmarks" }>
                         { BMarticles.map((article, i) => (
                             <div key={i} className="article-row">
                                 <div className="article-headline">{article.headline}</div>
@@ -256,7 +256,7 @@ export default function NYTimesWidget () {
                                 <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
                             </div>
                         ))}
-                    </div>
+                    </div> */}
             </div>
         </div>
         

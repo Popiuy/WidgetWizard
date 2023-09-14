@@ -1,7 +1,7 @@
 //import widgets from widget library
 //reference User.widgets
 //display appropriate widgets
-import { useState } from 'react';
+// import { useState } from 'react';
 import { ADD_WIDGET, DELETE_WIDGET } from '../utils/mutations'
 import { GET_ME } from '../utils/queries';
 import { useQuery, useMutation } from '@apollo/client';
@@ -25,7 +25,7 @@ const Dashboard = () => {
   const {loading, data} = useQuery(GET_ME)
   
   // eslint-disable-next-line no-unused-vars
-  const [selectedWidgets, setSelectedWidgets] = useState([]);
+  // const [selectedWidgets, setSelectedWidgets] = useState([]);
 
   const userWidgets = data?.me?.widgets || [];
 
@@ -38,9 +38,8 @@ const Dashboard = () => {
         widgetName
       }
     });
-    const selectedWidget = getWidget(widgetName)
-    setSelectedWidgets((currentWidgets) => [...currentWidgets, selectedWidget]);
-    
+    // const selectedWidget = getWidget(widgetName)
+    // setSelectedWidgets([...[selectedWidgets], selectedWidget]);
   };
 
   const deleteWidgetHandler = (widgetName) => {
@@ -50,15 +49,13 @@ const Dashboard = () => {
       }, 
       refetchQueries: [GET_ME]
     });
-    setSelectedWidgets((currentWidgets) =>
+    // setSelectedWidgets((currentWidgets) =>
+    //  {
     // currentWidgets.filter((item) => item !== widget)
     // );
-    {
-    const updatedWidgets = { ...currentWidgets };
-    delete updatedWidgets[widgetName];
-    return updatedWidgets;
-  });
-
+    // const updatedWidgets = { ...currentWidgets };
+    // delete updatedWidgets[widgetName];
+    // return updatedWidgets;
   };
 
   // const eventLogger = (e, data) => {
