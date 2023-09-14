@@ -16,31 +16,6 @@ const resolvers = {
         user: async (parent, {userId}) => {
             return await User.findById(userId);
         },
-        // widgets: async () => {
-        //     return await Widget.find();
-        // },
-        // widget: async (parent, {widgetId}) => {
-        //     return await Widget.findById(widgetId);
-        // },
-
-        getNASAfavorites: async (parent, args, context) => {
-            return await User.findById(
-                context.user._id,
-                'NASA_favorites'   
-            )
-        },
-        getBREWfavorites: async (parent, args, context) => {
-            return await User.findById(
-                context.user._id,
-                'BREW_favorites'   
-            )
-        },
-        getNBAfavorites: async (parent, args, context) => {
-            return await User.findById(
-                context.user._id,
-                'NBA_favorites'   
-            )
-        },
     },
     Mutation: {
         createUser: async ( parent, { username, email, password }) => {
@@ -104,31 +79,6 @@ const resolvers = {
             const deletedUser = await User.deleteOne({userId})
             alert(`${user.username}'s account has been deleted.`)
         },
-        NASAaddFavorite: async (parent, {photoData}, context) => {
-            const user = await User.findByIdAndUpdate(
-                {_id: context.user._id},
-                {$addToSet: { NASA_favorites: photoData}},
-                { new: true }
-            )
-            return user.NASA_favorites;
-        },
-        BREWaddFavorite: async (parent, {brewData}, context) => {
-            const user = await User.findByIdAndUpdate(
-                {_id: context.user._id},
-                {$addToSet: { BREW_favorites: brewData}},
-                { new: true }
-            )
-            return user.BREW_favorites;
-        },
-        NBAaddFavorite: async (parent, {teamData}, context) => {
-            const user = await User.findByIdAndUpdate(
-                {_id: context.user._id},
-                {$addToSet: { NBA_favorites: teamData}},
-                { new: true }
-            )
-            return user.NBA_favorites;
-        },
-
     }
 };
 

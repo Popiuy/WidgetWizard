@@ -69,47 +69,6 @@ export const DELETE_WIDGET = gql`
     }
 `
 
-export const NASA_ADD_FAVORITE = gql`
-    mutation NASAaddFavorite($photoData: nasa_favorites_schema_input) {
-        NASAaddFavorite(photoData: $photoData) {
-        _id
-        date
-        title
-        src
-        caption
-        photographer
-        description
-        }
-    }
-`;
-
-export const BREW_ADD_FAVORITE = gql`
-    mutation BREWaddFavorite($brewData: brew_favorites_schema_input) {
-        BREWaddFavorite(brewData: $brewData) {
-        _id
-        name
-        brewery_type
-        street
-        city
-        state
-        phone
-        website_url
-        }
-    }
-`;
-
-export const NBA_ADD_FAVORITE = gql`
-    mutation NBAaddFavorite($teamData: nba_favorites_schema_input) {
-        NBAaddFavorite(teamData: $teamData) {
-        name
-        city
-        logo
-        allStar
-        nbaFranchise
-        }
-    }
-`;
-
 export const BOOKMARK_ARTICLE = gql`
     mutation CreateUser($nyTarticleData: NYTbookmarkINPUT) {
         bookmarkArticle(NYTarticleData: $nyTarticleData) {
