@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import nasa_logo from '../../images/nasa_official.png';
 
 export default function APODHomePage() {
   const [photoData, setPhotoData] = useState({
@@ -58,6 +59,7 @@ export default function APODHomePage() {
     <div className="apod-card mx-auto">
       <div className="card">
         <div className="card-body">
+        <img className="nasa-logo" src={nasa_logo}></img>
           <h5 className="card-title">Astronomy Picture of the Day</h5>
           {error ? (
             <div className="error-message">{error}</div>
