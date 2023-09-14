@@ -49,13 +49,15 @@
 }
 
 .website-clock {
-    position: absolute;
+    /* position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%); */
     bottom: 0;
     font-size: 30px;
     color: white;
+    display: flex;
     justify-content: center;
+    margin-right: 26rem;
 }
 
 .nav-link {
