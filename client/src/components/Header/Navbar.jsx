@@ -17,8 +17,8 @@ export default function NavBarComponent () {
           <div className="nav">
             <img className="wizard-img" src={wizard} alt="Wizard"></img>
             <a className="navbar-brand website-title" href="/">WidgetWizard</a>
-            <div className="navbar-brand website-clock" >{DT}</div>
           </div>
+          <div className="navbar-brand website-clock" >{DT}</div>
           <ul className="nav">
             <li className="nav-item login-btn">
               {Auth.loggedIn() ? (
