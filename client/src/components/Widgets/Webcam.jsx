@@ -49,7 +49,7 @@ export default function webcamWidget() {
     
 
     return (
-      <div>
+      <div className="card">
         <div className="font search-form">
           <h2 className="card-title my-2">Webcams Around The World</h2>
           <div className="font form-group">

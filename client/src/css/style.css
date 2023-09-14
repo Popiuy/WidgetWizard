@@ -21,6 +21,8 @@
 
 .delete-btn {
     border-radius: 3px;
+    width: 100%;
+    height: 100%;
 }
 
 .alert {
@@ -85,7 +87,7 @@
     padding-left: 1rem;
     padding-right: 1rem;
     background-color: #5E60CE;
-    position: relative; /* Important for absolute positioning */
+    position: relative;
 }
 
 .btn-space {
@@ -98,7 +100,7 @@
     padding: 10px;
     background-color: white;
     border-radius: 12px;
-    position: absolute; /* Specify the top and left coordinates for each widget */
+    position: absolute;
 }
 
 .handle {
@@ -112,7 +114,7 @@
     width: 100%; 
     height: 100%; 
     /* overflow: hidden;  */
-    position: relative;
+    /* position: relative; */
 }
  
 .widget-content img {

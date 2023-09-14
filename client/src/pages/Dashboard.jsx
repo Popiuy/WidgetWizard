@@ -220,13 +220,15 @@ const Dashboard = () => {
             onDrag={eventLogger}
             onStop={eventLogger}
             bounds="#root" // restrict every draggable div to the root of the page
+            className="draggable"
           >
-            <div className="widget">
-        <div className="handle">Drag from here</div>
-        <div className="widget-content"> 
-          <Widget />
-        </div>
-        <button className="delete-btn" onClick={() => deleteWidgetHandler(widgetName)}>Delete</button>
+          <div className="widget">
+            <div className="handle">Drag from here</div>
+              <div className="widget-content">
+                <button className="delete-btn" onClick={() => deleteWidgetHandler(widgetName)}>Delete</button> 
+                <Widget />
+              </div>
+        
       </div>
     </Draggable>
   )
