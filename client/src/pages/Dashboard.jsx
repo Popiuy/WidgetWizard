@@ -40,6 +40,7 @@ const Dashboard = () => {
     });
     const selectedWidget = getWidget(widgetName)
     setSelectedWidgets((currentWidgets) => [...currentWidgets, selectedWidget]);
+    
   };
 
   const deleteWidgetHandler = (widgetName) => {
@@ -60,10 +61,10 @@ const Dashboard = () => {
 
   };
 
-  const eventLogger = (e, data) => {
-    console.log('Event: ', e);
-    console.log('Data: ', data);
-  };
+  // const eventLogger = (e, data) => {
+  //   console.log('Event: ', e);
+  //   console.log('Data: ', data);
+  // };
 
   if(loading) {
     return (<h1>LOADING</h1>)
@@ -216,11 +217,10 @@ const Dashboard = () => {
             position={null}
             grid={[25, 25]}
             scale={1}
-            onStart={eventLogger}
-            onDrag={eventLogger}
-            onStop={eventLogger}
+            // onStart={eventLogger}
+            // onDrag={eventLogger}
+            // onStop={eventLogger}
             bounds="#root" // restrict every draggable div to the root of the page
-            className="draggable"
           >
           <div className="widget">
             <div className="handle">Drag from here</div>
