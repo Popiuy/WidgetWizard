@@ -55,8 +55,8 @@ export default function APODHomePage() {
   // };
 
   return (
-    <div>
-      <div className="card" style={{ width: '50rem' }}>
+    <div className="apod-card mx-auto">
+      <div className="card">
         <div className="card-body">
           <h5 className="card-title">Astronomy Picture of the Day</h5>
           {error ? (
@@ -73,12 +73,6 @@ export default function APODHomePage() {
               <div className="font photo-credit">{photoData.photographer}</div>
               <div className="font photo-description">{photoData.description}</div>
               <div className="font photo-date">{photoData.date}</div>
-              {/* <a href="/" className="font me-2 btn btn-primary">
-                Go to Widget
-              </a>
-              <button className="favorite-btn" onClick={addToFavorites}>
-                ADD TO FAVORITES!
-              </button> */}
             </>
           )}
         </div>
