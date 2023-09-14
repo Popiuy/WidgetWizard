@@ -1,0 +1,23 @@
+.nasa-logo {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.nasa-header {
+    display: flex;
+    align-items: center;
+}
+
+
+
+.nasa-header {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nasa-logo {
+    width: 50px; /* adjust the width as needed */
+    height: auto; /* maintain aspect ratio */
+    margin-right: 10px; /* adjust the margin as needed */
+  }
