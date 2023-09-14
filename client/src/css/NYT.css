@@ -1,3 +1,16 @@
+.nytimes-header {
+  display: flex;
+  align-items: center;
+}
+
+/* .nytimes-banner {
+  align-self: right;
+  margin-right: 100px; 
+} */
+
+.nytimes-logo {
+  margin-right: 10px;
+}
 
 .nytimes-widget {
   width: 500px;

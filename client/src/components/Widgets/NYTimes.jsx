@@ -125,10 +125,12 @@ export default function NYTimesWidget () {
         
         <div className="nytimes-widget">
             <div className="nytimes-navbar">
-                <div className="nytimes-logo">
-                    <img src={NYTapiLogo}/>
+                <div className="nytimes-header">
+                    <div className="nytimes-logo">
+                        <img  src={NYTapiLogo}/>
+                    </div>
+                    <img className="nytimes-banner" src={nytimesheader}></img>
                 </div>
-                <img src={nytimesheader}></img>
                 <div className="nytimes-navbar-tabs">
                     <button className={tab==='real-time-feed'?'nytimes-navbar-tab active':"nytimes-navbar-tab"} id="real-time-feed" onClick={(e)=>setTab(e.target.id)} >Real Time Feed</button>
                     <button className={tab==='top-stories'?'nytimes-navbar-tab active':"nytimes-navbar-tab"} id="top-stories" onClick={(e)=>setTab(e.target.id)}>Top Stories</button>
@@ -181,7 +183,8 @@ export default function NYTimesWidget () {
                                     <div className="article-section hide">section: {article.section}</div>
                                     <div className="article-url hide"><a className="font" href={article.nyt_url}>go to article!</a></div>
                                 </div>
-                                <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
+                                <img className="bookmark-btn" src={BookmarkTag}/>
+                                {/* <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/> */}
                             </div>
                         ))}
                     </div>
@@ -199,7 +202,8 @@ export default function NYTimesWidget () {
                                     <div className="article-subsection hide">subsection: {article.subsection}</div>
                                     <div className="article-url hide"><a href={article.nyt_url}>go to article</a></div>
                                 </div>
-                                <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
+                                <img className="bookmark-btn" src={BookmarkTag}/>
+                                {/* <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/> */}
                             </div>
                         ))}
                     </div>
@@ -217,7 +221,8 @@ export default function NYTimesWidget () {
                                     <div className="article-source hide">{article.source}</div>
                                     <div className="article-url hide"><a href={article.nyt_url}>go to article</a></div>
                                 </div>
-                                <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
+                                <img className="bookmark-btn" src={BookmarkTag}/>
+                                {/* <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/> */}
                             </div>
                         ))}
                     </div>
@@ -233,7 +238,8 @@ export default function NYTimesWidget () {
                                     <div className="article-abstract hide">{article.abstract}</div>
                                     <div className="article-url hide"><a href={article.nyt_url}>go to article</a></div>
                                 </div>
-                                <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/>
+                                <img className="bookmark-btn" src={BookmarkTag}/>
+                                {/* <img className="bookmark-btn" src={BookmarkTag} onClick={saveBM}/> */}
                             </div>
                         ))}
                     </div>
