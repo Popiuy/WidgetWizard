@@ -27,9 +27,7 @@
 
 .alert {
     font-size: 24px;
-    width: 40%;
     margin-top: 1rem;
-    margin-left: 1rem;
 }
 
 .navbar-color {
@@ -145,4 +143,9 @@
     margin-right: 10px; 
     height: 45px;
     width: 45px;
+  }
+  .display-home {
+    position:absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }

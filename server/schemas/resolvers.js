@@ -71,15 +71,13 @@ const resolvers = {
 
         addWidget: async (parent, {widgetName}, context) => {
 
-            console.log(context.user)
-            
             const user = await User.findByIdAndUpdate(
-                { _id: context.user._id },
-                { $addToSet : { widgets: widgetName} },
-                { new: true }
+            { _id: context.user._id },
+            { $addToSet : { widgets: widgetName} },
+            { new: true }
             );
-
             return user;
+           
         },
         deleteWidget: async (parent, {widgetName}, context) => {
             
